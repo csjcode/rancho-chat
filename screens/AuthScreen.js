@@ -1,22 +1,50 @@
-import { Feather, FontAwesome } from '@expo/vector-icons'
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React, { useState } from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import Input from '../components/Input'
 import PageContainer from '../components/PageContainer'
+import SignInForm from '../components/SignInForm'
+import SignUpForm from '../components/SignUpForm'
+import colors from '../constants/colors'
+import logo from '../assets/images/logo.png'
 
 const AuthScreen = (props) => {
+  const [isSignUp, setIsSignUp] = useState(false)
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <PageContainer>
-        <Input label="First name" icon="user-o" iconPack={FontAwesome} />
+        <ScrollView>
+          <KeyboardAvoidingView
+            style={styles.keyboardAvoidingView}
+            behavior={Platform.OS === 'ios' ? 'height' : undefined}
+            keyboardVerticalOffset={100}
+          >
+            <View style={styles.imageContainer}>
+              <Image style={styles.image} source={logo} resizeMode="contain" />
+            </View>
 
-        <Input label="Last name" icon="user-o" iconPack={FontAwesome} />
+            {isSignUp ? <SignUpForm /> : <SignInForm />}
 
-        <Input label="Email" icon="mail" iconPack={Feather} />
-
-        <Input label="Password" icon="lock" iconPack={Feather} />
+            <TouchableOpacity
+              onPress={() => setIsSignUp((prevState) => !prevState)}
+              style={styles.linkContainer}
+            >
+              <Text style={styles.link}>{`Switch to ${
+                isSignUp ? 'sign in' : 'sign up'
+              }`}</Text>
+            </TouchableOpacity>
+          </KeyboardAvoidingView>
+        </ScrollView>
       </PageContainer>
     </SafeAreaView>
   )
