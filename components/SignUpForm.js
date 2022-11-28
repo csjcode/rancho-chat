@@ -28,8 +28,6 @@ const initialState = {
 
 const SignUpForm = (props) => {
   const dispatch = useDispatch()
-  const stateData = useSelector((state) => state.auth)
-  console.log(stateData)
 
   const [error, setError] = useState()
   const [isLoading, setIsLoading] = useState(false)
@@ -49,7 +47,7 @@ const SignUpForm = (props) => {
     }
   }, [error])
 
-  const authHandler = async () => {
+  const authHandler = useCallback(async () => {
     try {
       setIsLoading(true)
 
@@ -59,13 +57,13 @@ const SignUpForm = (props) => {
         formState.inputValues.email,
         formState.inputValues.password,
       )
-      dispatch(action)
       setError(null)
+      await dispatch(action)
     } catch (error) {
       setError(error.message)
       setIsLoading(false)
     }
-  }
+  }, [dispatch, formState])
 
   return (
     <>

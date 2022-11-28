@@ -8,9 +8,10 @@ import AppNavigator from "./navigation/AppNavigator";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { testMode } from "./utils/testMode";
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted"]);
-// AsyncStorage.clear(); // to log out
+testMode.clearLocalStorage && AsyncStorage.clear(); // to log out
 
 SplashScreen.preventAutoHideAsync();
 
