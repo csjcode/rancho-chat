@@ -1,16 +1,22 @@
-import React, { useReducer, useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useEffect, useReducer, useState } from 'react'
 import Input from '../components/Input'
 import SubmitButton from '../components/SubmitButton'
 import { Feather, FontAwesome } from '@expo/vector-icons'
-import { getFirebaseApp } from '../utils/firebaseHelper.js'
 
 import { validateInput } from '../utils/actions/formActions'
 import { reducer } from '../utils/reducers/formReducer'
 import { signUp } from '../utils/actions/authActions'
 import { ActivityIndicator, Alert } from 'react-native'
 import colors from '../constants/colors'
+import { useDispatch, useSelector } from 'react-redux'
 
 const initialState = {
+  inputValues: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  },
   inputValidities: {
     firstName: false,
     lastName: false,
@@ -19,7 +25,12 @@ const initialState = {
   },
   formIsValid: false,
 }
+
 const SignUpForm = (props) => {
+  const dispatch = useDispatch()
+  const stateData = useSelector((state) => state.auth)
+  console.log(stateData)
+
   const [error, setError] = useState()
   const [isLoading, setIsLoading] = useState(false)
   const [formState, dispatchFormState] = useReducer(reducer, initialState)
@@ -41,18 +52,14 @@ const SignUpForm = (props) => {
   const authHandler = async () => {
     try {
       setIsLoading(true)
-      // console.log(
-      //   formState.inputValues.firstName,
-      //   formState.inputValues.lastName,
-      //   formState.inputValues.email,
-      //   formState.inputValues.password,
-      // )
-      await signUp(
+
+      const action = signUp(
         formState.inputValues.firstName,
         formState.inputValues.lastName,
         formState.inputValues.email,
         formState.inputValues.password,
       )
+      dispatch(action)
       setError(null)
     } catch (error) {
       setError(error.message)
