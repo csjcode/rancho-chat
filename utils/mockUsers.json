@@ -1,0 +1,201 @@
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "Mrs",
+        "first": "Millie",
+        "last": "Johnson"
+      },
+      "location": {
+        "street": {
+          "number": 5699,
+          "name": "Mokoia Road"
+        },
+        "city": "Porirua",
+        "state": "Southland",
+        "country": "New Zealand",
+        "postcode": 47254,
+        "coordinates": {
+          "latitude": "51.6601",
+          "longitude": "132.5236"
+        },
+        "timezone": {
+          "offset": "+4:00",
+          "description": "Abu Dhabi, Muscat, Baku, Tbilisi"
+        }
+      },
+      "email": "millie.johnson@example.com",
+      "login": {
+        "uuid": "a5a998aa-6726-44f8-b029-4913e2cb70bc",
+        "username": "organicfish613",
+        "password": "bestbuy",
+        "salt": "Blzs9G0b",
+        "md5": "4a1fcf07cc7d35012013d1f27f06cfca",
+        "sha1": "7181a3ba74d7f2b3ec32c20e03ab707d37862e2d",
+        "sha256": "b2520160f0db97fcec743a0f75ba806c99ba031e524db0d4e70186304a3ea755"
+      },
+      "dob": {
+        "date": "1948-03-28T14:46:22.582Z",
+        "age": 74
+      },
+      "registered": {
+        "date": "2006-05-25T17:40:59.544Z",
+        "age": 16
+      },
+      "phone": "(177)-407-7839",
+      "cell": "(901)-586-5856",
+      "id": {
+        "name": "",
+        "value": null
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/86.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/86.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/86.jpg"
+      },
+      "nat": "NZ"
+    }
+  ],
+  "info": {
+    "seed": "148a1d6e1262e26d",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}
+
+{
+  "results": [
+    {
+      "gender": "female",
+      "name": {
+        "title": "Miss",
+        "first": "Ceyhan",
+        "last": "Candan"
+      },
+      "location": {
+        "street": {
+          "number": 8613,
+          "name": "Istiklal Cd"
+        },
+        "city": "Batman",
+        "state": "Bartın",
+        "country": "Turkey",
+        "postcode": 70123,
+        "coordinates": {
+          "latitude": "69.9211",
+          "longitude": "151.1934"
+        },
+        "timezone": {
+          "offset": "-4:00",
+          "description": "Atlantic Time (Canada), Caracas, La Paz"
+        }
+      },
+      "email": "ceyhan.candan@example.com",
+      "login": {
+        "uuid": "3424d7ee-a66f-4e96-a575-83a200e12d34",
+        "username": "greenleopard290",
+        "password": "hotmail0",
+        "salt": "Ax95Kzju",
+        "md5": "28ba36bc65061f40eece1f5a5e215924",
+        "sha1": "f15116d13121266ca38ca7f82bef46a76f361b57",
+        "sha256": "6723915706cff4164a739b80d9074b520fd1be3cb6d92cea13a13e31a05f833e"
+      },
+      "dob": {
+        "date": "1980-08-02T01:17:27.550Z",
+        "age": 42
+      },
+      "registered": {
+        "date": "2005-04-13T10:59:30.179Z",
+        "age": 17
+      },
+      "phone": "(091)-181-2528",
+      "cell": "(051)-334-4719",
+      "id": {
+        "name": "",
+        "value": null
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/women/0.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/0.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/0.jpg"
+      },
+      "nat": "TR"
+    }
+  ],
+  "info": {
+    "seed": "1c5ef26bc92cc2a3",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}
+
+
+{
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Craig",
+        "last": "Hopkins"
+      },
+      "location": {
+        "street": {
+          "number": 1135,
+          "name": "King Street"
+        },
+        "city": "Canterbury",
+        "state": "Kent",
+        "country": "United Kingdom",
+        "postcode": "N23 8UE",
+        "coordinates": {
+          "latitude": "-10.7320",
+          "longitude": "-165.1592"
+        },
+        "timezone": {
+          "offset": "-2:00",
+          "description": "Mid-Atlantic"
+        }
+      },
+      "email": "craig.hopkins@example.com",
+      "login": {
+        "uuid": "36614282-5b6a-422f-a170-ad7103e7cc18",
+        "username": "heavybear699",
+        "password": "asterix",
+        "salt": "wSzQkj8N",
+        "md5": "390f0643f61a2a9c713aad701a94d34e",
+        "sha1": "de1848ae14d3bb759b6850031b47b1e85619715f",
+        "sha256": "48328cb2d828b11b5293a1572a69d7f591858354fe218327100730b26e34dcad"
+      },
+      "dob": {
+        "date": "1991-11-07T16:15:22.120Z",
+        "age": 31
+      },
+      "registered": {
+        "date": "2011-03-08T12:40:35.545Z",
+        "age": 11
+      },
+      "phone": "015242 27790",
+      "cell": "07892 207327",
+      "id": {
+        "name": "NINO",
+        "value": "GP 37 06 23 J"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/10.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/10.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/10.jpg"
+      },
+      "nat": "GB"
+    }
+  ],
+  "info": {
+    "seed": "aab24b9b37e73d38",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+}
