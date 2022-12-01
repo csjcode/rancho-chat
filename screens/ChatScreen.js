@@ -71,7 +71,7 @@ const ChatScreen = (props) => {
   })
 
   const chatData =
-    (chatId && storedChats[chatId]) || props.route?.params?.newChatData
+    (chatId && storedChats[chatId]) || props.route?.params?.newChatData || {}
 
   const getChatTitleFromName = () => {
     const otherUserId = chatUsers.find((uid) => uid !== userData.userId)
@@ -82,11 +82,11 @@ const ChatScreen = (props) => {
     )
   }
 
-  const title = chatData.chatName ?? getChatTitleFromName()
-
   useEffect(() => {
+    if (!chatData) return
+
     props.navigation.setOptions({
-      headerTitle: title,
+      headerTitle: chatData.chatName ?? getChatTitleFromName(),
       headerRight: () => {
         return (
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
@@ -108,7 +108,7 @@ const ChatScreen = (props) => {
       },
     })
     setChatUsers(chatData.users)
-  }, [chatUsers, title])
+  }, [chatUsers])
 
   const sendMessage = useCallback(async () => {
     try {
@@ -210,7 +210,14 @@ const ChatScreen = (props) => {
 
                 const isOwnMessage = message.sentBy === userData.userId
 
-                const messageType = isOwnMessage ? 'myMessage' : 'theirMessage'
+                let messageType
+                if (message.type && message.type === 'info') {
+                  messageType = 'info'
+                } else if (isOwnMessage) {
+                  messageType = 'myMessage'
+                } else {
+                  messageType = 'theirMessage'
+                }
 
                 const sender = message.sentBy && storedUsers[message.sentBy]
                 const name = sender && `${sender.firstName} ${sender.lastName}`
