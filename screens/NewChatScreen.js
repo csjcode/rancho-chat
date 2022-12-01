@@ -18,6 +18,7 @@ import { searchUsers } from '../utils/actions/userActions'
 import DataItem from '../components/DataItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { setStoredUsers } from '../store/userSlice'
+import ProfileImage from '../components/ProfileImage'
 
 const NewChatScreen = (props) => {
   const dispatch = useDispatch()
@@ -26,8 +27,14 @@ const NewChatScreen = (props) => {
   const [users, setUsers] = useState()
   const [noResultsFound, setNoResultsFound] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
+  const [chatName, setChatName] = useState('')
+  const [selectedUsers, setSelectedUsers] = useState([])
 
   const userData = useSelector((state) => state.auth.userData)
+  const storedUsers = useSelector((state) => state.users.storedUsers)
+
+  const isGroupChat = props.route.params && props.route.params.isGroupChat
+  const isGroupChatDisabled = selectedUsers.length === 0 || chatName === ''
 
   useEffect(() => {
     props.navigation.setOptions({
@@ -38,9 +45,23 @@ const NewChatScreen = (props) => {
           </HeaderButtons>
         )
       },
-      headerTitle: 'New chat',
+      headerRight: () => {
+        return (
+          <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+            {isGroupChat && (
+              <Item
+                title="Create"
+                disabled={isGroupChatDisabled}
+                color={isGroupChatDisabled ? colors.lightGrey : undefined}
+                onPress={() => {}}
+              />
+            )}
+          </HeaderButtons>
+        )
+      },
+      headerTitle: isGroupChat ? 'Add participants' : 'New chat',
     })
-  }, [])
+  }, [chatName, selectedUsers])
 
   useEffect(() => {
     const delaySearch = setTimeout(async () => {
@@ -71,13 +92,50 @@ const NewChatScreen = (props) => {
   }, [searchTerm])
 
   const userPressed = (userId) => {
-    props.navigation.navigate('ChatList', {
-      selectedUserId: userId,
-    })
+    if (isGroupChat) {
+      const newSelectedUsers = selectedUsers.includes(userId)
+        ? selectedUsers.filter((id) => id !== userId)
+        : selectedUsers.concat(userId)
+
+      setSelectedUsers(newSelectedUsers)
+    } else {
+      props.navigation.navigate('ChatList', {
+        selectedUserId: userId,
+      })
+    }
   }
 
   return (
     <PageContainer>
+      {isGroupChat && (
+        <>
+          <View style={styles.chatNameContainer}>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.textbox}
+                placeholder="Enter a name for your chat"
+                autoCorrect={false}
+                autoComplete={false}
+                onChangeText={(text) => setChatName(text)}
+              />
+            </View>
+          </View>
+
+          <View style={styles.selectedUsersContainer}>
+            <FlatList
+              style={styles.selectedUsersList}
+              data={selectedUsers}
+              horizontal={true}
+              renderItem={(itemData) => {
+                const userId = itemData.item
+                const userData = storedUsers[userId]
+                return <ProfileImage size={40} uri={userData.profilePicture} />
+              }}
+            />
+          </View>
+        </>
+      )}
+
       <View style={styles.searchContainer}>
         <FontAwesome name="search" size={15} color={colors.lightGrey} />
 
@@ -107,6 +165,8 @@ const NewChatScreen = (props) => {
                 subTitle={userData.about}
                 image={userData.profilePicture}
                 onPress={() => userPressed(userId)}
+                type={isGroupChat ? 'checkbox' : ''}
+                isChecked={selectedUsers.includes(userId)}
               />
             )
           }}
@@ -163,6 +223,23 @@ const styles = StyleSheet.create({
   },
   noResultsText: {
     color: colors.textColor,
+    fontFamily: 'regular',
+    letterSpacing: 0.3,
+  },
+  chatNameContainer: {
+    paddingVertical: 10,
+  },
+  inputContainer: {
+    width: '100%',
+    paddingHorizontal: 10,
+    paddingVertical: 15,
+    backgroundColor: colors.nearlyWhite,
+    flexDirection: 'row',
+    borderRadius: 2,
+  },
+  textbox: {
+    color: colors.textColor,
+    width: '100%',
     fontFamily: 'regular',
     letterSpacing: 0.3,
   },
