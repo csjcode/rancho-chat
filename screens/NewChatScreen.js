@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   View,
   Text,
@@ -33,6 +33,8 @@ const NewChatScreen = (props) => {
   const userData = useSelector((state) => state.auth.userData)
   const storedUsers = useSelector((state) => state.users.storedUsers)
 
+  const selectedUsersFlatList = useRef()
+
   const isGroupChat = props.route.params && props.route.params.isGroupChat
   const isGroupChatDisabled = selectedUsers.length === 0 || chatName === ''
 
@@ -53,7 +55,12 @@ const NewChatScreen = (props) => {
                 title="Create"
                 disabled={isGroupChatDisabled}
                 color={isGroupChatDisabled ? colors.lightGrey : undefined}
-                onPress={() => {}}
+                onPress={() => {
+                  props.navigation.navigate('ChatList', {
+                    selectedUsers,
+                    chatName,
+                  })
+                }}
               />
             )}
           </HeaderButtons>
@@ -126,10 +133,24 @@ const NewChatScreen = (props) => {
               style={styles.selectedUsersList}
               data={selectedUsers}
               horizontal={true}
+              keyExtractor={(item) => item}
+              contentContainerStyle={{ alignItems: 'center' }}
+              ref={(ref) => (selectedUsersFlatList.current = ref)}
+              onContentSizeChange={() =>
+                selectedUsersFlatList.current.scrollToEnd()
+              }
               renderItem={(itemData) => {
                 const userId = itemData.item
                 const userData = storedUsers[userId]
-                return <ProfileImage size={40} uri={userData.profilePicture} />
+                return (
+                  <ProfileImage
+                    style={styles.selectedUserStyle}
+                    size={40}
+                    uri={userData.profilePicture}
+                    onPress={() => userPressed(userId)}
+                    showRemoveButton={true}
+                  />
+                )
               }}
             />
           </View>
@@ -242,6 +263,18 @@ const styles = StyleSheet.create({
     width: '100%',
     fontFamily: 'regular',
     letterSpacing: 0.3,
+  },
+  selectedUsersContainer: {
+    height: 50,
+    justifyContent: 'center',
+  },
+  selectedUsersList: {
+    height: '100%',
+    paddingTop: 10,
+  },
+  selectedUserStyle: {
+    marginRight: 10,
+    marginBottom: 10,
   },
 })
 
