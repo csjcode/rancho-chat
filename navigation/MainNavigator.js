@@ -1,13 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Ionicons } from '@expo/vector-icons'
-
-import ChatSettingsScreen from '../screens/ChatSettingsScreen'
-import SettingsScreen from '../screens/SettingsScreen'
-import ChatListScreen from '../screens/ChatListScreen'
-import ChatScreen from '../screens/ChatScreen'
-import NewChatScreen from '../screens/NewChatScreen'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useDispatch, useSelector } from 'react-redux'
 import { getFirebaseApp } from '../utils/firebaseHelper'
 import { child, get, getDatabase, off, onValue, ref } from 'firebase/database'
@@ -22,96 +13,12 @@ import colors from '../constants/colors'
 import commonStyles from '../constants/commonStyles'
 import { setStoredUsers } from '../store/userSlice'
 import { setChatMessages, setStarredMessages } from '../store/messagesSlice'
-import ContactScreen from '../screens/ContactScreen'
-import DataListScreen from '../screens/DataListScreen'
-
-const Stack = createNativeStackNavigator()
-const Tab = createBottomTabNavigator()
-
-const TabNavigator = () => {
-  return (
-    <Tab.Navigator
-      screenOptions={{
-        headerTitle: '',
-        headerShadowVisible: false,
-      }}
-    >
-      <Tab.Screen
-        name="ChatList"
-        component={ChatListScreen}
-        options={{
-          tabBarLabel: 'Chats',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="chatbubble-outline" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          tabBarLabel: 'Settings',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings-outline" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tab.Navigator>
-  )
-}
-
-const StackNavigator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Group>
-        <Stack.Screen
-          name="Home"
-          component={TabNavigator}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="ChatScreen"
-          component={ChatScreen}
-          options={{
-            headerTitle: '',
-            headerBackTitle: 'Back',
-          }}
-        />
-        <Stack.Screen
-          name="ChatSettings"
-          component={ChatSettingsScreen}
-          options={{
-            headerTitle: '',
-            headerBackTitle: 'Back',
-            headerShadowVisible: false,
-          }}
-        />
-        <Stack.Screen
-          name="Contact"
-          component={ContactScreen}
-          options={{
-            headerTitle: 'Contact info',
-            headerBackTitle: 'Back',
-          }}
-        />
-        <Stack.Screen
-          name="DataList"
-          component={DataListScreen}
-          options={{
-            headerTitle: '',
-            headerBackTitle: 'Back',
-          }}
-        />
-      </Stack.Group>
-
-      <Stack.Group screenOptions={{ presentation: 'containedModal' }}>
-        <Stack.Screen name="NewChat" component={NewChatScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
-  )
-}
+import { MainNavigatorStack } from './MainNavigatorStack'
+import { logger } from '../utils/logging/console'
 
 const MainNavigator = (props) => {
+  logger('component', 'MainNavigator')
+
   const dispatch = useDispatch()
 
   const [isLoading, setIsLoading] = useState(true)
@@ -214,7 +121,7 @@ const MainNavigator = (props) => {
       style={{ flex: 1 }}
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
-      <StackNavigator />
+      <MainNavigatorStack />
     </KeyboardAvoidingView>
   )
 }
