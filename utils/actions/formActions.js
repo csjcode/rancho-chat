@@ -16,5 +16,9 @@ export const validateInput = (inputId, inputValue) => {
     return validateLength(inputId, inputValue, 0, 150, true)
   } else if (inputId === 'chatName') {
     return validateLength(inputId, inputValue, 5, 50, false)
+  } else if (inputId === 'maps') {
+    return validateLength(inputId, inputValue, 5, 50, false)
+  } else if (inputId === 'tricks') {
+    return validateLength(inputId, inputValue, 5, 50, false)
   }
 }
