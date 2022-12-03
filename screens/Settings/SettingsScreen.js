@@ -8,20 +8,20 @@ import {
   ScrollView,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import DataItem from '../components/DataItem'
-import Input from '../components/Input'
-import PageContainer from '../components/PageContainer'
-import PageTitle from '../components/PageTitle'
-import ProfileImage from '../components/ProfileImage'
-import SubmitButton from '../components/SubmitButton'
-import colors from '../constants/colors'
-import { updateLoggedInUserData } from '../store/authSlice'
+import DataItem from '../../components/DataItem'
+import Input from '../../components/Input'
+import PageContainer from '../../components/PageContainer'
+import PageTitle from '../../components/PageTitle'
+import ProfileImage from '../../components/ProfileImage'
+import SubmitButton from '../../components/SubmitButton'
+import colors from '../../constants/colors'
+import { updateLoggedInUserData } from '../../store/authSlice'
 import {
   updateSignedInUserData,
   userLogout,
-} from '../utils/actions/authActions'
-import { validateInput } from '../utils/actions/formActions'
-import { reducer } from '../utils/reducers/formReducer'
+} from '../../utils/actions/authActions'
+import { validateInput } from '../../utils/actions/formActions'
+import { reducer } from '../../utils/reducers/formReducer'
 
 const SettingsScreen = (props) => {
   const dispatch = useDispatch()

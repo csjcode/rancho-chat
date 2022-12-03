@@ -11,11 +11,10 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
-import PageContainer from '../components/PageContainer'
-import SignInForm from '../components/SignInForm'
-import SignUpForm from '../components/SignUpForm'
-import colors from '../constants/colors'
-import logo from '../assets/images/logo.png'
+import PageContainer from '../../components/PageContainer'
+import SignInForm from '../../components/SignInForm'
+import SignUpForm from '../../components/SignUpForm'
+import logo from '../../assets/images/logo.png'
 
 const AuthScreen = (props) => {
   const [isSignUp, setIsSignUp] = useState(false)

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { FlatList, Text } from 'react-native'
 import { useSelector } from 'react-redux'
-import DataItem from '../components/DataItem'
-import PageContainer from '../components/PageContainer'
+import DataItem from '../../components/DataItem'
+import PageContainer from '../../components/PageContainer'
 
 const DataListScreen = (props) => {
   const storedUsers = useSelector((state) => state.users.storedUsers)

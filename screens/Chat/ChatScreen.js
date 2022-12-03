@@ -16,25 +16,28 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
 
-import backgroundImage from '../assets/images/droplet.jpeg'
-import colors from '../constants/colors'
+import backgroundImage from '../../assets/images/droplet.jpeg'
+import colors from '../../constants/colors'
 import { useSelector } from 'react-redux'
-import PageContainer from '../components/PageContainer'
-import Bubble from '../components/Bubble'
+import AwesomeAlert from 'react-native-awesome-alerts'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+
+import PageContainer from '../../components/PageContainer'
+import Bubble from '../../components/Bubble'
 import {
   createChat,
   sendImage,
   sendTextMessage,
-} from '../utils/actions/chatActions'
-import ReplyTo from '../components/ReplyTo'
+} from '../../utils/actions/chatActions'
+import ReplyTo from '../../components/ReplyTo'
 import {
   launchImagePicker,
   openCamera,
   uploadImageAsync,
-} from '../utils/imagePickerHelper'
-import AwesomeAlert from 'react-native-awesome-alerts'
-import { HeaderButtons, Item } from 'react-navigation-header-buttons'
-import CustomHeaderButton from '../components/CustomHeaderButton'
+} from '../../utils/imagePickerHelper'
+
+import CustomHeaderButton from '../../components/CustomHeaderButton'
+import Chats from './Chats'
 
 const ChatScreen = (props) => {
   const [chatUsers, setChatUsers] = useState([])
@@ -44,8 +47,6 @@ const ChatScreen = (props) => {
   const [replyingTo, setReplyingTo] = useState()
   const [tempImageUri, setTempImageUri] = useState('')
   const [isLoading, setIsLoading] = useState(false)
-
-  const flatList = useRef()
 
   const userData = useSelector((state) => state.auth.userData)
   const storedUsers = useSelector((state) => state.users.storedUsers)
@@ -198,50 +199,11 @@ const ChatScreen = (props) => {
           )}
 
           {chatId && (
-            <FlatList
-              ref={(ref) => (flatList.current = ref)}
-              onContentSizeChange={() =>
-                flatList.current.scrollToEnd({ animated: false })
-              }
-              onLayout={() => flatList.current.scrollToEnd({ animated: false })}
-              data={chatMessages}
-              renderItem={(itemData) => {
-                const message = itemData.item
-
-                const isOwnMessage = message.sentBy === userData.userId
-
-                let messageType
-                if (message.type && message.type === 'info') {
-                  messageType = 'info'
-                } else if (isOwnMessage) {
-                  messageType = 'myMessage'
-                } else {
-                  messageType = 'theirMessage'
-                }
-
-                const sender = message.sentBy && storedUsers[message.sentBy]
-                const name = sender && `${sender.firstName} ${sender.lastName}`
-
-                return (
-                  <Bubble
-                    type={messageType}
-                    text={message.text}
-                    messageId={message.key}
-                    userId={userData.userId}
-                    chatId={chatId}
-                    date={message.sentAt}
-                    name={
-                      !chatData.isGroupChat || isOwnMessage ? undefined : name
-                    }
-                    setReply={() => setReplyingTo(message)}
-                    replyingTo={
-                      message.replyTo &&
-                      chatMessages.find((i) => i.key === message.replyTo)
-                    }
-                    imageUrl={message.imageUrl}
-                  />
-                )
-              }}
+            <Chats
+              chatData={chatData}
+              chatId={chatId}
+              chatMessages={chatMessages}
+              setReplyingTo={setReplyingTo}
             />
           )}
         </PageContainer>

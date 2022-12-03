@@ -9,11 +9,11 @@ import {
 } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import { useSelector } from 'react-redux'
-import CustomHeaderButton from '../components/CustomHeaderButton'
-import DataItem from '../components/DataItem'
-import PageContainer from '../components/PageContainer'
-import PageTitle from '../components/PageTitle'
-import colors from '../constants/colors'
+import CustomHeaderButton from '../../components/CustomHeaderButton'
+import DataItem from '../../components/DataItem'
+import PageContainer from '../../components/PageContainer'
+import PageTitle from '../../components/PageTitle'
+import colors from '../../constants/colors'
 
 const ChatListScreen = (props) => {
   const selectedUser = props.route?.params?.selectedUserId
