@@ -18,17 +18,7 @@ import * as Clipboard from 'expo-clipboard'
 import { Feather, FontAwesome } from '@expo/vector-icons'
 import { starMessage } from '../utils/actions/chatActions'
 import { useSelector } from 'react-redux'
-
-function formatAmPm(dateString) {
-  const date = new Date(dateString)
-  var hours = date.getHours()
-  var minutes = date.getMinutes()
-  var ampm = hours >= 12 ? 'pm' : 'am'
-  hours = hours % 12
-  hours = hours ? hours : 12 // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0' + minutes : minutes
-  return hours + ':' + minutes + ' ' + ampm
-}
+import { formatAmPm } from '../utils/datetimeFormat'
 
 const MenuItem = (props) => {
   const Icon = props.iconPack ?? Feather

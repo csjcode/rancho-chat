@@ -2,13 +2,13 @@ import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import SettingsScreen from '../screens/Settings/SettingsScreen'
-import ChatListScreen from '../screens/ChatList/ChatListScreen'
+import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
 import { logger } from '../utils/logging/console'
 
 const Tab = createBottomTabNavigator()
 
 export const MainNavigatorTab = () => {
-  logger('component', 'MainNavigatorTabs')
+  // logger('component', 'MainNavigatorTabs')
 
   return (
     <Tab.Navigator

@@ -7,20 +7,20 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import { useSelector } from 'react-redux'
-import DataItem from '../../components/DataItem'
-import Input from '../../components/Input'
-import PageContainer from '../../components/PageContainer'
-import PageTitle from '../../components/PageTitle'
-import ProfileImage from '../../components/ProfileImage'
-import SubmitButton from '../../components/SubmitButton'
-import colors from '../../constants/colors'
+import DataItem from '../../../components/DataItem'
+import Input from '../../../components/Input'
+import PageContainer from '../../../components/PageContainer'
+import PageTitle from '../../../components/PageTitle'
+import ProfileImage from '../../../components/ProfileImage'
+import SubmitButton from '../../../components/SubmitButton'
+import colors from '../../../constants/colors'
 import {
   addUsersToChat,
   removeUserFromChat,
   updateChatData,
-} from '../../utils/actions/chatActions'
-import { validateInput } from '../../utils/actions/formActions'
-import { reducer } from '../../utils/reducers/formReducer'
+} from '../../../utils/actions/chatActions'
+import { validateInput } from '../../../utils/actions/formActions'
+import { reducer } from '../../../utils/reducers/formReducer'
 
 const ChatSettingsScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false)

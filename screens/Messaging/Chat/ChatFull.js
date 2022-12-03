@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { FlatList } from 'react-native'
-import Bubble from '../../components/Bubble'
+import Bubble from '../../../components/Bubble'
 
-const Chats = ({ chatData, chatId, chatMessages, setReplyingTo }) => {
+const ChatFull = ({ chatData, chatId, chatMessages, setReplyingTo }) => {
   const storedUsers = useSelector((state) => state.users.storedUsers)
   const userData = useSelector((state) => state.auth.userData)
   const flatList = useRef()
@@ -57,4 +57,4 @@ const Chats = ({ chatData, chatId, chatMessages, setReplyingTo }) => {
   )
 }
 
-export default Chats
+export default ChatFull

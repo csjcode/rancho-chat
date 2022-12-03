@@ -17,7 +17,7 @@ import { MainNavigatorStack } from './MainNavigatorStack'
 import { logger } from '../utils/logging/console'
 
 const MainNavigator = (props) => {
-  logger('component', 'MainNavigator')
+  // logger('component', 'MainNavigator')
 
   const dispatch = useDispatch()
 

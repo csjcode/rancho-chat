@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { MainNavigatorTab } from './MainNavigatorTab'
 
 import ContactScreen from '../screens/Contact/ContactScreen'
-import ChatSettingsScreen from '../screens/ChatSettings/ChatSettingsScreen'
-import ChatScreen from '../screens/Chat/ChatScreen'
-import NewChatScreen from '../screens/NewChatScreen/NewChatScreen'
+import ChatSettingsScreen from '../screens/Messaging/ChatSettings/ChatSettingsScreen'
+import ChatScreen from '../screens/Messaging/Chat/ChatScreen'
+import NewChatScreen from '../screens/Messaging/NewChat/NewChatScreen'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import DataListScreen from '../screens/DataList/DataListScreen'
+import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
 import { logger } from '../utils/logging/console'
 
 const Stack = createNativeStackNavigator()

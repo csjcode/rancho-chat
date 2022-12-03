@@ -1,43 +1,39 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import {
   View,
-  Text,
   StyleSheet,
-  Button,
   ImageBackground,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-  FlatList,
   Image,
   ActivityIndicator,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
 
-import backgroundImage from '../../assets/images/droplet.jpeg'
-import colors from '../../constants/colors'
+import backgroundImage from '../../../assets/images/droplet.jpeg'
+import colors from '../../../constants/colors'
 import { useSelector } from 'react-redux'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 
-import PageContainer from '../../components/PageContainer'
-import Bubble from '../../components/Bubble'
+import PageContainer from '../../../components/PageContainer'
+import Bubble from '../../../components/Bubble'
 import {
   createChat,
   sendImage,
   sendTextMessage,
-} from '../../utils/actions/chatActions'
-import ReplyTo from '../../components/ReplyTo'
+} from '../../../utils/actions/chatActions'
+import ReplyTo from '../../../components/ReplyTo'
 import {
   launchImagePicker,
   openCamera,
   uploadImageAsync,
-} from '../../utils/imagePickerHelper'
+} from '../../../utils/imagePickerHelper'
 
-import CustomHeaderButton from '../../components/CustomHeaderButton'
-import Chats from './Chats'
+import CustomHeaderButton from '../../../components/CustomHeaderButton'
+import ChatFull from './ChatFull'
+import chatMessages from './getChatMessages'
 
 const ChatScreen = (props) => {
   const [chatUsers, setChatUsers] = useState([])
@@ -51,25 +47,7 @@ const ChatScreen = (props) => {
   const userData = useSelector((state) => state.auth.userData)
   const storedUsers = useSelector((state) => state.users.storedUsers)
   const storedChats = useSelector((state) => state.chats.chatsData)
-  const chatMessages = useSelector((state) => {
-    if (!chatId) return []
-
-    const chatMessagesData = state.messages.messagesData[chatId]
-
-    if (!chatMessagesData) return []
-
-    const messageList = []
-    for (const key in chatMessagesData) {
-      const message = chatMessagesData[key]
-
-      messageList.push({
-        key,
-        ...message,
-      })
-    }
-
-    return messageList
-  })
+  const messageDataSelector = useSelector((state) => state.messages)
 
   const chatData =
     (chatId && storedChats[chatId]) || props.route?.params?.newChatData || {}
@@ -199,10 +177,10 @@ const ChatScreen = (props) => {
           )}
 
           {chatId && (
-            <Chats
+            <ChatFull
               chatData={chatData}
               chatId={chatId}
-              chatMessages={chatMessages}
+              chatMessages={chatMessages(messageDataSelector, chatId)}
               setReplyingTo={setReplyingTo}
             />
           )}
