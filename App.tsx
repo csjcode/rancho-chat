@@ -10,6 +10,7 @@ import { store } from "./store/store";
 import { MenuProvider } from "react-native-popup-menu";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { testMode } from "./utils/testMode";
+import { logger } from "./utils/logging/console";
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted"]);
 testMode.clearLocalStorage && AsyncStorage.clear(); // to log out
@@ -17,7 +18,10 @@ testMode.clearLocalStorage && AsyncStorage.clear(); // to log out
 SplashScreen.preventAutoHideAsync();
 
 export default function App() {
+  logger("component", "App");
+
   const [appIsLoaded, setAppIsLoaded] = useState(false);
+  logger("string", "appIsLoaded", appIsLoaded);
 
   useEffect(() => {
     const prepare = async () => {

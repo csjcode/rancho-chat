@@ -1,14 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
 import { useSelector } from 'react-redux'
-import DataItem from '../components/DataItem'
-import PageContainer from '../components/PageContainer'
-import PageTitle from '../components/PageTitle'
-import ProfileImage from '../components/ProfileImage'
-import SubmitButton from '../components/SubmitButton'
-import colors from '../constants/colors'
-import { removeUserFromChat } from '../utils/actions/chatActions'
-import { getUserChats } from '../utils/actions/userActions'
+import DataItem from '../../components/DataItem'
+import PageContainer from '../../components/PageContainer'
+import PageTitle from '../../components/PageTitle'
+import ProfileImage from '../../components/ProfileImage'
+import SubmitButton from '../../components/SubmitButton'
+import colors from '../../constants/colors'
+import { removeUserFromChat } from '../../utils/actions/chatActions'
+import { getUserChats } from '../../utils/actions/userActions'
 
 const ContactScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false)
