@@ -1,40 +1,39 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import {
   View,
-  Text,
   StyleSheet,
-  Button,
   ImageBackground,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
-  Platform,
-  FlatList,
   Image,
   ActivityIndicator,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
 
-import backgroundImage from '../assets/images/droplet.jpeg'
-import colors from '../constants/colors'
+import backgroundImage from '../../../assets/images/droplet.jpeg'
+import colors from '../../../constants/colors'
 import { useSelector } from 'react-redux'
-import PageContainer from '../components/PageContainer'
-import Bubble from '../components/Bubble'
+import AwesomeAlert from 'react-native-awesome-alerts'
+import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+
+import PageContainer from '../../../components/PageContainer'
+import Bubble from '../../../components/Bubble'
 import {
   createChat,
   sendImage,
   sendTextMessage,
-} from '../utils/actions/chatActions'
-import ReplyTo from '../components/ReplyTo'
+} from '../../../utils/actions/chatActions'
+import ReplyTo from '../../../components/ReplyTo'
 import {
   launchImagePicker,
   openCamera,
   uploadImageAsync,
-} from '../utils/imagePickerHelper'
-import AwesomeAlert from 'react-native-awesome-alerts'
-import { HeaderButtons, Item } from 'react-navigation-header-buttons'
-import CustomHeaderButton from '../components/CustomHeaderButton'
+} from '../../../utils/imagePickerHelper'
+
+import CustomHeaderButton from '../../../components/CustomHeaderButton'
+import ChatFull from './ChatFull'
+import chatMessages from './getChatMessages'
 
 const ChatScreen = (props) => {
   const [chatUsers, setChatUsers] = useState([])
@@ -45,30 +44,10 @@ const ChatScreen = (props) => {
   const [tempImageUri, setTempImageUri] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const flatList = useRef()
-
   const userData = useSelector((state) => state.auth.userData)
   const storedUsers = useSelector((state) => state.users.storedUsers)
   const storedChats = useSelector((state) => state.chats.chatsData)
-  const chatMessages = useSelector((state) => {
-    if (!chatId) return []
-
-    const chatMessagesData = state.messages.messagesData[chatId]
-
-    if (!chatMessagesData) return []
-
-    const messageList = []
-    for (const key in chatMessagesData) {
-      const message = chatMessagesData[key]
-
-      messageList.push({
-        key,
-        ...message,
-      })
-    }
-
-    return messageList
-  })
+  const messageDataSelector = useSelector((state) => state.messages)
 
   const chatData =
     (chatId && storedChats[chatId]) || props.route?.params?.newChatData || {}
@@ -198,50 +177,11 @@ const ChatScreen = (props) => {
           )}
 
           {chatId && (
-            <FlatList
-              ref={(ref) => (flatList.current = ref)}
-              onContentSizeChange={() =>
-                flatList.current.scrollToEnd({ animated: false })
-              }
-              onLayout={() => flatList.current.scrollToEnd({ animated: false })}
-              data={chatMessages}
-              renderItem={(itemData) => {
-                const message = itemData.item
-
-                const isOwnMessage = message.sentBy === userData.userId
-
-                let messageType
-                if (message.type && message.type === 'info') {
-                  messageType = 'info'
-                } else if (isOwnMessage) {
-                  messageType = 'myMessage'
-                } else {
-                  messageType = 'theirMessage'
-                }
-
-                const sender = message.sentBy && storedUsers[message.sentBy]
-                const name = sender && `${sender.firstName} ${sender.lastName}`
-
-                return (
-                  <Bubble
-                    type={messageType}
-                    text={message.text}
-                    messageId={message.key}
-                    userId={userData.userId}
-                    chatId={chatId}
-                    date={message.sentAt}
-                    name={
-                      !chatData.isGroupChat || isOwnMessage ? undefined : name
-                    }
-                    setReply={() => setReplyingTo(message)}
-                    replyingTo={
-                      message.replyTo &&
-                      chatMessages.find((i) => i.key === message.replyTo)
-                    }
-                    imageUrl={message.imageUrl}
-                  />
-                )
-              }}
+            <ChatFull
+              chatData={chatData}
+              chatId={chatId}
+              chatMessages={chatMessages(messageDataSelector, chatId)}
+              setReplyingTo={setReplyingTo}
             />
           )}
         </PageContainer>
