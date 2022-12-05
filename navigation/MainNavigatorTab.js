@@ -6,6 +6,7 @@ import SettingsScreen from '../screens/Settings/SettingsScreen'
 import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
 import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
+import TrickScreen from '../screens/Tricks/TrickScreen'
 
 const Tab = createBottomTabNavigator()
 
@@ -45,7 +46,7 @@ export const MainNavigatorTab = () => {
       {menuData.tricks && (
         <Tab.Screen
           name="Tricks"
-          component={Mapview}
+          component={TrickScreen}
           options={{
             tabBarLabel: 'Tricks',
             tabBarIcon: ({ color, size }) => (
