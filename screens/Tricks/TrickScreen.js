@@ -1,19 +1,25 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
-import TokenPrice from '../../components/TokenPrice'
-import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons'
-import { FlatList } from 'react-native'
+import {
+  Ionicons,
+  FontAwesome,
+  MaterialIcons,
+  MaterialCommunityIcons,
+  FontAwesome5,
+} from '@expo/vector-icons'
+import { FlatList, TouchableOpacity } from 'react-native'
 
-const TrickScreen = () => {
+const TrickScreen = (props) => {
   return (
     <View style={styles.container}>
-      {/* <TokenPrice /> */}
       <FlatList
         style={{ width: 300 }}
         data={itemData}
         numColumns={3}
         columnWrapperStyle={{ justifyContent: 'space-between' }}
-        renderItem={Item}
+        renderItem={({ item }) => {
+          return <Item item={item} navigation={props.navigation} />
+        }}
         keyExtractor={(item, key) => key}
       />
     </View>
@@ -45,10 +51,17 @@ const styles = StyleSheet.create({
   },
 })
 
-const Item = ({ item }) => {
+const Item = ({ item, navigation }) => {
   return item.label ? (
     <View style={styles.item}>
-      {item.icon}
+      <TouchableOpacity
+        onPress={() => {
+          return item.screen ? navigation.navigate(item.screen) : null
+        }}
+        style={styles.button}
+      >
+        {item.icon}
+      </TouchableOpacity>
       <Text>{item.label}</Text>
     </View>
   ) : (
@@ -59,75 +72,84 @@ const Item = ({ item }) => {
 // Sample Data
 const itemData = [
   {
-    label: 'Tool',
+    label: 'Map',
+    screen: 'Map',
+    icon: <FontAwesome name="map-o" size={50} color={'#999'} />,
+  },
+  {
+    label: 'Crypto',
+    screen: 'Map',
+    icon: <FontAwesome name="bitcoin" size={50} color={'#999'} />,
+  },
+  {
+    label: 'Steps',
+    screen: 'Map',
+    icon: <Ionicons name="walk" size={50} color={'#999'} />,
+  },
+  {
+    label: 'Video Chat',
+    screen: 'Map',
+    icon: <MaterialIcons name="video-call" size={50} color={'#999'} />,
+  },
+  {
+    label: 'Audio Chat',
+    screen: 'Map',
+    icon: <Ionicons name="md-call-outline" size={50} color={'#999'} />,
+  },
+  {
+    label: 'Screen Capture',
+    screen: 'Map',
+    icon: (
+      <MaterialCommunityIcons
+        name="cellphone-screenshot"
+        size={50}
+        color={'#999'}
+      />
+    ),
+  },
+  {
+    label: 'Tool6',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool2',
+    label: 'Tool7',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool3',
+    label: 'Tool8',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool3',
+    label: 'Tool9',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool3',
+    label: 'Tool10',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool3',
+    label: 'Tool11',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool3',
+    label: 'Tool12',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool3',
+    label: 'Tool13',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
   {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
-  },
-  {
-    label: 'Tool3',
+    label: 'Tool14',
+    screen: 'Map',
     icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
   },
 ]
