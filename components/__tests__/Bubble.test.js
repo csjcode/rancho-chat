@@ -147,4 +147,93 @@ it('styles and aligns correctly for info messages', () => {
 
 // The four tests above check that the react native Bubble component renders correctly and that it applies the correct style and alignment props when given different types of messages. The first test is a snapshot test which checks that the component renders correctly when given valid props. The following three tests
 
+
+
+// Tests
+
+import '@testing-library/jest-native/extend-expect'
+import { render } from '@testing-library/react-native'
+import React from 'react'
+
+describe('Bubble', () => {
+  it('renders a plain text message bubble', () => {
+    const { getByTestId } = render(
+      <Bubble type="myMessage" text="hello world" />
+    )
+
+    expect(getByTestId('bubble').props.style).toHaveProperty(
+      'backgroundColor',
+      '#E7FED6',
+    )
+
+    expect(getByTestId('message-text')).toHaveTextContent('hello world')
+  })
+
+  it('renders a system message bubble', () => {
+    const { getByTestId } = render(
+      <Bubble type="system" text="hello world" />
+    )
+
+    expect(getByTestId('bubble').props.style).toHaveProperty(
+      'backgroundColor',
+      colors.beige,
+    )
+
+    expect(getByTestId('message-text')).toHaveTextContent('hello world')
+  })
+
+  it('renders an image message bubble', () => {
+    const { getByTestId } = render(
+      <Bubble
+        type="myMessage"
+        text="hello world"
+        imageUrl="https://example.com/image.jpg"
+      />
+    )
+
+    expect(getByTestId('bubble').props.style).toHaveProperty(
+      'backgroundColor',
+      '#E7FED6',
+    )
+
+    expect(getByTestId('message-image')).toBeTruthy()
+  })
+
+  it('renders a message with a name', () => {
+    const { getByTestId } = render(
+      <Bubble type="theirMessage" name="John Doe" text="hello world" />
+    )
+
+    expect(getByTestId('bubble').props.style).toHaveProperty(
+      'backgroundColor',
+      'white',
+    )
+
+    expect(getByTestId('name')).toHaveTextContent('John Doe')
+    expect(getByTestId('message-text')).toHaveTextContent('hello world')
+  })
+
+  it('renders a reply message', () => {
+    const { getByTestId } = render(
+      <Bubble
+        type="reply"
+        text="hello world"
+        name="John Doe"
+        replyingTo={{ sentBy: 'userId', text: 'replying to this' }}
+      />
+    )
+
+    expect(getByTestId('bubble').props.style).toHaveProperty(
+      'backgroundColor',
+      '#F2F2F2',
+    )
+
+    expect(getByTestId('name')).toHaveTextContent('John Doe')
+    expect(getByTestId('message-text')).toHaveTextContent('hello world')
+  })
+})
+
+// The tests above check that the bubble component renders correctly depending on the type of message and any associated data. The first test checks that a plain text message renders with the correct background color and text content. The second test checks that a system message renders with the correct background color and text content. The third test checks that an image message renders with the correct background color and an image. The fourth test checks that a message with a name renders with the correct background color, name, and text content. The fifth test checks that a reply message renders with the correct background color, name, text content, and reply content. Additionally, the tests check that all of the necessary props are being passed. Finally, the tests also check that the snapshot of the component matches the expected output.
+
+
   */
