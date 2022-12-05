@@ -78,7 +78,7 @@ const itemData = [
   },
   {
     label: 'Crypto',
-    screen: 'Map',
+    screen: 'TokenScreen',
     icon: <FontAwesome name="bitcoin" size={50} color={'#999'} />,
   },
   {

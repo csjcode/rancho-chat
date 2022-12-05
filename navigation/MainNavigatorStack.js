@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
 import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
+import TokenScreen from '../screens/Tokens/TokenScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -61,6 +62,14 @@ export const MainNavigatorStack = () => {
           component={Mapview}
           options={{
             headerTitle: 'Local Map',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="TokenScreen"
+          component={TokenScreen}
+          options={{
+            headerTitle: 'Token Screen',
             headerBackTitle: 'Back',
           }}
         />
