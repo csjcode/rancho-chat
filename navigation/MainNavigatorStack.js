@@ -8,6 +8,7 @@ import NewChatScreen from '../screens/Messaging/NewChat/NewChatScreen'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
 import { logger } from '../utils/logging/console'
+import Mapview from '../screens/Map/Mapview'
 
 const Stack = createNativeStackNavigator()
 
@@ -52,6 +53,14 @@ export const MainNavigatorStack = () => {
           component={DataListScreen}
           options={{
             headerTitle: '',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="Map"
+          component={Mapview}
+          options={{
+            headerTitle: 'Local Map',
             headerBackTitle: 'Back',
           }}
         />
