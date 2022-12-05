@@ -6,6 +6,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   ScrollView,
+  Switch,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import DataItem from '../../components/DataItem'
@@ -16,6 +17,7 @@ import ProfileImage from '../../components/ProfileImage'
 import SubmitButton from '../../components/SubmitButton'
 import colors from '../../constants/colors'
 import { updateLoggedInUserData } from '../../store/authSlice'
+import { setStoredMenu, setStoredMenuTest } from '../../store/menuSlice'
 import {
   updateSignedInUserData,
   userLogout,
@@ -25,14 +27,28 @@ import { reducer } from '../../utils/reducers/formReducer'
 
 const SettingsScreen = (props) => {
   const dispatch = useDispatch()
-
+  // dispatch(setStoredMenu({ ...menuData, newData: updatedValues }))
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const userData = useSelector((state) => state.auth.userData)
+  const menuData = useSelector((state) => state.menu.storedMenu)
+  const [isMap, isMapSet] = useState(menuData.map)
+  const [isTricks, isTricksSet] = useState(menuData.tricks)
+
+  const toggleMap = () => {
+    isMapSet((previousState) => !previousState)
+    dispatch(setStoredMenu({ ...menuData, map: !isMap }))
+  }
+
+  const toggleTricks = () => {
+    isTricksSet((previousState) => !previousState)
+    dispatch(setStoredMenu({ ...menuData, tricks: !isTricks }))
+  }
+
   const starredMessages = useSelector(
     (state) => state.messages.starredMessages ?? {},
   )
-
+  console.log(userData)
   const sortedStarredMessages = useMemo(() => {
     let result = []
 
@@ -198,7 +214,48 @@ const SettingsScreen = (props) => {
             })
           }
         />
+        <View
+          style={{
+            marginTop: 20,
+            flex: 1,
+            justifyContent: 'flex-start',
+            // borderWidth: 2,
+            // borderColor: '#20232a',
+            width: '100%',
+            flexWrap: 'nowrap',
+          }}
+        >
+          <View
+            style={{
+              marginTop: 5,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
+              // borderWidth: 2,
+              // borderColor: '#20232a',
+            }}
+          >
+            <Text>Map</Text>
 
+            <Switch
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
+              thumbColor={isMap ? '#f5dd4b' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleMap}
+              value={isMap}
+            />
+
+            <Text style={{ marginLeft: 20 }}>Tricks</Text>
+
+            <Switch
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
+              thumbColor={isTricks ? '#f5dd4b' : '#f4f3f4'}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleTricks}
+              value={isTricks}
+            />
+          </View>
+        </View>
         <SubmitButton
           title="Logout"
           onPress={() => dispatch(userLogout())}
