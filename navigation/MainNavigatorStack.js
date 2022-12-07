@@ -10,6 +10,7 @@ import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
 import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
 import TokenScreen from '../screens/Tokens/TokenScreen'
+import StepsCounter from '../components/StepsCounter'
 
 const Stack = createNativeStackNavigator()
 
@@ -70,6 +71,14 @@ export const MainNavigatorStack = () => {
           component={TokenScreen}
           options={{
             headerTitle: 'Token Screen',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="StepsScreen"
+          component={StepsCounter}
+          options={{
+            headerTitle: 'Steps Screen',
             headerBackTitle: 'Back',
           }}
         />

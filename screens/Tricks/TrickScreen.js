@@ -83,7 +83,7 @@ const itemData = [
   },
   {
     label: 'Steps',
-    screen: 'Map',
+    screen: 'StepsScreen',
     icon: <Ionicons name="walk" size={50} color={'#999'} />,
   },
   {
