@@ -11,6 +11,7 @@ import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
 import TokenScreen from '../screens/Tokens/TokenScreen'
 import StepsCounter from '../components/StepsCounter'
+import StepsCounterPermissions from '../components/StepsCounterPermissions'
 
 const Stack = createNativeStackNavigator()
 
@@ -76,7 +77,7 @@ export const MainNavigatorStack = () => {
         />
         <Stack.Screen
           name="StepsScreen"
-          component={StepsCounter}
+          component={StepsCounterPermissions}
           options={{
             headerTitle: 'Steps Screen',
             headerBackTitle: 'Back',

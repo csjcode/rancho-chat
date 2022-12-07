@@ -3,16 +3,10 @@ import { Text, View, StyleSheet, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native'
 import { getSolEcoPrices } from './apiTokenPrices'
 
-function useForceUpdate() {
-  const [value, setValue] = useState(0) // integer state
-  return () => setValue((value) => value + 1) // update state to force render
-}
-
 export default function TokenPrice() {
   const [counter, setCounter] = useState(0)
 
   const [priceList, priceListSet] = useState({})
-  const forceUpdate = useForceUpdate()
 
   const RowTable = () => {
     console.log(Object.keys(priceList))
@@ -57,9 +51,7 @@ export default function TokenPrice() {
           style={styles.button}
           title={'Update Prices'}
           onPress={() => setCounter(counter + 1)}
-        >
-          {/* <Text></Text> */}
-        </Button>
+        ></Button>
       </View>
 
       <View style={styles.rowHeader}>

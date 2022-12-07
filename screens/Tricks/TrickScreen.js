@@ -81,11 +81,11 @@ const itemData = [
     screen: 'TokenScreen',
     icon: <FontAwesome name="bitcoin" size={50} color={'#999'} />,
   },
-  {
-    label: 'Steps',
-    screen: 'StepsScreen',
-    icon: <Ionicons name="walk" size={50} color={'#999'} />,
-  },
+  // {
+  //   label: 'Steps',
+  //   screen: 'StepsScreen',
+  //   icon: <Ionicons name="walk" size={50} color={'#999'} />,
+  // },
   {
     label: 'Video Chat',
     screen: 'Map',

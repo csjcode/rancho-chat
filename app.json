@@ -11,6 +11,7 @@
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
+    "plugins": ["./android-manifest.plugin.js"],
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -21,9 +22,10 @@
       "supportsTablet": true,
     },
     "android": {
+      "permissions":["com.google.android.gms.permission.ACTIVITY_RECOGNITION"],
       "config": {
         "googleMaps": {
-          "apiKey": ""
+          "apiKey": "AIzaSyDYF4LwJjst3_pTxBwwcg8VFvWLif0N1gQ"
         }
       },
       "adaptiveIcon": {
@@ -34,5 +36,6 @@
     "web": {
       "favicon": "./assets/favicon.png"
     }
-  }
+  },
+  "permissions":["ACTIVITY_RECOGNITION"]
 }
