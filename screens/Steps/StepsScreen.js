@@ -1,13 +1,15 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import PageContainer from '../../components/PageContainer'
-import StepsCounter from '../../components/StepsCounter'
+// import StepsCounter from '../../components/StepsCounter'
+import StepsCounterPermissions from '../../components/StepsCounterPermissions'
 
 const StepsScreen = () => {
   return (
     <PageContainer>
       <View style={styles.container}>
-        <StepsCounter />
+        {/* <StepsCounter /> */}
+        <StepsCounterPermissions />
       </View>
     </PageContainer>
   )
