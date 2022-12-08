@@ -11,7 +11,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
 
-import backgroundImage from '../../../assets/images/droplet.jpeg'
+import backgroundImage from '../../../assets/images/solana/Solana_Glass_03.png'
 import colors from '../../../constants/colors'
 import { useSelector } from 'react-redux'
 import AwesomeAlert from 'react-native-awesome-alerts'
@@ -260,6 +260,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: '#000',
   },
   screen: {
     flex: 1,
