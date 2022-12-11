@@ -15,4 +15,10 @@ const getColors = (themeColors) => {
   }
 }
 
+export const resolveObjKey = (path, obj) => {
+  return path.split('.').reduce(function (prev, curr) {
+    return prev ? prev[curr] : null
+  }, obj || self)
+}
+
 export default getColors

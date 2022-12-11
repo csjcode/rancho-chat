@@ -1,68 +1,37 @@
 import { Feather, FontAwesome } from '@expo/vector-icons'
-import React, { useCallback, useMemo, useReducer, useState } from 'react'
+import React, { useCallback, useReducer, useState } from 'react'
 import {
   View,
   Text,
   StyleSheet,
   ActivityIndicator,
   ScrollView,
-  Switch,
 } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import DataItem from '../../components/DataItem'
 import Input from '../../components/Input'
 import PageContainer from '../../components/PageContainer'
 import PageTitle from '../../components/PageTitle'
 import ProfileImage from '../../components/ProfileImage'
 import SubmitButton from '../../components/SubmitButton'
+import SettingsMenuToggle from './SettingsMenuToggle'
+import SettingsStarMessages from './SettingsStarMessages'
+
 import colors from '../../constants/colors'
 import { updateLoggedInUserData } from '../../store/authSlice'
-import { setStoredMenu, setStoredMenuTest } from '../../store/menuSlice'
 import {
   updateSignedInUserData,
   userLogout,
 } from '../../utils/actions/authActions'
 import { validateInput } from '../../utils/actions/formActions'
 import { reducer } from '../../utils/reducers/formReducer'
-import getColors from '../../constants/getColors'
+import getColors, { resolveObjKey } from '../../constants/getColors'
 const colorsTheme = getColors()
 
 const SettingsScreen = (props) => {
   const dispatch = useDispatch()
-  // dispatch(setStoredMenu({ ...menuData, newData: updatedValues }))
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const userData = useSelector((state) => state.auth.userData)
-  const menuData = useSelector((state) => state.menu.storedMenu)
-  const [isMap, isMapSet] = useState(menuData.map)
-  const [isTricks, isTricksSet] = useState(menuData.tricks)
-
-  const toggleMap = () => {
-    isMapSet((previousState) => !previousState)
-    dispatch(setStoredMenu({ ...menuData, map: !isMap }))
-  }
-
-  const toggleTricks = () => {
-    isTricksSet((previousState) => !previousState)
-    dispatch(setStoredMenu({ ...menuData, tricks: !isTricks }))
-  }
-
-  const starredMessages = useSelector(
-    (state) => state.messages.starredMessages ?? {},
-  )
-  console.log(userData)
-  const sortedStarredMessages = useMemo(() => {
-    let result = []
-
-    const chats = Object.values(starredMessages)
-
-    chats.forEach((chat) => {
-      const chatMessages = Object.values(chat)
-      result = result.concat(chatMessages)
-    })
-
-    return result
-  }, [starredMessages])
 
   const firstName = userData.firstName || ''
   const lastName = userData.lastName || ''
@@ -89,6 +58,7 @@ const SettingsScreen = (props) => {
 
   const inputChangedHandler = useCallback(
     (inputId, inputValue) => {
+      console.log(inputId, inputValue)
       const result = validateInput(inputId, inputValue)
       dispatchFormState({ inputId, validationResult: result, inputValue })
     },
@@ -148,7 +118,6 @@ const SettingsScreen = (props) => {
           errorText={formState.inputValidities['firstName']}
           initialValue={userData.firstName}
         />
-
         <Input
           id="lastName"
           label="Last name"
@@ -204,60 +173,8 @@ const SettingsScreen = (props) => {
           )}
         </View>
 
-        <DataItem
-          type={'link'}
-          title="Starred messages"
-          hideImage={true}
-          onPress={() =>
-            props.navigation.navigate('DataList', {
-              title: 'Starred messages',
-              data: sortedStarredMessages,
-              type: 'messages',
-            })
-          }
-        />
-        <View
-          style={{
-            marginTop: 20,
-            flex: 1,
-            justifyContent: 'flex-start',
-            // borderWidth: 2,
-            // borderColor: '#20232a',
-            width: '100%',
-            flexWrap: 'nowrap',
-          }}
-        >
-          <View
-            style={{
-              marginTop: 5,
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'flex-start',
-              // borderWidth: 2,
-              // borderColor: '#20232a',
-            }}
-          >
-            <Text>Map</Text>
-
-            <Switch
-              trackColor={{ false: '#767577', true: '#81b0ff' }}
-              thumbColor={isMap ? '#f5dd4b' : '#f4f3f4'}
-              ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleMap}
-              value={isMap}
-            />
-
-            <Text style={{ marginLeft: 20 }}>Tricks</Text>
-
-            <Switch
-              trackColor={{ false: '#767577', true: '#81b0ff' }}
-              thumbColor={isTricks ? '#f5dd4b' : '#f4f3f4'}
-              ios_backgroundColor="#3e3e3e"
-              onValueChange={toggleTricks}
-              value={isTricks}
-            />
-          </View>
-        </View>
+        <SettingsMenuToggle />
+        <SettingsStarMessages navigation={props.navigation} />
         <SubmitButton
           title="Logout"
           onPress={() => dispatch(userLogout())}

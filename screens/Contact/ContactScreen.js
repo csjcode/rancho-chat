@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   heading: {
     fontFamily: 'bold',
     letterSpacing: 0.3,
-    color: colors.textColor,
+    color: colorsTheme.textColor,
     marginVertical: 8,
   },
 })
