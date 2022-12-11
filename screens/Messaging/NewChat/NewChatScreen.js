@@ -19,6 +19,8 @@ import DataItem from '../../../components/DataItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { setStoredUsers } from '../../../store/userSlice'
 import ProfileImage from '../../../components/ProfileImage'
+import getColors from '../../../constants/getColors'
+const colorsTheme = getColors()
 
 const NewChatScreen = (props) => {
   const dispatch = useDispatch()

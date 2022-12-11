@@ -11,8 +11,12 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
 
-import backgroundImage from '../../../assets/images/solana/Solana_Glass_03.png'
+// import backgroundImage from '../../../assets/images/solana/Solana_Glass_03.png'
+import backgroundImage from '../../../assets/images/droplet.jpeg'
+// '../../../assets/images/droplet.jpeg'
 import colors from '../../../constants/colors'
+import { useTheme } from '@react-navigation/native'
+
 import { useSelector } from 'react-redux'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
@@ -34,6 +38,8 @@ import {
 import CustomHeaderButton from '../../../components/CustomHeaderButton'
 import ChatFull from './ChatFull'
 import chatMessages from './getChatMessages'
+import getColors from '../../../constants/getColors'
+const colorsTheme = getColors()
 
 const ChatScreen = (props) => {
   const [chatUsers, setChatUsers] = useState([])
@@ -48,6 +54,8 @@ const ChatScreen = (props) => {
   const storedUsers = useSelector((state) => state.users.storedUsers)
   const storedChats = useSelector((state) => state.chats.chatsData)
   const messageDataSelector = useSelector((state) => state.messages)
+
+  const { myThemeColors } = useTheme()
 
   const chatData =
     (chatId && storedChats[chatId]) || props.route?.params?.newChatData || {}
@@ -163,7 +171,7 @@ const ChatScreen = (props) => {
       console.log(error)
     }
   }, [isLoading, tempImageUri, chatId])
-
+  // console.log(colors.backgroundImageUri)
   return (
     <SafeAreaView edges={['right', 'left', 'bottom']} style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
@@ -260,7 +268,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#000',
   },
   screen: {
     flex: 1,

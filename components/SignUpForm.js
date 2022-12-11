@@ -9,6 +9,8 @@ import { signUp } from '../utils/actions/authActions'
 import { ActivityIndicator, Alert } from 'react-native'
 import colors from '../constants/colors'
 import { useDispatch, useSelector } from 'react-redux'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const initialState = {
   inputValues: {

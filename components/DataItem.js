@@ -3,6 +3,8 @@ import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import colors from '../constants/colors'
 import ProfileImage from './ProfileImage'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const imageSize = 40
 

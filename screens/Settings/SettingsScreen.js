@@ -24,6 +24,8 @@ import {
 } from '../../utils/actions/authActions'
 import { validateInput } from '../../utils/actions/formActions'
 import { reducer } from '../../utils/reducers/formReducer'
+import getColors from '../../constants/getColors'
+const colorsTheme = getColors()
 
 const SettingsScreen = (props) => {
   const dispatch = useDispatch()

@@ -3,6 +3,8 @@ import { FontAwesome } from '@expo/vector-icons'
 
 import colors from '../constants/colors'
 import { useState } from 'react'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const Input = (props) => {
   const [value, setValue] = useState(props.initialValue)

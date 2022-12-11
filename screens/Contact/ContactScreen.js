@@ -9,6 +9,8 @@ import SubmitButton from '../../components/SubmitButton'
 import colors from '../../constants/colors'
 import { removeUserFromChat } from '../../utils/actions/chatActions'
 import { getUserChats } from '../../utils/actions/userActions'
+import getColors from '../../constants/getColors'
+const colorsTheme = getColors()
 
 const ContactScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false)

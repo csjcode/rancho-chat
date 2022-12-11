@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { getSolPrice } from './api'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 export default function TokenPrice() {
   const [price, setPrice] = useState(0)

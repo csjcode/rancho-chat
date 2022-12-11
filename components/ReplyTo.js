@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import colors from '../constants/colors'
 import { AntDesign } from '@expo/vector-icons'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const ReplyTo = (props) => {
   const { text, user, onCancel } = props

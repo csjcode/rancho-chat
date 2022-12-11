@@ -10,12 +10,14 @@ import {
 import { FontAwesome } from '@expo/vector-icons'
 
 import userImage from '../assets/images/userImage.jpeg'
-import colors from '../constants/colors'
 import { launchImagePicker, uploadImageAsync } from '../utils/imagePickerHelper'
 import { updateSignedInUserData } from '../utils/actions/authActions'
 import { useDispatch } from 'react-redux'
 import { updateLoggedInUserData } from '../store/authSlice'
 import { updateChatData } from '../utils/actions/chatActions'
+import colors from '../constants/colors'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const ProfileImage = (props) => {
   const dispatch = useDispatch()
@@ -110,8 +112,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     right: 0,
-    backgroundColor: colors.lightGrey,
+
     borderRadius: 20,
+    backgroundColor: colors.lightGrey,
     padding: 8,
   },
   removeIconContainer: {

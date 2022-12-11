@@ -19,6 +19,8 @@ import { Feather, FontAwesome } from '@expo/vector-icons'
 import { starMessage } from '../utils/actions/chatActions'
 import { useSelector } from 'react-redux'
 import { formatAmPm } from '../utils/datetimeFormat'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const MenuItem = (props) => {
   const Icon = props.iconPack ?? Feather

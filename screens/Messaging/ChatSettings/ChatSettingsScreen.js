@@ -21,6 +21,8 @@ import {
 } from '../../../utils/actions/chatActions'
 import { validateInput } from '../../../utils/actions/formActions'
 import { reducer } from '../../../utils/reducers/formReducer'
+import getColors from '../../../constants/getColors'
+const colorsTheme = getColors()
 
 const ChatSettingsScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false)
