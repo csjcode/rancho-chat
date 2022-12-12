@@ -74,6 +74,12 @@ const ChatScreen = (props) => {
 
     props.navigation.setOptions({
       headerTitle: chatData.chatName ?? getChatTitleFromName(),
+      headerStyle: {
+        backgroundColor: colorsTheme.chatScreenHeaderStyle,
+      },
+      headerTitleStyle: {
+        color: colorsTheme.chatScreenHeaderTitle,
+      },
       headerRight: () => {
         return (
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
@@ -268,6 +274,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: colorsTheme.chatScreenBackgroundColor,
   },
   screen: {
     flex: 1,
@@ -288,6 +295,7 @@ const styles = StyleSheet.create({
     borderColor: colorsTheme.lightGrey,
     marginHorizontal: 15,
     paddingHorizontal: 12,
+    color: colorsTheme.chatScreenTextColor,
   },
   mediaButton: {
     alignItems: 'center',

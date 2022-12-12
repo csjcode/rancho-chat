@@ -79,7 +79,8 @@ const Bubble = (props) => {
       break
     case 'myMessage':
       wrapperStyle.justifyContent = 'flex-end'
-      bubbleStyle.backgroundColor = '#E7FED6'
+      bubbleStyle.backgroundColor = colorsTheme.bubbleBackgroundColor
+      textStyle.color = colorsTheme.bubbleTextColor
       bubbleStyle.maxWidth = '90%'
       Container = TouchableWithoutFeedback
       isUserMessage = true
@@ -89,9 +90,11 @@ const Bubble = (props) => {
       bubbleStyle.maxWidth = '90%'
       Container = TouchableWithoutFeedback
       isUserMessage = true
+      textStyle.color = colorsTheme.bubbleTextColor
       break
     case 'reply':
-      bubbleStyle.backgroundColor = '#F2F2F2'
+      bubbleStyle.backgroundColor = colorsTheme.bubbleBackgroundColorReply
+      textStyle.color = colorsTheme.bubbleTextColor
       break
     case 'info':
       bubbleStyle.backgroundColor = 'white'
@@ -220,6 +223,7 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: 'medium',
     letterSpacing: 0.3,
+    color: colorsTheme.bubbleTextColor,
   },
   image: {
     width: 300,
