@@ -8,6 +8,8 @@ import {
   FontAwesome5,
 } from '@expo/vector-icons'
 import { FlatList, TouchableOpacity } from 'react-native'
+import getColors from '../../constants/getColors'
+const colorsTheme = getColors()
 
 const TrickScreen = (props) => {
   return (
@@ -78,14 +80,14 @@ const itemData = [
   },
   {
     label: 'Crypto',
-    screen: 'Map',
+    screen: 'TokenScreen',
     icon: <FontAwesome name="bitcoin" size={50} color={'#999'} />,
   },
-  {
-    label: 'Steps',
-    screen: 'Map',
-    icon: <Ionicons name="walk" size={50} color={'#999'} />,
-  },
+  // {
+  //   label: 'Steps',
+  //   screen: 'StepsScreen',
+  //   icon: <Ionicons name="walk" size={50} color={'#999'} />,
+  // },
   {
     label: 'Video Chat',
     screen: 'Map',

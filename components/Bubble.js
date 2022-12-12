@@ -19,6 +19,8 @@ import { Feather, FontAwesome } from '@expo/vector-icons'
 import { starMessage } from '../utils/actions/chatActions'
 import { useSelector } from 'react-redux'
 import { formatAmPm } from '../utils/datetimeFormat'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const MenuItem = (props) => {
   const Icon = props.iconPack ?? Feather
@@ -66,18 +68,19 @@ const Bubble = (props) => {
   switch (type) {
     case 'system':
       textStyle.color = '#65644A'
-      bubbleStyle.backgroundColor = colors.beige
+      bubbleStyle.backgroundColor = colorsTheme.beige
       bubbleStyle.alignItems = 'center'
       bubbleStyle.marginTop = 10
       break
     case 'error':
-      bubbleStyle.backgroundColor = colors.red
+      bubbleStyle.backgroundColor = colorsTheme.red
       textStyle.color = 'white'
       bubbleStyle.marginTop = 10
       break
     case 'myMessage':
       wrapperStyle.justifyContent = 'flex-end'
-      bubbleStyle.backgroundColor = '#E7FED6'
+      bubbleStyle.backgroundColor = colorsTheme.bubbleBackgroundColor
+      textStyle.color = colorsTheme.bubbleTextColor
       bubbleStyle.maxWidth = '90%'
       Container = TouchableWithoutFeedback
       isUserMessage = true
@@ -87,14 +90,16 @@ const Bubble = (props) => {
       bubbleStyle.maxWidth = '90%'
       Container = TouchableWithoutFeedback
       isUserMessage = true
+      textStyle.color = colorsTheme.bubbleTextColor
       break
     case 'reply':
-      bubbleStyle.backgroundColor = '#F2F2F2'
+      bubbleStyle.backgroundColor = colorsTheme.bubbleBackgroundColorReply
+      textStyle.color = colorsTheme.bubbleTextColor
       break
     case 'info':
       bubbleStyle.backgroundColor = 'white'
       bubbleStyle.alignItems = 'center'
-      textStyle.color = colors.textColor
+      textStyle.color = colorsTheme.textColor
       break
     default:
       break
@@ -142,7 +147,7 @@ const Bubble = (props) => {
                 <FontAwesome
                   name="star"
                   size={14}
-                  color={colors.textColor}
+                  color={colorsTheme.textColor}
                   style={{ marginRight: 5 }}
                 />
               )}
@@ -188,7 +193,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     padding: 5,
     marginBottom: 10,
-    borderColor: '#E2DACC',
+    borderColor: colorsTheme.bubbleBorderColor,
     borderWidth: 1,
   },
   text: {
@@ -212,12 +217,13 @@ const styles = StyleSheet.create({
   time: {
     fontFamily: 'regular',
     letterSpacing: 0.3,
-    color: colors.grey,
+    color: colorsTheme.grey,
     fontSize: 12,
   },
   name: {
     fontFamily: 'medium',
     letterSpacing: 0.3,
+    color: colorsTheme.bubbleTextColor,
   },
   image: {
     width: 300,

@@ -11,8 +11,12 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
 
+// import backgroundImage from '../../../assets/images/solana/Solana_Glass_03.png'
 import backgroundImage from '../../../assets/images/droplet.jpeg'
+// '../../../assets/images/droplet.jpeg'
 import colors from '../../../constants/colors'
+import { useTheme } from '@react-navigation/native'
+
 import { useSelector } from 'react-redux'
 import AwesomeAlert from 'react-native-awesome-alerts'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
@@ -34,6 +38,8 @@ import {
 import CustomHeaderButton from '../../../components/CustomHeaderButton'
 import ChatFull from './ChatFull'
 import chatMessages from './getChatMessages'
+import getColors from '../../../constants/getColors'
+const colorsTheme = getColors()
 
 const ChatScreen = (props) => {
   const [chatUsers, setChatUsers] = useState([])
@@ -48,6 +54,8 @@ const ChatScreen = (props) => {
   const storedUsers = useSelector((state) => state.users.storedUsers)
   const storedChats = useSelector((state) => state.chats.chatsData)
   const messageDataSelector = useSelector((state) => state.messages)
+
+  const { myThemeColors } = useTheme()
 
   const chatData =
     (chatId && storedChats[chatId]) || props.route?.params?.newChatData || {}
@@ -66,6 +74,12 @@ const ChatScreen = (props) => {
 
     props.navigation.setOptions({
       headerTitle: chatData.chatName ?? getChatTitleFromName(),
+      headerStyle: {
+        backgroundColor: colorsTheme.chatScreenHeaderStyle,
+      },
+      headerTitleStyle: {
+        color: colorsTheme.chatScreenHeaderTitle,
+      },
       headerRight: () => {
         return (
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
@@ -163,7 +177,7 @@ const ChatScreen = (props) => {
       console.log(error)
     }
   }, [isLoading, tempImageUri, chatId])
-
+  // console.log(colors.backgroundImageUri)
   return (
     <SafeAreaView edges={['right', 'left', 'bottom']} style={styles.container}>
       <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
@@ -197,7 +211,7 @@ const ChatScreen = (props) => {
 
       <View style={styles.inputContainer}>
         <TouchableOpacity style={styles.mediaButton} onPress={pickImage}>
-          <Feather name="plus" size={24} color={colors.blue} />
+          <Feather name="plus" size={24} color={colorsTheme.blue} />
         </TouchableOpacity>
 
         <TextInput
@@ -209,7 +223,7 @@ const ChatScreen = (props) => {
 
         {messageText === '' && (
           <TouchableOpacity style={styles.mediaButton} onPress={takePhoto}>
-            <Feather name="camera" size={24} color={colors.blue} />
+            <Feather name="camera" size={24} color={colorsTheme.blue} />
           </TouchableOpacity>
         )}
 
@@ -231,8 +245,8 @@ const ChatScreen = (props) => {
           showConfirmButton={true}
           cancelText="Cancel"
           confirmText="Send image"
-          confirmButtonColor={colors.primary}
-          cancelButtonColor={colors.red}
+          confirmButtonColor={colorsTheme.primary}
+          cancelButtonColor={colorsTheme.red}
           titleStyle={styles.popupTitleStyle}
           onCancelPressed={() => setTempImageUri('')}
           onConfirmPressed={uploadImage}
@@ -240,7 +254,7 @@ const ChatScreen = (props) => {
           customView={
             <View>
               {isLoading && (
-                <ActivityIndicator size="small" color={colors.primary} />
+                <ActivityIndicator size="small" color={colorsTheme.primary} />
               )}
               {!isLoading && tempImageUri !== '' && (
                 <Image
@@ -260,6 +274,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    backgroundColor: colorsTheme.chatScreenBackgroundColor,
   },
   screen: {
     flex: 1,
@@ -277,9 +292,10 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderRadius: 50,
-    borderColor: colors.lightGrey,
+    borderColor: colorsTheme.lightGrey,
     marginHorizontal: 15,
     paddingHorizontal: 12,
+    color: colorsTheme.chatScreenTextColor,
   },
   mediaButton: {
     alignItems: 'center',
@@ -287,14 +303,14 @@ const styles = StyleSheet.create({
     width: 35,
   },
   sendButton: {
-    backgroundColor: colors.blue,
+    backgroundColor: colorsTheme.blue,
     borderRadius: 50,
     padding: 8,
   },
   popupTitleStyle: {
     fontFamily: 'medium',
     letterSpacing: 0.3,
-    color: colors.textColor,
+    color: colorsTheme.textColor,
   },
 })
 
