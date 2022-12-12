@@ -1,0 +1,44 @@
+/* CSS HEX */
+--pear: #e4d738;
+--matisse: #17628e;
+--burnt-umber: #912e25;
+--mamba: #927d94;
+--antique-brass: #cb8c79;
+--cornflower-blue: #6584e4;
+--wedgewood: #5072aa;
+--au-chico: #925a50;
+--finn: #6f2e48;
+--mountain-meadow: #1ed58d;
+
+
+/* SCSS HEX */
+$pear: #e4d738;
+$matisse: #17628e;
+$burnt-umber: #912e25;
+$mamba: #927d94;
+$antique-brass: #cb8c79;
+$cornflower-blue: #6584e4;
+$wedgewood: #5072aa;
+$au-chico: #925a50;
+$finn: #6f2e48;
+$mountain-meadow: #1ed58d;
+
+
+/* SCSS RGB */
+--pear: rgba(228,215,56,1);
+--matisse: rgba(23,98,142,1);
+--burnt-umber: rgba(145,46,37,1);
+--mamba: rgba(146,125,148,1);
+--antique-brass: rgba(203,140,121,1);
+--cornflower-blue: rgba(101,132,228,1);
+--wedgewood: rgba(80,114,170,1);
+--au-chico: rgba(146,90,80,1);
+--finn: rgba(111,46,72,1);
+--mountain-meadow: rgba(30,213,141,1);
+
+/* CSV */
+e4d738,17628e,912e25,927d94,cb8c79,6584e4,5072aa,925a50,6f2e48,1ed58d
+
+/* Array */
+["e4d738","17628e","912e25","927d94","cb8c79","6584e4","5072aa","925a50","6f2e48","1ed58d"]
+

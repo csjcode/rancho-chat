@@ -10,13 +10,12 @@ import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
 import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
 import TokenScreen from '../screens/Tokens/TokenScreen'
-import StepsCounter from '../components/StepsCounter'
 import StepsCounterPermissions from '../components/StepsCounterPermissions'
 
 const Stack = createNativeStackNavigator()
 
 export const MainNavigatorStack = () => {
-  logger('component', 'MainNavigatorStack')
+  // logger('component', 'MainNavigatorStack')
 
   return (
     <Stack.Navigator>

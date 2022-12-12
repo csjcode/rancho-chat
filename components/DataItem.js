@@ -20,7 +20,7 @@ const DataItem = (props) => {
 
         {icon && (
           <View style={styles.leftIconContainer}>
-            <AntDesign name={icon} size={20} color={colors.blue} />
+            <AntDesign name={icon} size={20} color={colorsTheme.blue} />
           </View>
         )}
 
@@ -29,7 +29,10 @@ const DataItem = (props) => {
             numberOfLines={1}
             style={{
               ...styles.title,
-              ...{ color: type === 'button' ? colors.blue : colors.textColor },
+              ...{
+                color:
+                  type === 'button' ? colorsTheme.blue : colorsTheme.textColor,
+              },
             }}
           >
             {title}
@@ -58,7 +61,7 @@ const DataItem = (props) => {
             <Ionicons
               name="chevron-forward-outline"
               size={18}
-              color={colors.grey}
+              color={colorsTheme.grey}
             />
           </View>
         )}
@@ -71,7 +74,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     paddingVertical: 7,
-    borderBottomColor: colors.extraLightGrey,
+    borderBottomColor: colorsTheme.extraLightGrey,
     borderBottomWidth: 1,
     alignItems: 'center',
     minHeight: 50,
@@ -87,21 +90,21 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     fontFamily: 'regular',
-    color: colors.grey,
+    color: colorsTheme.grey,
     letterSpacing: 0.3,
   },
   iconContainer: {
     borderWidth: 1,
     borderRadius: 50,
-    borderColor: colors.lightGrey,
+    borderColor: colorsTheme.lightGrey,
     backgroundColor: 'white',
   },
   checkedStyle: {
-    backgroundColor: colors.primary,
+    backgroundColor: colorsTheme.primary,
     borderColor: 'transparent',
   },
   leftIconContainer: {
-    backgroundColor: colors.extraLightGrey,
+    backgroundColor: colorsTheme.extraLightGrey,
     borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',

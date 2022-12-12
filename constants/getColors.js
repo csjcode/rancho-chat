@@ -7,7 +7,7 @@ const getColors = (themeColors) => {
   // console.log(`Appearance ${Appearance.getColorScheme()}`)
   // const colorScheme = themeColors ? themeColors : Appearance.getColorScheme()
   const colorScheme = 'dark'
-  console.log(colorScheme)
+  // console.log(colorScheme)
   if (colorScheme === 'light') {
     return colorsLight
   } else {

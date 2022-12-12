@@ -19,7 +19,7 @@ const ReplyTo = (props) => {
       </View>
 
       <TouchableOpacity onPress={onCancel}>
-        <AntDesign name="closecircleo" size={24} color={colors.blue} />
+        <AntDesign name="closecircleo" size={24} color={colorsTheme.blue} />
       </TouchableOpacity>
     </View>
   )
@@ -27,11 +27,11 @@ const ReplyTo = (props) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.extraLightGrey,
+    backgroundColor: colorsTheme.extraLightGrey,
     padding: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    borderLeftColor: colors.blue,
+    borderLeftColor: colorsTheme.blue,
     borderLeftWidth: 4,
   },
   textContainer: {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   name: {
-    color: colors.blue,
+    color: colorsTheme.blue,
     fontFamily: 'medium',
     letterSpacing: 0.3,
   },

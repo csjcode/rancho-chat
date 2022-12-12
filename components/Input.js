@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontFamily: 'bold',
     letterSpacing: 0.3,
-    color: colors.textColor,
+    color: colorsTheme.textColor,
   },
   inputContainer: {
     width: '100%',
@@ -59,16 +59,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 15,
     borderRadius: 2,
-    backgroundColor: colors.nearlyWhite,
+    backgroundColor: colorsTheme.nearlyWhite,
     flexDirection: 'row',
     alignItems: 'center',
   },
   icon: {
     marginRight: 10,
-    color: colors.grey,
+    color: colorsTheme.grey,
   },
   input: {
-    color: colors.textColor,
+    color: colorsTheme.textColor,
     flex: 1,
     fontFamily: 'regular',
     letterSpacing: 0.3,

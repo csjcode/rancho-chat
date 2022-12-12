@@ -4,21 +4,27 @@ import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import SettingsScreen from '../screens/Settings/SettingsScreen'
 import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
-import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
 import TrickScreen from '../screens/Tricks/TrickScreen'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const Tab = createBottomTabNavigator()
 
 export const MainNavigatorTab = () => {
   const menuData = useSelector((state) => state.menu.storedMenu)
-  // logger('component', 'MainNavigatorTabs')
 
   return (
     <Tab.Navigator
       screenOptions={{
         headerTitle: '',
         headerShadowVisible: false,
+        headerStyle: {
+          backgroundColor: colorsTheme.tabNavHeader,
+        },
+        tabBarStyle: {
+          backgroundColor: colorsTheme.tabNavHeader,
+        },
       }}
     >
       <Tab.Screen
@@ -38,7 +44,7 @@ export const MainNavigatorTab = () => {
           options={{
             tabBarLabel: 'Map',
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome name="map-o" size={24} color="gray" />
+              <FontAwesome name="map-o" size={24} color={color} />
             ),
           }}
         />
@@ -50,7 +56,7 @@ export const MainNavigatorTab = () => {
           options={{
             tabBarLabel: 'Tricks',
             tabBarIcon: ({ color, size }) => (
-              <FontAwesome5 name="robot" size={24} color="gray" />
+              <FontAwesome5 name="robot" size={24} color={color} />
             ),
           }}
         />

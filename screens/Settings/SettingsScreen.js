@@ -58,7 +58,7 @@ const SettingsScreen = (props) => {
 
   const inputChangedHandler = useCallback(
     (inputId, inputValue) => {
-      console.log(inputId, inputValue)
+      // console.log(inputId, inputValue)
       const result = validateInput(inputId, inputValue)
       dispatchFormState({ inputId, validationResult: result, inputValue })
     },
@@ -158,7 +158,7 @@ const SettingsScreen = (props) => {
           {isLoading ? (
             <ActivityIndicator
               size={'small'}
-              color={colors.primary}
+              color={colorsTheme.primary}
               style={{ marginTop: 10 }}
             />
           ) : (
@@ -179,7 +179,7 @@ const SettingsScreen = (props) => {
           title="Logout"
           onPress={() => dispatch(userLogout())}
           style={{ marginTop: 20 }}
-          color={colors.red}
+          color={colorsTheme.red}
         />
       </ScrollView>
     </PageContainer>

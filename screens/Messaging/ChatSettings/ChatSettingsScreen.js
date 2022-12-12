@@ -191,12 +191,12 @@ const ChatSettingsScreen = (props) => {
         {showSuccessMessage && <Text>Saved!</Text>}
 
         {isLoading ? (
-          <ActivityIndicator size={'small'} color={colors.primary} />
+          <ActivityIndicator size={'small'} color={colorsTheme.primary} />
         ) : (
           hasChanges() && (
             <SubmitButton
               title="Save changes"
-              color={colors.primary}
+              color={colorsTheme.primary}
               onPress={saveHandler}
               disabled={!formState.formIsValid}
             />
@@ -220,7 +220,7 @@ const ChatSettingsScreen = (props) => {
       {
         <SubmitButton
           title="Leave chat"
-          color={colors.red}
+          color={colorsTheme.red}
           onPress={() => leaveChat()}
           style={{ marginBottom: 20 }}
         />
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     marginVertical: 8,
-    color: colors.textColor,
+    color: colorsTheme.textColor,
     fontFamily: 'bold',
     letterSpacing: 0.3,
   },

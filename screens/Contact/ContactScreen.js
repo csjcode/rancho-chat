@@ -95,11 +95,11 @@ const ContactScreen = (props) => {
       {chatData &&
         chatData.isGroupChat &&
         (isLoading ? (
-          <ActivityIndicator size="small" color={colors.primary} />
+          <ActivityIndicator size="small" color={colorsTheme.primary} />
         ) : (
           <SubmitButton
             title="Remove from chat"
-            color={colors.red}
+            color={colorsTheme.red}
             onPress={removeFromChat}
           />
         ))}
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     fontFamily: 'medium',
     fontSize: 16,
     letterSpacing: 0.3,
-    color: colors.grey,
+    color: colorsTheme.grey,
   },
   heading: {
     fontFamily: 'bold',

@@ -205,7 +205,7 @@ const ChatScreen = (props) => {
 
       <View style={styles.inputContainer}>
         <TouchableOpacity style={styles.mediaButton} onPress={pickImage}>
-          <Feather name="plus" size={24} color={colors.blue} />
+          <Feather name="plus" size={24} color={colorsTheme.blue} />
         </TouchableOpacity>
 
         <TextInput
@@ -217,7 +217,7 @@ const ChatScreen = (props) => {
 
         {messageText === '' && (
           <TouchableOpacity style={styles.mediaButton} onPress={takePhoto}>
-            <Feather name="camera" size={24} color={colors.blue} />
+            <Feather name="camera" size={24} color={colorsTheme.blue} />
           </TouchableOpacity>
         )}
 
@@ -239,8 +239,8 @@ const ChatScreen = (props) => {
           showConfirmButton={true}
           cancelText="Cancel"
           confirmText="Send image"
-          confirmButtonColor={colors.primary}
-          cancelButtonColor={colors.red}
+          confirmButtonColor={colorsTheme.primary}
+          cancelButtonColor={colorsTheme.red}
           titleStyle={styles.popupTitleStyle}
           onCancelPressed={() => setTempImageUri('')}
           onConfirmPressed={uploadImage}
@@ -248,7 +248,7 @@ const ChatScreen = (props) => {
           customView={
             <View>
               {isLoading && (
-                <ActivityIndicator size="small" color={colors.primary} />
+                <ActivityIndicator size="small" color={colorsTheme.primary} />
               )}
               {!isLoading && tempImageUri !== '' && (
                 <Image
@@ -285,7 +285,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 1,
     borderRadius: 50,
-    borderColor: colors.lightGrey,
+    borderColor: colorsTheme.lightGrey,
     marginHorizontal: 15,
     paddingHorizontal: 12,
   },
@@ -295,14 +295,14 @@ const styles = StyleSheet.create({
     width: 35,
   },
   sendButton: {
-    backgroundColor: colors.blue,
+    backgroundColor: colorsTheme.blue,
     borderRadius: 50,
     padding: 8,
   },
   popupTitleStyle: {
     fontFamily: 'medium',
     letterSpacing: 0.3,
-    color: colors.textColor,
+    color: colorsTheme.textColor,
   },
 })
 

@@ -39,7 +39,7 @@ const StartUpScreen = () => {
 
   return (
     <View style={commonStyles.center}>
-      <ActivityIndicator size="large" color={colors.primary} />
+      <ActivityIndicator size="large" color={colorsTheme.primary} />
     </View>
   )
 }

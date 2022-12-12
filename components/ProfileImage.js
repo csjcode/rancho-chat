@@ -75,7 +75,7 @@ const ProfileImage = (props) => {
           width={props.size}
           style={styles.loadingContainer}
         >
-          <ActivityIndicator size={'small'} color={colors.primary} />
+          <ActivityIndicator size={'small'} color={colorsTheme.primary} />
         </View>
       ) : (
         <Image
@@ -105,7 +105,7 @@ const ProfileImage = (props) => {
 const styles = StyleSheet.create({
   image: {
     borderRadius: 50,
-    borderColor: colors.grey,
+    borderColor: colorsTheme.grey,
     borderWidth: 1,
   },
   editIconContainer: {
@@ -114,14 +114,14 @@ const styles = StyleSheet.create({
     right: 0,
 
     borderRadius: 20,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colorsTheme.lightGrey,
     padding: 8,
   },
   removeIconContainer: {
     position: 'absolute',
     bottom: -3,
     right: -3,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colorsTheme.lightGrey,
     borderRadius: 20,
     padding: 3,
   },

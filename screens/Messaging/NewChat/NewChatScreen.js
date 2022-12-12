@@ -61,7 +61,7 @@ const NewChatScreen = (props) => {
               <Item
                 title={isNewChat ? 'Create' : 'Add'}
                 disabled={isGroupChatDisabled}
-                color={isGroupChatDisabled ? colors.lightGrey : undefined}
+                color={isGroupChatDisabled ? colorsTheme.lightGrey : undefined}
                 onPress={() => {
                   const screenName = isNewChat ? 'ChatList' : 'ChatSettings'
                   props.navigation.navigate(screenName, {
@@ -167,7 +167,7 @@ const NewChatScreen = (props) => {
       )}
 
       <View style={styles.searchContainer}>
-        <FontAwesome name="search" size={15} color={colors.lightGrey} />
+        <FontAwesome name="search" size={15} color={colorsTheme.lightGrey} />
 
         <TextInput
           placeholder="Search"
@@ -178,7 +178,7 @@ const NewChatScreen = (props) => {
 
       {isLoading && (
         <View style={commonStyles.center}>
-          <ActivityIndicator size={'large'} color={colors.primary} />
+          <ActivityIndicator size={'large'} color={colorsTheme.primary} />
         </View>
       )}
 
@@ -212,7 +212,7 @@ const NewChatScreen = (props) => {
           <FontAwesome
             name="question"
             size={55}
-            color={colors.lightGrey}
+            color={colorsTheme.lightGrey}
             style={styles.noResultsIcon}
           />
           <Text style={styles.noResultsText}>No users found!</Text>
@@ -224,7 +224,7 @@ const NewChatScreen = (props) => {
           <FontAwesome
             name="users"
             size={55}
-            color={colors.lightGrey}
+            color={colorsTheme.lightGrey}
             style={styles.noResultsIcon}
           />
           <Text style={styles.noResultsText}>
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.extraLightGrey,
+    backgroundColor: colorsTheme.extraLightGrey,
     height: 30,
     marginVertical: 8,
     paddingHorizontal: 8,
@@ -256,7 +256,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   noResultsText: {
-    color: colors.textColor,
+    color: colorsTheme.textColor,
     fontFamily: 'regular',
     letterSpacing: 0.3,
   },
@@ -267,12 +267,12 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 10,
     paddingVertical: 15,
-    backgroundColor: colors.nearlyWhite,
+    backgroundColor: colorsTheme.nearlyWhite,
     flexDirection: 'row',
     borderRadius: 2,
   },
   textbox: {
-    color: colors.textColor,
+    color: colorsTheme.textColor,
     width: '100%',
     fontFamily: 'regular',
     letterSpacing: 0.3,

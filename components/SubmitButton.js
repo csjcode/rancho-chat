@@ -5,8 +5,8 @@ import getColors from '../constants/getColors'
 const colorsTheme = getColors()
 
 const SubmitButton = (props) => {
-  const enabledBgColor = props.color || colors.primary
-  const disabledBgColor = colors.lightGrey
+  const enabledBgColor = props.color || colorsTheme.primary
+  const disabledBgColor = colorsTheme.lightGrey
   const bgColor = props.disabled ? disabledBgColor : enabledBgColor
 
   return (
@@ -18,7 +18,7 @@ const SubmitButton = (props) => {
         ...{ backgroundColor: bgColor },
       }}
     >
-      <Text style={{ color: props.disabled ? colors.grey : 'white' }}>
+      <Text style={{ color: props.disabled ? colorsTheme.grey : 'white' }}>
         {props.title}
       </Text>
     </TouchableOpacity>

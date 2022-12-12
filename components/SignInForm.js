@@ -94,7 +94,7 @@ const SignInForm = (props) => {
       {isLoading ? (
         <ActivityIndicator
           size={'small'}
-          color={colors.primary}
+          color={colorsTheme.primary}
           style={{ marginTop: 10 }}
         />
       ) : (
