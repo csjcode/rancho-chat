@@ -8,4 +8,6 @@ export default {
   primary: '#32d48e',
   red: '#e74c3c',
   beige: '#FEF5C3',
+  solanaGreen: '#14F195',
+  solanaPurple: '#9945FF',
 }

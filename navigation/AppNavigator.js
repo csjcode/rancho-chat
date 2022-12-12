@@ -1,6 +1,10 @@
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-
+import {
+  NavigationContainer,
+  DefaultTheme,
+  DarkTheme,
+} from '@react-navigation/native'
+import { useColorScheme } from 'react-native'
 import MainNavigator from './MainNavigator'
 import AuthScreen from '../screens/Login/Auth/AuthScreen'
 import { useSelector } from 'react-redux'
@@ -14,6 +18,7 @@ const AppNavigator = (props) => {
   )
   const didTryAutoLogin = useSelector((state) => state.auth.didTryAutoLogin)
 
+  // const scheme = useColorScheme()
   return (
     <NavigationContainer>
       {isAuth && <MainNavigator />}

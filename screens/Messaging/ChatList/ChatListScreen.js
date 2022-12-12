@@ -14,6 +14,8 @@ import DataItem from '../../../components/DataItem'
 import PageContainer from '../../../components/PageContainer'
 import PageTitle from '../../../components/PageTitle'
 import colors from '../../../constants/colors'
+import getColors from '../../../constants/getColors'
+const colorsTheme = getColors()
 
 const ChatListScreen = (props) => {
   const selectedUser = props.route?.params?.selectedUserId
@@ -140,9 +142,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: colorsTheme.backgroundColor,
   },
   newGroupText: {
-    color: colors.blue,
+    color: colorsTheme.blue,
     fontSize: 17,
     marginBottom: 5,
   },

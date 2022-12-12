@@ -3,6 +3,8 @@ import { FlatList, Text } from 'react-native'
 import { useSelector } from 'react-redux'
 import DataItem from '../../../components/DataItem'
 import PageContainer from '../../../components/PageContainer'
+import getColors from '../../../constants/getColors'
+const colorsTheme = getColors()
 
 const DataListScreen = (props) => {
   const storedUsers = useSelector((state) => state.users.storedUsers)

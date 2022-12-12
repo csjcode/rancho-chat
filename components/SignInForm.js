@@ -9,6 +9,8 @@ import { signIn } from '../utils/actions/authActions'
 import { ActivityIndicator, Alert } from 'react-native'
 import { useDispatch } from 'react-redux'
 import colors from '../constants/colors'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 import { testMode } from '../utils/testMode'
 
@@ -92,7 +94,7 @@ const SignInForm = (props) => {
       {isLoading ? (
         <ActivityIndicator
           size={'small'}
-          color={colors.primary}
+          color={colorsTheme.primary}
           style={{ marginTop: 10 }}
         />
       ) : (

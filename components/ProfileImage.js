@@ -10,12 +10,14 @@ import {
 import { FontAwesome } from '@expo/vector-icons'
 
 import userImage from '../assets/images/userImage.jpeg'
-import colors from '../constants/colors'
 import { launchImagePicker, uploadImageAsync } from '../utils/imagePickerHelper'
 import { updateSignedInUserData } from '../utils/actions/authActions'
 import { useDispatch } from 'react-redux'
 import { updateLoggedInUserData } from '../store/authSlice'
 import { updateChatData } from '../utils/actions/chatActions'
+import colors from '../constants/colors'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const ProfileImage = (props) => {
   const dispatch = useDispatch()
@@ -73,7 +75,7 @@ const ProfileImage = (props) => {
           width={props.size}
           style={styles.loadingContainer}
         >
-          <ActivityIndicator size={'small'} color={colors.primary} />
+          <ActivityIndicator size={'small'} color={colorsTheme.primary} />
         </View>
       ) : (
         <Image
@@ -103,22 +105,23 @@ const ProfileImage = (props) => {
 const styles = StyleSheet.create({
   image: {
     borderRadius: 50,
-    borderColor: colors.grey,
+    borderColor: colorsTheme.grey,
     borderWidth: 1,
   },
   editIconContainer: {
     position: 'absolute',
     bottom: 0,
     right: 0,
-    backgroundColor: colors.lightGrey,
+
     borderRadius: 20,
+    backgroundColor: colorsTheme.lightGrey,
     padding: 8,
   },
   removeIconContainer: {
     position: 'absolute',
     bottom: -3,
     right: -3,
-    backgroundColor: colors.lightGrey,
+    backgroundColor: colorsTheme.lightGrey,
     borderRadius: 20,
     padding: 3,
   },

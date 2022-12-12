@@ -6,6 +6,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useDispatch } from 'react-redux'
 import { authenticate, setDidTryAutoLogin } from '../../../store/authSlice'
 import { getUserData } from '../../../utils/actions/userActions'
+import getColors from '../../../constants/getColors'
+const colorsTheme = getColors()
 
 const StartUpScreen = () => {
   const dispatch = useDispatch()
@@ -37,7 +39,7 @@ const StartUpScreen = () => {
 
   return (
     <View style={commonStyles.center}>
-      <ActivityIndicator size="large" color={colors.primary} />
+      <ActivityIndicator size="large" color={colorsTheme.primary} />
     </View>
   )
 }

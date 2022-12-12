@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { Pedometer } from 'expo-sensors'
 import { PermissionsAndroid } from 'react-native'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 /*
 
