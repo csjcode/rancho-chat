@@ -8,7 +8,7 @@ import {
   Text,
   View,
 } from 'react-native'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 /*

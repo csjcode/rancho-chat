@@ -1,9 +1,9 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
-import colors from '../constants/colors'
+import colors from '../constants/colors/colors'
 import ProfileImage from './ProfileImage'
 import { Ionicons, AntDesign } from '@expo/vector-icons'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const imageSize = 40

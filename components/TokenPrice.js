@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { getSolPrice } from './api'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 export default function TokenPrice() {
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: '#000',
   },
-  text: { fontSize: 14 },
+  text: { fontSize: 14, color: 'red' },
   tablecontainer: {
     flex: 1,
     flexDirection: 'column',

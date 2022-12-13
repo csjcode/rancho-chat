@@ -8,7 +8,7 @@ import {
   FontAwesome5,
 } from '@expo/vector-icons'
 import { FlatList, TouchableOpacity } from 'react-native'
-import getColors from '../../constants/getColors'
+import getColors from '../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const TrickScreen = (props) => {
@@ -28,31 +28,6 @@ const TrickScreen = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    // justifyContent: 'stretch',
-    backgroundColor: '#fff',
-    width: '100%',
-  },
-  cell: {
-    fontSize: 20,
-  },
-  item: {
-    // flex: 1,
-    maxWidth: '25%', // 100% devided by the number of rows you want
-    alignItems: 'center',
-
-    // my visual styles; not important for the grid
-    padding: 10,
-    // backgroundColor: '',
-    // borderWidth: 0.5,
-    borderColor: '#999',
-  },
-})
-
 const Item = ({ item, navigation }) => {
   return item.label ? (
     <View style={styles.item}>
@@ -64,39 +39,58 @@ const Item = ({ item, navigation }) => {
       >
         {item.icon}
       </TouchableOpacity>
-      <Text>{item.label}</Text>
+      <Text style={styles.label}>{item.label}</Text>
     </View>
   ) : (
     <View style={styles.item}>{item.icon}</View>
   )
 }
 
-// Sample Data
 const itemData = [
   {
     label: 'Map',
     screen: 'Map',
-    icon: <FontAwesome name="map-o" size={50} color={'#999'} />,
+    icon: (
+      <FontAwesome name="map-o" size={45} color={colorsTheme.trickScreenIcon} />
+    ),
   },
   {
     label: 'Crypto',
     screen: 'TokenScreen',
-    icon: <FontAwesome name="bitcoin" size={50} color={'#999'} />,
+    icon: (
+      <FontAwesome
+        name="bitcoin"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   // {
   //   label: 'Steps',
   //   screen: 'StepsScreen',
-  //   icon: <Ionicons name="walk" size={50} color={'#999'} />,
+  //   icon: <Ionicons name="walk" size={45} color={colorsTheme.trickScreenIcon} />,
   // },
   {
-    label: 'Video Chat',
-    screen: 'Map',
-    icon: <MaterialIcons name="video-call" size={50} color={'#999'} />,
+    label: 'Video',
+    screen: 'TestingScreen',
+    icon: (
+      <MaterialIcons
+        name="video-call"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Audio Chat',
     screen: 'Map',
-    icon: <Ionicons name="md-call-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="md-call-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Screen Capture',
@@ -104,56 +98,137 @@ const itemData = [
     icon: (
       <MaterialCommunityIcons
         name="cellphone-screenshot"
-        size={50}
-        color={'#999'}
+        size={45}
+        color={colorsTheme.trickScreenIcon}
       />
     ),
   },
   {
     label: 'Tool6',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool7',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool8',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool9',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool10',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool11',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool12',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool13',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
   {
     label: 'Tool14',
     screen: 'Map',
-    icon: <Ionicons name="settings-outline" size={50} color={'#999'} />,
+    icon: (
+      <Ionicons
+        name="settings-outline"
+        size={45}
+        color={colorsTheme.trickScreenIcon}
+      />
+    ),
   },
 ]
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    paddingTop: 20,
+    alignItems: 'center',
+    // justifyContent: 'stretch',
+    backgroundColor: colorsTheme.trickScreenBackground,
+    width: '100%',
+    borderTopColor: '#333',
+    borderWidth: 1,
+  },
+  cell: {
+    fontSize: 20,
+  },
+  item: {
+    // flex: 1,
+    maxWidth: '25%',
+    alignItems: 'center',
+    padding: 10,
+    borderColor: '#999',
+  },
+  label: {
+    color: colorsTheme.trickScreenIconLabel,
+  },
+})
 
 export default TrickScreen

@@ -16,7 +16,7 @@ import SubmitButton from '../../components/SubmitButton'
 import SettingsMenuToggle from './SettingsMenuToggle'
 import SettingsStarMessages from './SettingsStarMessages'
 
-import colors from '../../constants/colors'
+import colors from '../../constants/colors/colors'
 import { updateLoggedInUserData } from '../../store/authSlice'
 import {
   updateSignedInUserData,
@@ -24,7 +24,7 @@ import {
 } from '../../utils/actions/authActions'
 import { validateInput } from '../../utils/actions/formActions'
 import { reducer } from '../../utils/reducers/formReducer'
-import getColors, { resolveObjKey } from '../../constants/getColors'
+import getColors, { resolveObjKey } from '../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const SettingsScreen = (props) => {
@@ -97,8 +97,8 @@ const SettingsScreen = (props) => {
   }
 
   return (
-    <PageContainer>
-      <PageTitle text="Settings" />
+    <PageContainer style={styles.pageContainer}>
+      {/* <PageTitle text="Settings" /> */}
 
       <ScrollView contentContainerStyle={styles.formContainer}>
         <ProfileImage
@@ -189,9 +189,14 @@ const SettingsScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // backgroundColor: colorsTheme.trickScreenBackground,
   },
   formContainer: {
     alignItems: 'center',
+    backgroundColor: colorsTheme.trickScreenBackground,
+  },
+  pageContainer: {
+    backgroundColor: colorsTheme.trickScreenBackground,
   },
 })
 

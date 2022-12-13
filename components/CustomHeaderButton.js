@@ -1,8 +1,8 @@
 import { Ionicons } from '@expo/vector-icons'
 import React from 'react'
 import { HeaderButton } from 'react-navigation-header-buttons'
-import colors from '../constants/colors'
-import getColors from '../constants/getColors'
+import colors from '../constants/colors/colors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const CustomHeaderButton = (props) => {

@@ -15,7 +15,7 @@ import PageContainer from '../../../components/PageContainer'
 import SignInForm from '../../../components/SignInForm'
 import SignUpForm from '../../../components/SignUpForm'
 import logo from '../../../assets/images/logo.png'
-import getColors from '../../../constants/getColors'
+import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const AuthScreen = (props) => {

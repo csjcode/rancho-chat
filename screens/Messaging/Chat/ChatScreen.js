@@ -10,11 +10,12 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
+// import { HeaderBackButton } from '@react-navigation/elements'
 
 // import backgroundImage from '../../../assets/images/solana/Solana_Glass_03.png'
 import backgroundImage from '../../../assets/images/droplet.jpeg'
 // '../../../assets/images/droplet.jpeg'
-import colors from '../../../constants/colors'
+import colors from '../../../constants/colors/colors'
 import { useTheme } from '@react-navigation/native'
 
 import { useSelector } from 'react-redux'
@@ -38,7 +39,7 @@ import {
 import CustomHeaderButton from '../../../components/CustomHeaderButton'
 import ChatFull from './ChatFull'
 import chatMessages from './getChatMessages'
-import getColors from '../../../constants/getColors'
+import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const ChatScreen = (props) => {
@@ -80,6 +81,16 @@ const ChatScreen = (props) => {
       headerTitleStyle: {
         color: colorsTheme.chatScreenHeaderTitle,
       },
+      headerTintColor: colorsTheme.chatScreenHeaderTint,
+      // headerLeft: (props) => (
+      //   <HeaderBackButton
+      //     {...props}
+      //     style={{ headerTintColor: '#ffffff' }}
+      //     onPress={() => {
+      //       alert('test')
+      //     }}
+      //   />
+      // ),
       headerRight: () => {
         return (
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>

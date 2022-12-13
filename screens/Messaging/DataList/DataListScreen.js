@@ -3,7 +3,7 @@ import { FlatList, Text } from 'react-native'
 import { useSelector } from 'react-redux'
 import DataItem from '../../../components/DataItem'
 import PageContainer from '../../../components/PageContainer'
-import getColors from '../../../constants/getColors'
+import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const DataListScreen = (props) => {

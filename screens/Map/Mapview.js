@@ -3,8 +3,6 @@ import { StyleSheet, View, Text } from 'react-native'
 import MapView from 'react-native-maps'
 import { Marker, Callout, Circle, PROVIDER_GOOGLE } from 'react-native-maps'
 import MarkerBasic from '../../components/Maps/MarkerBasic'
-import getColors from '../../constants/getColors'
-const colorsTheme = getColors()
 
 const Mapview = () => {
   return (

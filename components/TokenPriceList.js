@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native'
 import { getSolEcoPrices } from './apiTokenPrices'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 export default function TokenPrice() {
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: '#000',
   },
-  text: { fontSize: 14 },
-  textHeader: { fontSize: 10 },
+  text: { fontSize: 18, color: colorsTheme.textColor },
+  textHeader: { fontSize: 12, color: colorsTheme.textColorSecondary },
   tableContainer: {
     flex: 1,
     flexDirection: 'column',
