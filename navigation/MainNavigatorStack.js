@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { MainNavigatorTab } from './MainNavigatorTab'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-
+import { useSelector, useDispatch } from 'react-redux'
 import ContactScreen from '../screens/Contact/ContactScreen'
 import ChatSettingsScreen from '../screens/Messaging/ChatSettings/ChatSettingsScreen'
 import ChatScreen from '../screens/Messaging/Chat/ChatScreen'
@@ -14,13 +14,12 @@ import Mapview from '../screens/Map/Mapview'
 import TokenScreen from '../screens/Tokens/TokenScreen'
 import StepsCounterPermissions from '../components/StepsCounterPermissions'
 import getColors from '../constants/colors/getColors'
+import { setStoredMenu } from '../store/menuSlice'
 const colorsTheme = getColors()
 
 const Stack = createNativeStackNavigator()
 
 export const MainNavigatorStack = () => {
-  // logger('component', 'MainNavigatorStack')
-
   return (
     <Stack.Navigator>
       <Stack.Group

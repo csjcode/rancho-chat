@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -7,11 +7,11 @@ import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
 import Mapview from '../screens/Map/Mapview'
 import TrickScreen from '../screens/Tricks/TrickScreen'
 import getColors from '../constants/colors/getColors'
-const colorsTheme = getColors()
 
 const Tab = createBottomTabNavigator()
 
 export const MainNavigatorTab = () => {
+  const colorsTheme = getColors()
   const menuData = useSelector((state) => state.menu.storedMenu)
 
   return (
@@ -84,7 +84,8 @@ export const MainNavigatorTab = () => {
       )}
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
+        // component={SettingsScreen}
+        children={() => <SettingsScreen />}
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({ color, size }) => (

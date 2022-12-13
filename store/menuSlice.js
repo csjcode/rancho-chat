@@ -6,7 +6,7 @@ const menuSlice = createSlice({
     storedMenu: {
       map: true,
       tricks: true,
-      themeColorLight: false,
+      themeColorsName: 'dark',
     },
   },
   reducers: {
@@ -14,7 +14,6 @@ const menuSlice = createSlice({
       // console.log(`action ${JSON.stringify(action)}`)
       const newMenu = action.payload
       state.storedMenu = newMenu
-      // console.log(state.storedMenu)
     },
   },
 })

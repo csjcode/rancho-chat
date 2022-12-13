@@ -1,33 +1,24 @@
+import React, { useState } from 'react'
 import { Appearance } from 'react-native'
 import colorsDark from './colorsDark'
 import colorsLight from './colorsLight'
 import { store } from '../../store/store'
-
-// var count = 1
+import { dispatch } from 'react-redux'
+import { resolveObjKey } from '../../utils/helpers'
 
 const getColors = (themeColors) => {
-  // console.log(count++)
+  // console.log(store.getState().menu.storedMenu.themeColorsName)
 
-  console.log(store.getState().menu.storedMenu.themeColorLight)
+  const themeColorsName = store.getState().menu.storedMenu.themeColorsName
 
-  const themeColorLight = store.getState().menu.storedMenu.themeColorLight
+  // store.dispatch({})
+  console.log(themeColorsName)
 
-  // console.log('test')
-  // console.log(themeColors)
-  // console.log(`Appearance ${Appearance.getColorScheme()}`)
-  // const colorScheme = themeColors ? themeColors : Appearance.getColorScheme()
-
-  if (themeColorLight) {
+  if (themeColorsName === 'light') {
     return colorsLight()
   } else {
     return colorsDark()
   }
-}
-
-export const resolveObjKey = (path, obj) => {
-  return path.split('.').reduce(function (prev, curr) {
-    return prev ? prev[curr] : null
-  }, obj || self)
 }
 
 export default getColors
