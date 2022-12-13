@@ -6,10 +6,10 @@ import PageContainer from '../../components/PageContainer'
 import PageTitle from '../../components/PageTitle'
 import ProfileImage from '../../components/ProfileImage'
 import SubmitButton from '../../components/SubmitButton'
-import colors from '../../constants/colors'
+import colors from '../../constants/colors/colors'
 import { removeUserFromChat } from '../../utils/actions/chatActions'
 import { getUserChats } from '../../utils/actions/userActions'
-import getColors from '../../constants/getColors'
+import getColors from '../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const ContactScreen = (props) => {

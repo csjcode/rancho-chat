@@ -15,8 +15,8 @@ import { updateSignedInUserData } from '../utils/actions/authActions'
 import { useDispatch } from 'react-redux'
 import { updateLoggedInUserData } from '../store/authSlice'
 import { updateChatData } from '../utils/actions/chatActions'
-import colors from '../constants/colors'
-import getColors from '../constants/getColors'
+import colors from '../constants/colors/colors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const ProfileImage = (props) => {

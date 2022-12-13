@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
-import colors from '../constants/colors'
-import getColors from '../constants/getColors'
+import colors from '../constants/colors/colors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 // console.log(colorsTheme)
 

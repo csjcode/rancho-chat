@@ -8,8 +8,8 @@ import { reducer } from '../utils/reducers/formReducer'
 import { signIn } from '../utils/actions/authActions'
 import { ActivityIndicator, Alert } from 'react-native'
 import { useDispatch } from 'react-redux'
-import colors from '../constants/colors'
-import getColors from '../constants/getColors'
+import colors from '../constants/colors/colors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 import { testMode } from '../utils/testMode'

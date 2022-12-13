@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useSelector } from 'react-redux'
 import { FlatList } from 'react-native'
 import Bubble from '../../../components/Bubble'
-import getColors from '../../../constants/getColors'
+import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const ChatFull = ({ chatData, chatId, chatMessages, setReplyingTo }) => {

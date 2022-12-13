@@ -7,9 +7,9 @@ import { validateInput } from '../utils/actions/formActions'
 import { reducer } from '../utils/reducers/formReducer'
 import { signUp } from '../utils/actions/authActions'
 import { ActivityIndicator, Alert } from 'react-native'
-import colors from '../constants/colors'
+import colors from '../constants/colors/colors'
 import { useDispatch, useSelector } from 'react-redux'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const initialState = {

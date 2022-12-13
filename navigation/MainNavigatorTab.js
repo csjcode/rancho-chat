@@ -6,7 +6,7 @@ import SettingsScreen from '../screens/Settings/SettingsScreen'
 import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
 import Mapview from '../screens/Map/Mapview'
 import TrickScreen from '../screens/Tricks/TrickScreen'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const Tab = createBottomTabNavigator()
