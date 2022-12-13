@@ -55,11 +55,11 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '100%',
-    backgroundColor: 'red',
+    // backgroundColor: '#abd5c6',
     paddingHorizontal: 10,
     paddingVertical: 15,
     borderRadius: 2,
-    backgroundColor: colorsTheme.nearlyWhite,
+    backgroundColor: colorsTheme.formInputBackgroundColor,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     color: colorsTheme.grey,
   },
   input: {
-    color: colorsTheme.textColor,
+    // color: colorsTheme.textColor,
+    color: colorsTheme.formInputTextColor,
     flex: 1,
     fontFamily: 'regular',
     letterSpacing: 0.3,

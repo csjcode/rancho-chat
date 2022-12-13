@@ -97,7 +97,7 @@ const SettingsScreen = (props) => {
   }
 
   return (
-    <PageContainer>
+    <PageContainer style={styles.pageContainer}>
       <PageTitle text="Settings" />
 
       <ScrollView contentContainerStyle={styles.formContainer}>
@@ -189,9 +189,14 @@ const SettingsScreen = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // backgroundColor: colorsTheme.trickScreenBackground,
   },
   formContainer: {
     alignItems: 'center',
+    backgroundColor: colorsTheme.trickScreenBackground,
+  },
+  pageContainer: {
+    backgroundColor: colorsTheme.trickScreenBackground,
   },
 })
 

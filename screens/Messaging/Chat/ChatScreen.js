@@ -10,6 +10,7 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Feather } from '@expo/vector-icons'
+// import { HeaderBackButton } from '@react-navigation/elements'
 
 // import backgroundImage from '../../../assets/images/solana/Solana_Glass_03.png'
 import backgroundImage from '../../../assets/images/droplet.jpeg'
@@ -80,6 +81,16 @@ const ChatScreen = (props) => {
       headerTitleStyle: {
         color: colorsTheme.chatScreenHeaderTitle,
       },
+      headerTintColor: colorsTheme.chatScreenHeaderTint,
+      // headerLeft: (props) => (
+      //   <HeaderBackButton
+      //     {...props}
+      //     style={{ headerTintColor: '#ffffff' }}
+      //     onPress={() => {
+      //       alert('test')
+      //     }}
+      //   />
+      // ),
       headerRight: () => {
         return (
           <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>

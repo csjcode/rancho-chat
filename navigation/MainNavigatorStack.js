@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { MainNavigatorTab } from './MainNavigatorTab'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import ContactScreen from '../screens/Contact/ContactScreen'
 import ChatSettingsScreen from '../screens/Messaging/ChatSettings/ChatSettingsScreen'
 import ChatScreen from '../screens/Messaging/Chat/ChatScreen'
 import NewChatScreen from '../screens/Messaging/NewChat/NewChatScreen'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import TestingScreen from '../screens/Testing/TestingScreen'
+
 import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
 import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
 import TokenScreen from '../screens/Tokens/TokenScreen'
 import StepsCounterPermissions from '../components/StepsCounterPermissions'
+import getColors from '../constants/getColors'
+const colorsTheme = getColors()
 
 const Stack = createNativeStackNavigator()
 
@@ -19,7 +23,16 @@ export const MainNavigatorStack = () => {
 
   return (
     <Stack.Navigator>
-      <Stack.Group>
+      <Stack.Group
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: colorsTheme.tabNavHeader,
+          },
+          tabBarStyle: {
+            backgroundColor: colorsTheme.tabNavHeader,
+          },
+        }}
+      >
         <Stack.Screen
           name="Home"
           component={MainNavigatorTab}
@@ -62,6 +75,9 @@ export const MainNavigatorStack = () => {
           name="Map"
           component={Mapview}
           options={{
+            title: 'Maps',
+            headerTintColor: 'white',
+            headerStyle: { backgroundColor: 'black' },
             headerTitle: 'Local Map',
             headerBackTitle: 'Back',
           }}
@@ -72,6 +88,7 @@ export const MainNavigatorStack = () => {
           options={{
             headerTitle: 'Token Screen',
             headerBackTitle: 'Back',
+            headerStyle: { borderColor: 'red', borderWidth: 2 },
           }}
         />
         <Stack.Screen
@@ -79,6 +96,14 @@ export const MainNavigatorStack = () => {
           component={StepsCounterPermissions}
           options={{
             headerTitle: 'Steps Screen',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="TestingScreen"
+          component={TestingScreen}
+          options={{
+            headerTitle: 'Testing Screen',
             headerBackTitle: 'Back',
           }}
         />
