@@ -22,6 +22,9 @@ export const MainNavigatorTab = () => {
           backgroundColor: colorsTheme.tabNavHeader,
           height: 40,
         },
+        headerTitleStyle: {
+          color: colorsTheme.mainTabHeaderTitle,
+        },
         headerTintColor: 'white',
         tabBarStyle: {
           backgroundColor: colorsTheme.tabNavHeader,
@@ -37,7 +40,10 @@ export const MainNavigatorTab = () => {
             backgroundColor: colorsTheme.tabNavHeader,
             // height: 25,
           },
-          headerTintColor: colorsTheme.tabNavHeader,
+          headerTitleStyle: {
+            color: colorsTheme.mainTabHeaderTitle,
+          },
+          // headerTintColor: colorsTheme.tabNavHeader,
           tabBarLabel: 'Chats',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="chatbubble-outline" size={size} color={color} />
@@ -66,6 +72,9 @@ export const MainNavigatorTab = () => {
               backgroundColor: colorsTheme.tabNavHeader,
               // height: 25,
             },
+            headerTitleStyle: {
+              color: colorsTheme.mainTabHeaderTitle,
+            },
             tabBarLabel: 'Tricks',
             tabBarIcon: ({ color, size }) => (
               <FontAwesome5 name="robot" size={24} color={color} />
@@ -81,10 +90,12 @@ export const MainNavigatorTab = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="settings-outline" size={size} color={color} />
           ),
-          // headerStyle: {
-          //   backgroundColor: colorsTheme.tabNavHeader,
-          //   // height: 25,
-          // },
+          headerStyle: {
+            backgroundColor: colorsTheme.tabNavHeader,
+          },
+          headerTitleStyle: {
+            color: colorsTheme.mainTabHeaderTitle,
+          },
         }}
       />
     </Tab.Navigator>

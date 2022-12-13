@@ -98,7 +98,7 @@ const SettingsScreen = (props) => {
 
   return (
     <PageContainer style={styles.pageContainer}>
-      <PageTitle text="Settings" />
+      {/* <PageTitle text="Settings" /> */}
 
       <ScrollView contentContainerStyle={styles.formContainer}>
         <ProfileImage

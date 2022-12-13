@@ -83,7 +83,7 @@ const ChatListScreen = (props) => {
 
   return (
     <PageContainer>
-      <PageTitle text="Chats" />
+      {/* <PageTitle text="Chats" /> */}
 
       <View>
         <TouchableOpacity

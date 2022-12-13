@@ -15,6 +15,7 @@ export default {
   chatScreenHeaderStyle: '#111',
   chatScreenHeaderTitle: '#fff',
   chatScreenHeaderTint: '#aaa',
+  mainTabHeaderTitle: '#28a870',
   trickScreenBackground: '#000114',
   trickScreenIcon: '#28a870',
   trickScreenIconLabel: '#aaa',
