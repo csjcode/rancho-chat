@@ -77,7 +77,7 @@ export const MainNavigatorStack = () => {
           options={{
             title: 'Maps',
             headerTintColor: 'white',
-            headerStyle: { backgroundColor: 'red' },
+            headerStyle: { backgroundColor: 'black' },
             headerTitle: 'Local Map',
             headerBackTitle: 'Back',
           }}
