@@ -12,14 +12,14 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import CustomHeaderButton from '../../../components/CustomHeaderButton'
 import PageContainer from '../../../components/PageContainer'
 import { FontAwesome } from '@expo/vector-icons'
-import colors from '../../../constants/colors'
+import colors from '../../../constants/colors/colors'
 import commonStyles from '../../../constants/commonStyles'
 import { searchUsers } from '../../../utils/actions/userActions'
 import DataItem from '../../../components/DataItem'
 import { useDispatch, useSelector } from 'react-redux'
 import { setStoredUsers } from '../../../store/userSlice'
 import ProfileImage from '../../../components/ProfileImage'
-import getColors from '../../../constants/getColors'
+import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const NewChatScreen = (props) => {

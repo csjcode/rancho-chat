@@ -2,7 +2,7 @@ import { View, Text, Switch, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setStoredMenu, setStoredMenuTest } from '../../store/menuSlice'
-import getColors, { resolveObjKey } from '../../constants/getColors'
+import getColors, { resolveObjKey } from '../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const SettingsToggle = () => {

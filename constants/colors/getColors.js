@@ -9,9 +9,9 @@ const getColors = (themeColors) => {
   const colorScheme = 'dark'
   // console.log(colorScheme)
   if (colorScheme === 'light') {
-    return colorsLight
+    return colorsLight()
   } else {
-    return colorsDark
+    return colorsDark()
   }
 }
 

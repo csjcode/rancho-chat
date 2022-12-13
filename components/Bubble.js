@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
-import colors from '../constants/colors'
+import colors from '../constants/colors/colors'
 import {
   Menu,
   MenuTrigger,
@@ -19,7 +19,7 @@ import { Feather, FontAwesome } from '@expo/vector-icons'
 import { starMessage } from '../utils/actions/chatActions'
 import { useSelector } from 'react-redux'
 import { formatAmPm } from '../utils/datetimeFormat'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const MenuItem = (props) => {

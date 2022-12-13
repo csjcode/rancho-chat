@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Text, View, StyleSheet, Button } from 'react-native'
 import { TouchableOpacity } from 'react-native'
 import { getSolEcoPrices } from './apiTokenPrices'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 export default function TokenPrice() {

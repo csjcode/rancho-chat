@@ -9,7 +9,7 @@ import {
   Platform,
   View,
 } from 'react-native'
-import colors from '../constants/colors'
+import colors from '../constants/colors/colors'
 import commonStyles from '../constants/commonStyles'
 import { setStoredUsers } from '../store/userSlice'
 import { setChatMessages, setStarredMessages } from '../store/messagesSlice'

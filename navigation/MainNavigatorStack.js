@@ -13,7 +13,7 @@ import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
 import TokenScreen from '../screens/Tokens/TokenScreen'
 import StepsCounterPermissions from '../components/StepsCounterPermissions'
-import getColors from '../constants/getColors'
+import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const Stack = createNativeStackNavigator()

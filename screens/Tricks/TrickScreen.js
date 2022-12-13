@@ -8,7 +8,7 @@ import {
   FontAwesome5,
 } from '@expo/vector-icons'
 import { FlatList, TouchableOpacity } from 'react-native'
-import getColors from '../../constants/getColors'
+import getColors from '../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const TrickScreen = (props) => {
