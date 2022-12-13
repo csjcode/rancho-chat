@@ -18,7 +18,13 @@ const SubmitButton = (props) => {
         ...{ backgroundColor: bgColor },
       }}
     >
-      <Text style={{ color: props.disabled ? colorsTheme.grey : 'white' }}>
+      <Text
+        style={{
+          color: props.disabled
+            ? colorsTheme.grey
+            : colorsTheme.submitButtonTextColor,
+        }}
+      >
         {props.title}
       </Text>
     </TouchableOpacity>
@@ -32,6 +38,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     justifyContent: 'center',
     alignItems: 'center',
+    // color: 'black',
   },
 })
 

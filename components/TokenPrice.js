@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: '#000',
   },
-  text: { fontSize: 14 },
+  text: { fontSize: 14, color: 'red' },
   tablecontainer: {
     flex: 1,
     flexDirection: 'column',

@@ -17,20 +17,27 @@ export const MainNavigatorTab = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        headerTitle: '',
         headerShadowVisible: false,
         headerStyle: {
           backgroundColor: colorsTheme.tabNavHeader,
+          height: 40,
         },
+        headerTintColor: 'white',
         tabBarStyle: {
           backgroundColor: colorsTheme.tabNavHeader,
         },
       }}
     >
       <Tab.Screen
-        name="ChatList"
+        name="Chat List"
         component={ChatListScreen}
         options={{
+          // headerShown: false,
+          headerStyle: {
+            backgroundColor: colorsTheme.tabNavHeader,
+            // height: 25,
+          },
+          headerTintColor: colorsTheme.tabNavHeader,
           tabBarLabel: 'Chats',
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="chatbubble-outline" size={size} color={color} />
@@ -39,9 +46,10 @@ export const MainNavigatorTab = () => {
       />
       {menuData.map && (
         <Tab.Screen
-          name="Map"
+          name="Local Maps"
           component={Mapview}
           options={{
+            headerShown: false,
             tabBarLabel: 'Map',
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name="map-o" size={24} color={color} />
@@ -54,6 +62,10 @@ export const MainNavigatorTab = () => {
           name="Tricks"
           component={TrickScreen}
           options={{
+            headerStyle: {
+              backgroundColor: colorsTheme.tabNavHeader,
+              // height: 25,
+            },
             tabBarLabel: 'Tricks',
             tabBarIcon: ({ color, size }) => (
               <FontAwesome5 name="robot" size={24} color={color} />
@@ -69,6 +81,10 @@ export const MainNavigatorTab = () => {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="settings-outline" size={size} color={color} />
           ),
+          // headerStyle: {
+          //   backgroundColor: colorsTheme.tabNavHeader,
+          //   // height: 25,
+          // },
         }}
       />
     </Tab.Navigator>

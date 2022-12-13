@@ -1,16 +1,12 @@
 import React from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import PageContainer from '../../components/PageContainer'
-import TokenPrice from '../../components/TokenPrice'
-import TokenPriceList from '../../components/TokenPriceList'
-import getColors from '../../constants/getColors'
-const colorsTheme = getColors()
 
-const TokenScreen = () => {
+const TestingScreen = () => {
   return (
     <PageContainer>
       <View style={styles.container}>
-        <TokenPriceList />
+        <Text>Testing Screen</Text>
       </View>
     </PageContainer>
   )
@@ -23,4 +19,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default TokenScreen
+export default TestingScreen
