@@ -1,14 +1,23 @@
 import { Appearance } from 'react-native'
 import colorsDark from './colorsDark'
 import colorsLight from './colorsLight'
+import { store } from '../../store/store'
+
+// var count = 1
 
 const getColors = (themeColors) => {
+  // console.log(count++)
+
+  console.log(store.getState().menu.storedMenu.themeColorLight)
+
+  const themeColorLight = store.getState().menu.storedMenu.themeColorLight
+
+  // console.log('test')
   // console.log(themeColors)
   // console.log(`Appearance ${Appearance.getColorScheme()}`)
   // const colorScheme = themeColors ? themeColors : Appearance.getColorScheme()
-  const colorScheme = 'dark'
-  // console.log(colorScheme)
-  if (colorScheme === 'light') {
+
+  if (themeColorLight) {
     return colorsLight()
   } else {
     return colorsDark()

@@ -6,6 +6,7 @@ const menuSlice = createSlice({
     storedMenu: {
       map: true,
       tricks: true,
+      themeColorLight: false,
     },
   },
   reducers: {
