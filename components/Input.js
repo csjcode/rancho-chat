@@ -1,5 +1,4 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
 
 import colors from '../constants/colors/colors'
 import { useState } from 'react'

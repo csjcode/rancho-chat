@@ -1,10 +1,29 @@
 import React, { useState, useEffect } from 'react'
-import { Text, View, StyleSheet, Button } from 'react-native'
-import { TouchableOpacity } from 'react-native'
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+  Alert,
+} from 'react-native'
+import {} from 'react-native'
+import { FontAwesome } from '@expo/vector-icons'
 import { getSolEcoPrices } from './apiTokenPrices'
 import getColors from '../constants/colors/getColors'
 import { useDispatch, useSelector } from 'react-redux'
 // const colorsTheme = getColors()
+
+const confirmAlertTokenRemove = (type, title, message, tokenName) => {
+  return Alert.alert(title, message, [
+    {
+      text: 'Cancel',
+      onPress: () => console.log('Cancel Pressed'),
+      style: 'cancel',
+    },
+    { text: 'OK', onPress: () => console.log(`OK Pressed for ${tokenName}`) },
+  ])
+}
 
 export default function TokenPrice() {
   const colorsTheme = getColors()
@@ -12,6 +31,7 @@ export default function TokenPrice() {
   // console.log(storedCoins)
 
   const [counter, setCounter] = useState(0)
+  const [visibleRemoveButtons, visibleRemoveButtonsSet] = useState(false)
 
   const [priceList, priceListSet] = useState({})
   var coinList = storedCoins.coins
@@ -23,12 +43,31 @@ export default function TokenPrice() {
       (a, b) => coinList.indexOf(a) - coinList.indexOf(b),
     )
 
+    const handleRemoveToken = (tokenName) => {
+      return confirmAlertTokenRemove(
+        'removeToken',
+        'Remove Token',
+        `Do you want to remove ${tokenName}?`,
+        tokenName,
+      )
+    }
+
     return modPriceList.map((tokenName, key) => {
       const price = parseFloat(priceList[tokenName].usd).toFixed(2)
       return (
         <View key={price} style={stylesFor(colorsTheme).row}>
           <View style={stylesFor(colorsTheme).col1}>
-            <Text style={stylesFor(colorsTheme).text}>{tokenName}</Text>
+            <Text style={stylesFor(colorsTheme).text}>
+              {visibleRemoveButtons && (
+                <TouchableOpacity
+                  onPress={() => handleRemoveToken(tokenName)}
+                  style={{ marginRight: 5 }}
+                >
+                  <FontAwesome name="remove" size={12} color="red" />
+                </TouchableOpacity>
+              )}
+              {tokenName}
+            </Text>
           </View>
           <View style={stylesFor(colorsTheme).col2}>
             <Text style={stylesFor(colorsTheme).text}>{price}</Text>
@@ -75,6 +114,20 @@ export default function TokenPrice() {
         </View>
       </View>
       <RowTable />
+
+      <View>
+        <TouchableOpacity
+          onPress={() => visibleRemoveButtonsSet(!visibleRemoveButtons)}
+        >
+          <Text style={{ color: 'silver', marginTop: 10 }}>
+            {visibleRemoveButtons && (
+              <FontAwesome name="arrow-circle-left" size={14} color="silver" />
+            )}
+            {visibleRemoveButtons && '  Exit '}
+            Remove Tokens
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
