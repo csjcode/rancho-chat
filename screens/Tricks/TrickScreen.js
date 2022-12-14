@@ -9,11 +9,13 @@ import {
 } from '@expo/vector-icons'
 import { FlatList, TouchableOpacity } from 'react-native'
 import getColors from '../../constants/colors/getColors'
-const colorsTheme = getColors()
+var colorsTheme = getColors()
 
 const TrickScreen = (props) => {
+  console.log('trick screen')
+  var colorsTheme = getColors()
   return (
-    <View style={styles.container}>
+    <View style={stylesFor(colorsTheme).container}>
       <FlatList
         style={{ width: 300 }}
         data={itemData}
@@ -29,20 +31,21 @@ const TrickScreen = (props) => {
 }
 
 const Item = ({ item, navigation }) => {
+  var colorsTheme = getColors()
   return item.label ? (
-    <View style={styles.item}>
+    <View style={stylesFor(colorsTheme).item}>
       <TouchableOpacity
         onPress={() => {
           return item.screen ? navigation.navigate(item.screen) : null
         }}
-        style={styles.button}
+        style={stylesFor(colorsTheme).button}
       >
         {item.icon}
       </TouchableOpacity>
-      <Text style={styles.label}>{item.label}</Text>
+      <Text style={stylesFor(colorsTheme).label}>{item.label}</Text>
     </View>
   ) : (
-    <View style={styles.item}>{item.icon}</View>
+    <View style={stylesFor(colorsTheme).item}>{item.icon}</View>
   )
 }
 
@@ -204,31 +207,32 @@ const itemData = [
   },
 ]
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    paddingTop: 20,
-    alignItems: 'center',
-    // justifyContent: 'stretch',
-    backgroundColor: colorsTheme.trickScreenBackground,
-    width: '100%',
-    borderTopColor: '#333',
-    borderWidth: 1,
-  },
-  cell: {
-    fontSize: 20,
-  },
-  item: {
-    // flex: 1,
-    maxWidth: '25%',
-    alignItems: 'center',
-    padding: 10,
-    borderColor: '#999',
-  },
-  label: {
-    color: colorsTheme.trickScreenIconLabel,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'column',
+      paddingTop: 20,
+      alignItems: 'center',
+      // justifyContent: 'stretch',
+      backgroundColor: colorsTheme.trickScreenBackground,
+      width: '100%',
+      borderTopColor: '#333',
+      borderWidth: 1,
+    },
+    cell: {
+      fontSize: 20,
+    },
+    item: {
+      // flex: 1,
+      maxWidth: '25%',
+      alignItems: 'center',
+      padding: 10,
+      borderColor: '#999',
+    },
+    label: {
+      color: colorsTheme.trickScreenIconLabel,
+    },
+  })
 
 export default TrickScreen

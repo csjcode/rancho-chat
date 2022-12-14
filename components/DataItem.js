@@ -9,26 +9,27 @@ const colorsTheme = getColors()
 const imageSize = 40
 
 const DataItem = (props) => {
+  const colorsTheme = getColors()
   const { title, subTitle, image, type, isChecked, icon } = props
 
   const hideImage = props.hideImage && props.hideImage === true
 
   return (
     <TouchableWithoutFeedback onPress={props.onPress}>
-      <View style={styles.container}>
+      <View style={stylesFor(colorsTheme).container}>
         {!icon && !hideImage && <ProfileImage uri={image} size={imageSize} />}
 
         {icon && (
-          <View style={styles.leftIconContainer}>
+          <View style={stylesFor(colorsTheme).leftIconContainer}>
             <AntDesign name={icon} size={20} color={colorsTheme.blue} />
           </View>
         )}
 
-        <View style={styles.textContainer}>
+        <View style={stylesFor(colorsTheme).textContainer}>
           <Text
             numberOfLines={1}
             style={{
-              ...styles.title,
+              ...stylesFor(colorsTheme).title,
               ...{
                 color:
                   type === 'button' ? colorsTheme.blue : colorsTheme.textColor,
@@ -39,7 +40,7 @@ const DataItem = (props) => {
           </Text>
 
           {subTitle && (
-            <Text numberOfLines={1} style={styles.subTitle}>
+            <Text numberOfLines={1} style={stylesFor(colorsTheme).subTitle}>
               {subTitle}
             </Text>
           )}
@@ -48,8 +49,8 @@ const DataItem = (props) => {
         {type === 'checkbox' && (
           <View
             style={{
-              ...styles.iconContainer,
-              ...(isChecked && styles.checkedStyle),
+              ...stylesFor(colorsTheme).iconContainer,
+              ...(isChecked && stylesFor(colorsTheme).checkedStyle),
             }}
           >
             <Ionicons name="checkmark" size={18} color="white" />
@@ -70,47 +71,48 @@ const DataItem = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    paddingVertical: 7,
-    borderBottomColor: colorsTheme.extraLightGrey,
-    borderBottomWidth: 1,
-    alignItems: 'center',
-    minHeight: 50,
-  },
-  textContainer: {
-    marginLeft: 14,
-    flex: 1,
-  },
-  title: {
-    fontFamily: 'medium',
-    fontSize: 16,
-    letterSpacing: 0.3,
-  },
-  subTitle: {
-    fontFamily: 'regular',
-    color: colorsTheme.grey,
-    letterSpacing: 0.3,
-  },
-  iconContainer: {
-    borderWidth: 1,
-    borderRadius: 50,
-    borderColor: colorsTheme.lightGrey,
-    backgroundColor: 'white',
-  },
-  checkedStyle: {
-    backgroundColor: colorsTheme.primary,
-    borderColor: 'transparent',
-  },
-  leftIconContainer: {
-    backgroundColor: colorsTheme.extraLightGrey,
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: imageSize,
-    height: imageSize,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      paddingVertical: 7,
+      borderBottomColor: colorsTheme.extraLightGrey,
+      borderBottomWidth: 1,
+      alignItems: 'center',
+      minHeight: 50,
+    },
+    textContainer: {
+      marginLeft: 14,
+      flex: 1,
+    },
+    title: {
+      fontFamily: 'medium',
+      fontSize: 16,
+      letterSpacing: 0.3,
+    },
+    subTitle: {
+      fontFamily: 'regular',
+      color: colorsTheme.grey,
+      letterSpacing: 0.3,
+    },
+    iconContainer: {
+      borderWidth: 1,
+      borderRadius: 50,
+      borderColor: colorsTheme.lightGrey,
+      backgroundColor: 'white',
+    },
+    checkedStyle: {
+      backgroundColor: colorsTheme.primary,
+      borderColor: 'transparent',
+    },
+    leftIconContainer: {
+      backgroundColor: colorsTheme.extraLightGrey,
+      borderRadius: 50,
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: imageSize,
+      height: imageSize,
+    },
+  })
 
 export default DataItem

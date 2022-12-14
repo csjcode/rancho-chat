@@ -24,14 +24,19 @@ import {
 } from '../../utils/actions/authActions'
 import { validateInput } from '../../utils/actions/formActions'
 import { reducer } from '../../utils/reducers/formReducer'
-import getColors, { resolveObjKey } from '../../constants/colors/getColors'
-const colorsTheme = getColors()
+import getColors from '../../constants/colors/getColors'
+import SettingsMenuTheme from './SettingsMenuTheme'
+let colorsTheme = getColors()
 
 const SettingsScreen = (props) => {
+  let colorsTheme = getColors()
+  console.log(`props SettingsScreen ${JSON.stringify(props)}`)
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const userData = useSelector((state) => state.auth.userData)
+  const menuData = useSelector((state) => state.menu.storedMenu)
+  // console.log(`colorsTheme SettingsScreen ${JSON.stringify(colorsTheme)}`)
 
   const firstName = userData.firstName || ''
   const lastName = userData.lastName || ''
@@ -97,10 +102,10 @@ const SettingsScreen = (props) => {
   }
 
   return (
-    <PageContainer style={styles.pageContainer}>
+    <PageContainer style={stylesFor(colorsTheme).pageContainer}>
       {/* <PageTitle text="Settings" /> */}
 
-      <ScrollView contentContainerStyle={styles.formContainer}>
+      <ScrollView contentContainerStyle={stylesFor(colorsTheme).formContainer}>
         <ProfileImage
           size={80}
           userId={userData.userId}
@@ -173,8 +178,13 @@ const SettingsScreen = (props) => {
           )}
         </View>
 
-        <SettingsMenuToggle />
-        <SettingsStarMessages navigation={props.navigation} />
+        <View></View>
+        <SettingsMenuToggle navigation={props.navigation} />
+
+        <View style={{ marginTop: 30 }}>
+          <SettingsStarMessages navigation={props.navigation} />
+        </View>
+
         <SubmitButton
           title="Logout"
           onPress={() => dispatch(userLogout())}
@@ -185,19 +195,19 @@ const SettingsScreen = (props) => {
     </PageContainer>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: colorsTheme.trickScreenBackground,
-  },
-  formContainer: {
-    alignItems: 'center',
-    backgroundColor: colorsTheme.trickScreenBackground,
-  },
-  pageContainer: {
-    backgroundColor: colorsTheme.trickScreenBackground,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      // backgroundColor: colorsTheme.trickScreenBackground,
+    },
+    formContainer: {
+      alignItems: 'center',
+      backgroundColor: colorsTheme.trickScreenBackground,
+    },
+    pageContainer: {
+      backgroundColor: colorsTheme.trickScreenBackground,
+    },
+  })
 
 export default SettingsScreen

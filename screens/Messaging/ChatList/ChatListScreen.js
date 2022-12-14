@@ -18,6 +18,7 @@ import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const ChatListScreen = (props) => {
+  const colorsTheme = getColors()
   const selectedUser = props.route?.params?.selectedUserId
   const selectedUserList = props.route?.params?.selectedUsers
   const chatName = props.route?.params?.chatName
@@ -91,7 +92,7 @@ const ChatListScreen = (props) => {
             props.navigation.navigate('NewChat', { isGroupChat: true })
           }
         >
-          <Text style={styles.newGroupText}>New Group</Text>
+          <Text style={stylesFor(colorsTheme).newGroupText}>New Group</Text>
         </TouchableOpacity>
       </View>
 
@@ -137,18 +138,19 @@ const ChatListScreen = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: colorsTheme.backgroundColor,
-  },
-  newGroupText: {
-    color: colorsTheme.blue,
-    fontSize: 17,
-    marginBottom: 5,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: colorsTheme.backgroundColor,
+    },
+    newGroupText: {
+      color: colorsTheme.blue,
+      fontSize: 17,
+      marginBottom: 5,
+    },
+  })
 
 export default ChatListScreen

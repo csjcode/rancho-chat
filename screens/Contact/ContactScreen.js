@@ -10,9 +10,10 @@ import colors from '../../constants/colors/colors'
 import { removeUserFromChat } from '../../utils/actions/chatActions'
 import { getUserChats } from '../../utils/actions/userActions'
 import getColors from '../../constants/colors/getColors'
-const colorsTheme = getColors()
+let colorsTheme = getColors()
 
 const ContactScreen = (props) => {
+  let colorsTheme = getColors()
   const [isLoading, setIsLoading] = useState(false)
   const storedUsers = useSelector((state) => state.users.storedUsers)
   const userData = useSelector((state) => state.auth.userData)
@@ -53,7 +54,7 @@ const ContactScreen = (props) => {
 
   return (
     <PageContainer>
-      <View style={styles.topContainer}>
+      <View style={stylesFor(colorsTheme).topContainer}>
         <ProfileImage
           uri={currentUser.profilePicture}
           size={80}
@@ -62,7 +63,7 @@ const ContactScreen = (props) => {
 
         <PageTitle text={`${currentUser.firstName} ${currentUser.lastName}`} />
         {currentUser.about && (
-          <Text style={styles.about} numberOfLines={2}>
+          <Text style={stylesFor(colorsTheme).about} numberOfLines={2}>
             {currentUser.about}
           </Text>
         )}
@@ -70,7 +71,7 @@ const ContactScreen = (props) => {
 
       {commonChats.length > 0 && (
         <>
-          <Text style={styles.heading}>
+          <Text style={stylesFor(colorsTheme).heading}>
             {commonChats.length} {commonChats.length === 1 ? 'Group' : 'Groups'}{' '}
             in Common
           </Text>
@@ -107,24 +108,25 @@ const ContactScreen = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  topContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginVertical: 20,
-  },
-  about: {
-    fontFamily: 'medium',
-    fontSize: 16,
-    letterSpacing: 0.3,
-    color: colorsTheme.grey,
-  },
-  heading: {
-    fontFamily: 'bold',
-    letterSpacing: 0.3,
-    color: colorsTheme.textColor,
-    marginVertical: 8,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    topContainer: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginVertical: 20,
+    },
+    about: {
+      fontFamily: 'medium',
+      fontSize: 16,
+      letterSpacing: 0.3,
+      color: colorsTheme.grey,
+    },
+    heading: {
+      fontFamily: 'bold',
+      letterSpacing: 0.3,
+      color: colorsTheme.textColor,
+      marginVertical: 8,
+    },
+  })
 
 export default ContactScreen

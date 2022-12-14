@@ -40,9 +40,10 @@ import CustomHeaderButton from '../../../components/CustomHeaderButton'
 import ChatFull from './ChatFull'
 import chatMessages from './getChatMessages'
 import getColors from '../../../constants/colors/getColors'
-const colorsTheme = getColors()
+let colorsTheme = getColors()
 
 const ChatScreen = (props) => {
+  let colorsTheme = getColors()
   const [chatUsers, setChatUsers] = useState([])
   const [messageText, setMessageText] = useState('')
   const [chatId, setChatId] = useState(props.route?.params?.chatId)
@@ -190,8 +191,14 @@ const ChatScreen = (props) => {
   }, [isLoading, tempImageUri, chatId])
   // console.log(colors.backgroundImageUri)
   return (
-    <SafeAreaView edges={['right', 'left', 'bottom']} style={styles.container}>
-      <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
+    <SafeAreaView
+      edges={['right', 'left', 'bottom']}
+      style={stylesFor(colorsTheme).container}
+    >
+      <ImageBackground
+        source={backgroundImage}
+        style={stylesFor(colorsTheme).backgroundImage}
+      >
         <PageContainer style={{ backgroundColor: 'transparent' }}>
           {!chatId && (
             <Bubble text="This is a new chat. Say hi!" type="system" />
@@ -220,27 +227,36 @@ const ChatScreen = (props) => {
         )}
       </ImageBackground>
 
-      <View style={styles.inputContainer}>
-        <TouchableOpacity style={styles.mediaButton} onPress={pickImage}>
+      <View style={stylesFor(colorsTheme).inputContainer}>
+        <TouchableOpacity
+          style={stylesFor(colorsTheme).mediaButton}
+          onPress={pickImage}
+        >
           <Feather name="plus" size={24} color={colorsTheme.blue} />
         </TouchableOpacity>
 
         <TextInput
-          style={styles.textbox}
+          style={stylesFor(colorsTheme).textbox}
           value={messageText}
           onChangeText={(text) => setMessageText(text)}
           onSubmitEditing={sendMessage}
         />
 
         {messageText === '' && (
-          <TouchableOpacity style={styles.mediaButton} onPress={takePhoto}>
+          <TouchableOpacity
+            style={stylesFor(colorsTheme).mediaButton}
+            onPress={takePhoto}
+          >
             <Feather name="camera" size={24} color={colorsTheme.blue} />
           </TouchableOpacity>
         )}
 
         {messageText !== '' && (
           <TouchableOpacity
-            style={{ ...styles.mediaButton, ...styles.sendButton }}
+            style={{
+              ...stylesFor(colorsTheme).mediaButton,
+              ...stylesFor(colorsTheme).sendButton,
+            }}
             onPress={sendMessage}
           >
             <Feather name="send" size={20} color={'white'} />
@@ -258,7 +274,7 @@ const ChatScreen = (props) => {
           confirmText="Send image"
           confirmButtonColor={colorsTheme.primary}
           cancelButtonColor={colorsTheme.red}
-          titleStyle={styles.popupTitleStyle}
+          titleStyle={stylesFor(colorsTheme).popupTitleStyle}
           onCancelPressed={() => setTempImageUri('')}
           onConfirmPressed={uploadImage}
           onDismiss={() => setTempImageUri('')}
@@ -281,48 +297,49 @@ const ChatScreen = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: colorsTheme.chatScreenBackgroundColor,
-  },
-  screen: {
-    flex: 1,
-  },
-  backgroundImage: {
-    flex: 1,
-  },
-  inputContainer: {
-    flexDirection: 'row',
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    height: 50,
-  },
-  textbox: {
-    flex: 1,
-    borderWidth: 1,
-    borderRadius: 50,
-    borderColor: colorsTheme.lightGrey,
-    marginHorizontal: 15,
-    paddingHorizontal: 12,
-    color: colorsTheme.chatScreenTextColor,
-  },
-  mediaButton: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 35,
-  },
-  sendButton: {
-    backgroundColor: colorsTheme.blue,
-    borderRadius: 50,
-    padding: 8,
-  },
-  popupTitleStyle: {
-    fontFamily: 'medium',
-    letterSpacing: 0.3,
-    color: colorsTheme.textColor,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: 'column',
+      backgroundColor: colorsTheme.chatScreenBackgroundColor,
+    },
+    screen: {
+      flex: 1,
+    },
+    backgroundImage: {
+      flex: 1,
+    },
+    inputContainer: {
+      flexDirection: 'row',
+      paddingVertical: 8,
+      paddingHorizontal: 10,
+      height: 50,
+    },
+    textbox: {
+      flex: 1,
+      borderWidth: 1,
+      borderRadius: 50,
+      borderColor: colorsTheme.lightGrey,
+      marginHorizontal: 15,
+      paddingHorizontal: 12,
+      color: colorsTheme.chatScreenTextColor,
+    },
+    mediaButton: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 35,
+    },
+    sendButton: {
+      backgroundColor: colorsTheme.blue,
+      borderRadius: 50,
+      padding: 8,
+    },
+    popupTitleStyle: {
+      fontFamily: 'medium',
+      letterSpacing: 0.3,
+      color: colorsTheme.textColor,
+    },
+  })
 
 export default ChatScreen
