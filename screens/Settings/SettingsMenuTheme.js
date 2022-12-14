@@ -16,28 +16,30 @@ const SettingsMenuTheme = (props) => {
   )
   // console.log(`themeColorsName state ${themeColorsName}`)
   // console.log(`menuData.themeColorsName state ${menuData.themeColorsName}`)
-
-  console.log(`SettingsMenuTheme menuData ${JSON.stringify(menuData)} `)
+  // console.log(`SettingsMenuTheme menuData ${JSON.stringify(menuData)} `)
 
   const changeThemeColor = (themeColorsName) => {
-    console.log(`changeThemeColor current ${themeColorsName}`)
+    // console.log(`changeThemeColor current ${themeColorsName}`)
     const newColor = themeColorsName === 'light' ? 'dark' : 'light'
-    console.log(`newColor  ${newColor}`)
+    // console.log(`newColor  ${newColor}`)
     themeColorsNameSet((previousState) => newColor)
     dispatch(setStoredMenu({ ...menuData, themeColorsName: newColor }))
   }
-  console.log(props)
+  // console.log(props)
   return (
-    <TouchableOpacity onPress={() => changeThemeColor(themeColorsName)}>
-      <Text style={{ color: 'red' }}>{themeColorsName}</Text>
+    <TouchableOpacity
+      style={{ marginLeft: 10 }}
+      onPress={() => changeThemeColor(themeColorsName)}
+    >
+      {/* <Text style={{ color: 'red' }}>{themeColorsName}</Text> */}
       <Ionicons
         name={
           menuData.themeColorsName === 'light'
             ? 'moon-outline'
             : 'sunny-outline'
         }
-        size={20}
-        color={menuData.themeColorsName === 'light' ? 'white' : 'white'}
+        size={25}
+        color={menuData.themeColorsName === 'light' ? 'black' : 'green'}
       />
     </TouchableOpacity>
   )

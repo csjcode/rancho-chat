@@ -20,6 +20,7 @@ import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const ProfileImage = (props) => {
+  const colorsTheme = getColors()
   const dispatch = useDispatch()
 
   const source = props.uri ? { uri: props.uri } : userImage
@@ -73,14 +74,14 @@ const ProfileImage = (props) => {
         <View
           height={props.size}
           width={props.size}
-          style={styles.loadingContainer}
+          style={stylesFor(colorsTheme).loadingContainer}
         >
           <ActivityIndicator size={'small'} color={colorsTheme.primary} />
         </View>
       ) : (
         <Image
           style={{
-            ...styles.image,
+            ...stylesFor(colorsTheme).image,
             ...{ width: props.size, height: props.size },
           }}
           source={image}
@@ -88,13 +89,13 @@ const ProfileImage = (props) => {
       )}
 
       {showEditButton && !isLoading && (
-        <View style={styles.editIconContainer}>
+        <View style={stylesFor(colorsTheme).editIconContainer}>
           <FontAwesome name="pencil" size={15} color="black" />
         </View>
       )}
 
       {showRemoveButton && !isLoading && (
-        <View style={styles.removeIconContainer}>
+        <View style={stylesFor(colorsTheme).removeIconContainer}>
           <FontAwesome name="close" size={15} color="black" />
         </View>
       )}
@@ -102,33 +103,34 @@ const ProfileImage = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  image: {
-    borderRadius: 50,
-    borderColor: colorsTheme.grey,
-    borderWidth: 1,
-  },
-  editIconContainer: {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    image: {
+      borderRadius: 50,
+      borderColor: colorsTheme.grey,
+      borderWidth: 1,
+    },
+    editIconContainer: {
+      position: 'absolute',
+      bottom: 0,
+      right: 0,
 
-    borderRadius: 20,
-    backgroundColor: colorsTheme.lightGrey,
-    padding: 8,
-  },
-  removeIconContainer: {
-    position: 'absolute',
-    bottom: -3,
-    right: -3,
-    backgroundColor: colorsTheme.lightGrey,
-    borderRadius: 20,
-    padding: 3,
-  },
-  loadingContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-})
+      borderRadius: 20,
+      backgroundColor: colorsTheme.lightGrey,
+      padding: 8,
+    },
+    removeIconContainer: {
+      position: 'absolute',
+      bottom: -3,
+      right: -3,
+      backgroundColor: colorsTheme.lightGrey,
+      borderRadius: 20,
+      padding: 3,
+    },
+    loadingContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  })
 
 export default ProfileImage

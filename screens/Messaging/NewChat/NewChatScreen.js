@@ -23,6 +23,7 @@ import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const NewChatScreen = (props) => {
+  const colorsTheme = getColors()
   const dispatch = useDispatch()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -124,10 +125,10 @@ const NewChatScreen = (props) => {
   return (
     <PageContainer>
       {isNewChat && isGroupChat && (
-        <View style={styles.chatNameContainer}>
-          <View style={styles.inputContainer}>
+        <View style={stylesFor(colorsTheme).chatNameContainer}>
+          <View style={stylesFor(colorsTheme).inputContainer}>
             <TextInput
-              style={styles.textbox}
+              style={stylesFor(colorsTheme).textbox}
               placeholder="Enter a name for your chat"
               autoCorrect={false}
               autoCompleteType={false}
@@ -138,9 +139,9 @@ const NewChatScreen = (props) => {
       )}
 
       {isGroupChat && (
-        <View style={styles.selectedUsersContainer}>
+        <View style={stylesFor(colorsTheme).selectedUsersContainer}>
           <FlatList
-            style={styles.selectedUsersList}
+            style={stylesFor(colorsTheme).selectedUsersList}
             data={selectedUsers}
             horizontal={true}
             keyExtractor={(item) => item}
@@ -154,7 +155,7 @@ const NewChatScreen = (props) => {
               const userData = storedUsers[userId]
               return (
                 <ProfileImage
-                  style={styles.selectedUserStyle}
+                  style={stylesFor(colorsTheme).selectedUserStyle}
                   size={40}
                   uri={userData.profilePicture}
                   onPress={() => userPressed(userId)}
@@ -166,12 +167,12 @@ const NewChatScreen = (props) => {
         </View>
       )}
 
-      <View style={styles.searchContainer}>
+      <View style={stylesFor(colorsTheme).searchContainer}>
         <FontAwesome name="search" size={15} color={colorsTheme.lightGrey} />
 
         <TextInput
           placeholder="Search"
-          style={styles.searchBox}
+          style={stylesFor(colorsTheme).searchBox}
           onChangeText={(text) => setSearchTerm(text)}
         />
       </View>
@@ -213,9 +214,11 @@ const NewChatScreen = (props) => {
             name="question"
             size={55}
             color={colorsTheme.lightGrey}
-            style={styles.noResultsIcon}
+            style={stylesFor(colorsTheme).noResultsIcon}
           />
-          <Text style={styles.noResultsText}>No users found!</Text>
+          <Text style={stylesFor(colorsTheme).noResultsText}>
+            No users found!
+          </Text>
         </View>
       )}
 
@@ -225,9 +228,9 @@ const NewChatScreen = (props) => {
             name="users"
             size={55}
             color={colorsTheme.lightGrey}
-            style={styles.noResultsIcon}
+            style={stylesFor(colorsTheme).noResultsIcon}
           />
-          <Text style={styles.noResultsText}>
+          <Text style={stylesFor(colorsTheme).noResultsText}>
             Enter a name to search for a user!
           </Text>
         </View>
@@ -236,59 +239,60 @@ const NewChatScreen = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: colorsTheme.extraLightGrey,
-    height: 30,
-    marginVertical: 8,
-    paddingHorizontal: 8,
-    paddingVertical: 5,
-    borderRadius: 5,
-  },
-  searchBox: {
-    marginLeft: 8,
-    fontSize: 15,
-    width: '100%',
-  },
-  noResultsIcon: {
-    marginBottom: 20,
-  },
-  noResultsText: {
-    color: colorsTheme.textColor,
-    fontFamily: 'regular',
-    letterSpacing: 0.3,
-  },
-  chatNameContainer: {
-    paddingVertical: 10,
-  },
-  inputContainer: {
-    width: '100%',
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    backgroundColor: colorsTheme.nearlyWhite,
-    flexDirection: 'row',
-    borderRadius: 2,
-  },
-  textbox: {
-    color: colorsTheme.textColor,
-    width: '100%',
-    fontFamily: 'regular',
-    letterSpacing: 0.3,
-  },
-  selectedUsersContainer: {
-    height: 50,
-    justifyContent: 'center',
-  },
-  selectedUsersList: {
-    height: '100%',
-    paddingTop: 10,
-  },
-  selectedUserStyle: {
-    marginRight: 10,
-    marginBottom: 10,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    searchContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      backgroundColor: colorsTheme.extraLightGrey,
+      height: 30,
+      marginVertical: 8,
+      paddingHorizontal: 8,
+      paddingVertical: 5,
+      borderRadius: 5,
+    },
+    searchBox: {
+      marginLeft: 8,
+      fontSize: 15,
+      width: '100%',
+    },
+    noResultsIcon: {
+      marginBottom: 20,
+    },
+    noResultsText: {
+      color: colorsTheme.textColor,
+      fontFamily: 'regular',
+      letterSpacing: 0.3,
+    },
+    chatNameContainer: {
+      paddingVertical: 10,
+    },
+    inputContainer: {
+      width: '100%',
+      paddingHorizontal: 10,
+      paddingVertical: 15,
+      backgroundColor: colorsTheme.nearlyWhite,
+      flexDirection: 'row',
+      borderRadius: 2,
+    },
+    textbox: {
+      color: colorsTheme.textColor,
+      width: '100%',
+      fontFamily: 'regular',
+      letterSpacing: 0.3,
+    },
+    selectedUsersContainer: {
+      height: 50,
+      justifyContent: 'center',
+    },
+    selectedUsersList: {
+      height: '100%',
+      paddingTop: 10,
+    },
+    selectedUserStyle: {
+      marginRight: 10,
+      marginBottom: 10,
+    },
+  })
 
 export default NewChatScreen

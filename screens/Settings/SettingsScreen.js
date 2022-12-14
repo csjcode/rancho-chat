@@ -26,17 +26,17 @@ import { validateInput } from '../../utils/actions/formActions'
 import { reducer } from '../../utils/reducers/formReducer'
 import getColors from '../../constants/colors/getColors'
 import SettingsMenuTheme from './SettingsMenuTheme'
-var colorsTheme = getColors()
+let colorsTheme = getColors()
 
 const SettingsScreen = (props) => {
-  var colorsTheme = getColors()
-  console.log(`props SettingsScreen ${JSON.stringify(props)}`)
+  let colorsTheme = getColors()
+  // console.log(`props SettingsScreen ${JSON.stringify(props)}`)
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const userData = useSelector((state) => state.auth.userData)
   const menuData = useSelector((state) => state.menu.storedMenu)
-  console.log(`colorsTheme SettingsScreen ${JSON.stringify(colorsTheme)}`)
+  // console.log(`colorsTheme SettingsScreen ${JSON.stringify(colorsTheme)}`)
 
   const firstName = userData.firstName || ''
   const lastName = userData.lastName || ''
@@ -178,8 +178,9 @@ const SettingsScreen = (props) => {
           )}
         </View>
 
+        <View></View>
         <SettingsMenuToggle navigation={props.navigation} />
-        <SettingsMenuTheme />
+        
 
         <View style={{ marginTop: 30 }}>
           <SettingsStarMessages navigation={props.navigation} />
@@ -210,17 +211,4 @@ const stylesFor = (colorsTheme) =>
     },
   })
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // backgroundColor: colorsTheme.trickScreenBackground,
-  },
-  formContainer: {
-    alignItems: 'center',
-    backgroundColor: colorsTheme.trickScreenBackground,
-  },
-  pageContainer: {
-    backgroundColor: colorsTheme.trickScreenBackground,
-  },
-})
 export default SettingsScreen
