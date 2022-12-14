@@ -7,34 +7,54 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native'
-import {} from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import { getSolEcoPrices } from './apiTokenPrices'
 import getColors from '../constants/colors/getColors'
 import { useDispatch, useSelector } from 'react-redux'
 // const colorsTheme = getColors()
-
-const confirmAlertTokenRemove = (type, title, message, tokenName) => {
-  return Alert.alert(title, message, [
-    {
-      text: 'Cancel',
-      onPress: () => console.log('Cancel Pressed'),
-      style: 'cancel',
-    },
-    { text: 'OK', onPress: () => console.log(`OK Pressed for ${tokenName}`) },
-  ])
-}
+import { removeStoredCoin } from '../store/coinsSlice'
 
 export default function TokenPrice() {
   const colorsTheme = getColors()
+  const dispatch = useDispatch()
   const storedCoins = useSelector((state) => state.coins.storedCoins)
   // console.log(storedCoins)
 
   const [counter, setCounter] = useState(0)
+  const [loading, loadingSet] = useState(0)
   const [visibleRemoveButtons, visibleRemoveButtonsSet] = useState(false)
+  const [removeCoin, removeCoinSet] = useState('')
+  const [updatePrices, updatePricesSet] = useState(true)
+  // dispatch(removeStoredCoin({ ...storedCoins, tokenName }))
 
   const [priceList, priceListSet] = useState({})
-  var coinList = storedCoins.coins
+  var coinList = storedCoins.coins.filter((item) => item !== removeCoin)
+
+  useEffect(() => {
+    if (removeCoin) {
+      console.log(`Removing ${removeCoin}`)
+      dispatch(removeStoredCoin({ ...storedCoins, removeCoin }))
+      removeCoinSet('')
+    }
+  }, [removeCoin, storedCoins])
+
+  const confirmAlertTokenRemove = (type, title, message, tokenName) => {
+    return Alert.alert(title, message, [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'OK',
+        onPress: () => {
+          console.log(`OK Pressed for ${tokenName}`)
+          // priceListSet(priceList.filter((item) => item !== tokenName))
+          removeCoinSet(tokenName)
+        },
+      },
+    ])
+  }
 
   const RowTable = () => {
     console.log(Object.keys(priceList))
@@ -52,42 +72,66 @@ export default function TokenPrice() {
       )
     }
 
+    if (loading) {
+      return (
+        <View style={{ alignItems: 'center' }}>
+          <Text
+            style={{
+              marginTop: 50,
+              marginBottom: 50,
+              fontSize: 20,
+              color: 'white',
+            }}
+          >
+            Loading Prices...
+          </Text>
+        </View>
+      )
+    }
+
     return modPriceList.map((tokenName, key) => {
       const price = parseFloat(priceList[tokenName].usd).toFixed(2)
       return (
-        <View key={price} style={stylesFor(colorsTheme).row}>
-          <View style={stylesFor(colorsTheme).col1}>
-            <Text style={stylesFor(colorsTheme).text}>
-              {visibleRemoveButtons && (
-                <TouchableOpacity
-                  onPress={() => handleRemoveToken(tokenName)}
-                  style={{ marginRight: 5 }}
-                >
-                  <FontAwesome name="remove" size={12} color="red" />
-                </TouchableOpacity>
-              )}
-              {tokenName}
-            </Text>
+        tokenName !== removeCoin &&
+        !loading && (
+          <View key={price} style={stylesFor(colorsTheme).row}>
+            <View style={stylesFor(colorsTheme).col1}>
+              <Text style={stylesFor(colorsTheme).text}>
+                {visibleRemoveButtons && (
+                  <TouchableOpacity
+                    onPress={() => handleRemoveToken(tokenName)}
+                    style={{ marginRight: 5 }}
+                  >
+                    <FontAwesome name="remove" size={12} color="red" />
+                  </TouchableOpacity>
+                )}
+                {tokenName}
+              </Text>
+            </View>
+            <View style={stylesFor(colorsTheme).col2}>
+              <Text style={stylesFor(colorsTheme).text}>{price}</Text>
+            </View>
+            <View style={stylesFor(colorsTheme).col3}>
+              <Text style={stylesFor(colorsTheme).text}></Text>
+            </View>
+            <View style={stylesFor(colorsTheme).col4}>
+              <Text style={stylesFor(colorsTheme).text}></Text>
+            </View>
           </View>
-          <View style={stylesFor(colorsTheme).col2}>
-            <Text style={stylesFor(colorsTheme).text}>{price}</Text>
-          </View>
-          <View style={stylesFor(colorsTheme).col3}>
-            <Text style={stylesFor(colorsTheme).text}></Text>
-          </View>
-          <View style={stylesFor(colorsTheme).col4}>
-            <Text style={stylesFor(colorsTheme).text}></Text>
-          </View>
-        </View>
+        )
       )
     })
   }
 
   useEffect(() => {
-    getSolEcoPrices(coinList).then((data) => {
+    const coinListToFetch = coinList.filter((item) => item !== removeCoin)
+    loadingSet(true)
+    getSolEcoPrices(coinListToFetch).then((data) => {
       priceListSet(data)
+      loadingSet(false)
+      updatePricesSet(false)
     })
-  }, [counter])
+  }, [removeCoin, updatePrices])
 
   return (
     <View style={stylesFor(colorsTheme).tableContainer}>
@@ -95,7 +139,7 @@ export default function TokenPrice() {
         <Button
           style={stylesFor(colorsTheme).button}
           title={'Update Prices'}
-          onPress={() => setCounter(counter + 1)}
+          onPress={() => updatePricesSet(true)}
         ></Button>
       </View>
 

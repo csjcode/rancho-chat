@@ -75,7 +75,7 @@ const SettingsScreen = (props) => {
     try {
       setIsLoading(true)
       await updateSignedInUserData(userData.userId, updatedValues)
-      dispatch(updateLoggedInUserData({ newData: updatedValues }))
+      dispatch(setStoredCoins({ newData: updatedValues }))
 
       setShowSuccessMessage(true)
 
