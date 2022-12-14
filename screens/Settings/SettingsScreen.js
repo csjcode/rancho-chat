@@ -30,7 +30,7 @@ let colorsTheme = getColors()
 
 const SettingsScreen = (props) => {
   let colorsTheme = getColors()
-  // console.log(`props SettingsScreen ${JSON.stringify(props)}`)
+  console.log(`props SettingsScreen ${JSON.stringify(props)}`)
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
@@ -180,7 +180,6 @@ const SettingsScreen = (props) => {
 
         <View></View>
         <SettingsMenuToggle navigation={props.navigation} />
-        
 
         <View style={{ marginTop: 30 }}>
           <SettingsStarMessages navigation={props.navigation} />

@@ -87,7 +87,7 @@ export const MainNavigatorTab = (props) => {
       <Tab.Screen
         name="Settings"
         // component={SettingsScreen}
-        children={() => <SettingsScreen />}
+        children={() => <SettingsScreen navigation={props.navigation} />}
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({ color, size }) => (
