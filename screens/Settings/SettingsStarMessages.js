@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import DataItem from '../../components/DataItem'
 
 const SettingsStarMessages = (props) => {
+  console.log(props)
   const starredMessages = useSelector(
     (state) => state.messages.starredMessages ?? {},
   )

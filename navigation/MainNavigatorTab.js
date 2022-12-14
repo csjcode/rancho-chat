@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -7,13 +7,13 @@ import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
 import Mapview from '../screens/Map/Mapview'
 import TrickScreen from '../screens/Tricks/TrickScreen'
 import getColors from '../constants/colors/getColors'
-const colorsTheme = getColors()
 
 const Tab = createBottomTabNavigator()
 
-export const MainNavigatorTab = () => {
+export const MainNavigatorTab = (props) => {
+  const colorsTheme = getColors()
   const menuData = useSelector((state) => state.menu.storedMenu)
-
+  // console.log(JSON.stringify(menuData))
   return (
     <Tab.Navigator
       screenOptions={{
@@ -33,7 +33,8 @@ export const MainNavigatorTab = () => {
     >
       <Tab.Screen
         name="Chat List"
-        component={ChatListScreen}
+        // component={ChatListScreen}
+        children={() => <ChatListScreen navigation={props.navigation} />}
         options={{
           // headerShown: false,
           headerStyle: {
@@ -66,7 +67,8 @@ export const MainNavigatorTab = () => {
       {menuData.tricks && (
         <Tab.Screen
           name="Tricks"
-          component={TrickScreen}
+          children={() => <TrickScreen navigation={props.navigation} />}
+          // component={TrickScreen}
           options={{
             headerStyle: {
               backgroundColor: colorsTheme.tabNavHeader,
@@ -84,7 +86,8 @@ export const MainNavigatorTab = () => {
       )}
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
+        // component={SettingsScreen}
+        children={() => <SettingsScreen navigation={props.navigation} />}
         options={{
           tabBarLabel: 'Settings',
           tabBarIcon: ({ color, size }) => (

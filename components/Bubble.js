@@ -23,12 +23,13 @@ import getColors from '../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const MenuItem = (props) => {
+  const colorsTheme = getColors()
   const Icon = props.iconPack ?? Feather
 
   return (
     <MenuOption onSelect={props.onSelect}>
-      <View style={styles.menuItemContainer}>
-        <Text style={styles.menuText}>{props.text}</Text>
+      <View style={stylesFor(colorsTheme).menuItemContainer}>
+        <Text style={stylesFor(colorsTheme).menuText}>{props.text}</Text>
         <Icon name={props.icon} size={18} />
       </View>
     </MenuOption>
@@ -54,9 +55,9 @@ const Bubble = (props) => {
   )
   const storedUsers = useSelector((state) => state.users.storedUsers)
 
-  const bubbleStyle = { ...styles.container }
-  const textStyle = { ...styles.text }
-  const wrapperStyle = { ...styles.wrapperStyle }
+  const bubbleStyle = { ...stylesFor(colorsTheme).container }
+  const textStyle = { ...stylesFor(colorsTheme).text }
+  const wrapperStyle = { ...stylesFor(colorsTheme).wrapperStyle }
 
   const menuRef = useRef(null)
   const id = useRef(uuid.v4())
@@ -125,7 +126,9 @@ const Bubble = (props) => {
         style={{ width: '100%' }}
       >
         <View style={bubbleStyle}>
-          {name && type !== 'info' && <Text style={styles.name}>{name}</Text>}
+          {name && type !== 'info' && (
+            <Text style={stylesFor(colorsTheme).name}>{name}</Text>
+          )}
 
           {replyingToUser && (
             <Bubble
@@ -138,11 +141,14 @@ const Bubble = (props) => {
           {!imageUrl && <Text style={textStyle}>{text}</Text>}
 
           {imageUrl && (
-            <Image source={{ uri: imageUrl }} style={styles.image} />
+            <Image
+              source={{ uri: imageUrl }}
+              style={stylesFor(colorsTheme).image}
+            />
           )}
 
           {dateString && type !== 'info' && (
-            <View style={styles.timeContainer}>
+            <View style={stylesFor(colorsTheme).timeContainer}>
               {isStarred && (
                 <FontAwesome
                   name="star"
@@ -151,7 +157,7 @@ const Bubble = (props) => {
                   style={{ marginRight: 5 }}
                 />
               )}
-              <Text style={styles.time}>{dateString}</Text>
+              <Text style={stylesFor(colorsTheme).time}>{dateString}</Text>
             </View>
           )}
 
@@ -183,53 +189,54 @@ const Bubble = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  wrapperStyle: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  container: {
-    backgroundColor: 'white',
-    borderRadius: 6,
-    padding: 5,
-    marginBottom: 10,
-    borderColor: colorsTheme.bubbleBorderColor,
-    borderWidth: 1,
-  },
-  text: {
-    fontFamily: 'regular',
-    letterSpacing: 0.3,
-  },
-  menuItemContainer: {
-    flexDirection: 'row',
-    padding: 5,
-  },
-  menuText: {
-    flex: 1,
-    fontFamily: 'regular',
-    letterSpacing: 0.3,
-    fontSize: 16,
-  },
-  timeContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-  time: {
-    fontFamily: 'regular',
-    letterSpacing: 0.3,
-    color: colorsTheme.grey,
-    fontSize: 12,
-  },
-  name: {
-    fontFamily: 'medium',
-    letterSpacing: 0.3,
-    color: colorsTheme.bubbleTextColor,
-  },
-  image: {
-    width: 300,
-    height: 300,
-    marginBottom: 5,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    wrapperStyle: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    container: {
+      backgroundColor: 'white',
+      borderRadius: 6,
+      padding: 5,
+      marginBottom: 10,
+      borderColor: colorsTheme.bubbleBorderColor,
+      borderWidth: 1,
+    },
+    text: {
+      fontFamily: 'regular',
+      letterSpacing: 0.3,
+    },
+    menuItemContainer: {
+      flexDirection: 'row',
+      padding: 5,
+    },
+    menuText: {
+      flex: 1,
+      fontFamily: 'regular',
+      letterSpacing: 0.3,
+      fontSize: 16,
+    },
+    timeContainer: {
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+    },
+    time: {
+      fontFamily: 'regular',
+      letterSpacing: 0.3,
+      color: colorsTheme.grey,
+      fontSize: 12,
+    },
+    name: {
+      fontFamily: 'medium',
+      letterSpacing: 0.3,
+      color: colorsTheme.bubbleTextColor,
+    },
+    image: {
+      width: 300,
+      height: 300,
+      marginBottom: 5,
+    },
+  })
 
 export default Bubble

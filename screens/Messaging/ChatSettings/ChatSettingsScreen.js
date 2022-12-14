@@ -25,6 +25,7 @@ import getColors from '../../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const ChatSettingsScreen = (props) => {
+  const colorsTheme = getColors()
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
@@ -117,7 +118,7 @@ const ChatSettingsScreen = (props) => {
     <PageContainer>
       <PageTitle text="Chat Settings" />
 
-      <ScrollView contentContainerStyle={styles.scrollView}>
+      <ScrollView contentContainerStyle={stylesFor(colorsTheme).scrollView}>
         <ProfileImage
           showEditButton={true}
           size={80}
@@ -136,8 +137,8 @@ const ChatSettingsScreen = (props) => {
           errorText={formState.inputValidities['chatName']}
         />
 
-        <View style={styles.sectionContainer}>
-          <Text style={styles.heading}>
+        <View style={stylesFor(colorsTheme).sectionContainer}>
+          <Text style={stylesFor(colorsTheme).heading}>
             {chatData.users.length} Participants
           </Text>
 
@@ -229,26 +230,27 @@ const ChatSettingsScreen = (props) => {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  scrollView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  sectionContainer: {
-    width: '100%',
-    marginTop: 10,
-  },
-  heading: {
-    marginVertical: 8,
-    color: colorsTheme.textColor,
-    fontFamily: 'bold',
-    letterSpacing: 0.3,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    scrollView: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    sectionContainer: {
+      width: '100%',
+      marginTop: 10,
+    },
+    heading: {
+      marginVertical: 8,
+      color: colorsTheme.textColor,
+      fontFamily: 'bold',
+      letterSpacing: 0.3,
+    },
+  })
 
 export default ChatSettingsScreen
