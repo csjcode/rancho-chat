@@ -4,6 +4,7 @@ import chatSlice from './chatSlice'
 import messagesSlice from './messagesSlice'
 import userSlice from './userSlice'
 import menuSlice from './menuSlice'
+import coinsSlice from './coinsSlice'
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     chats: chatSlice,
     messages: messagesSlice,
     menu: menuSlice,
+    coins: coinsSlice,
   },
 })
