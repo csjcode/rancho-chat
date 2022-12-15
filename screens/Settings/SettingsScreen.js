@@ -35,7 +35,6 @@ const SettingsScreen = (props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const userData = useSelector((state) => state.auth.userData)
-  const menuData = useSelector((state) => state.menu.storedMenu)
   // console.log(`colorsTheme SettingsScreen ${JSON.stringify(colorsTheme)}`)
 
   const firstName = userData.firstName || ''
@@ -76,7 +75,7 @@ const SettingsScreen = (props) => {
     try {
       setIsLoading(true)
       await updateSignedInUserData(userData.userId, updatedValues)
-      dispatch(updateLoggedInUserData({ newData: updatedValues }))
+      dispatch(setStoredCoins({ newData: updatedValues }))
 
       setShowSuccessMessage(true)
 
