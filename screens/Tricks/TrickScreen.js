@@ -6,14 +6,15 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
   FontAwesome5,
+  Entypo,
 } from '@expo/vector-icons'
 import { FlatList, TouchableOpacity } from 'react-native'
 import getColors from '../../constants/colors/getColors'
-var colorsTheme = getColors()
+const colorsTheme = getColors()
 
 const TrickScreen = (props) => {
   console.log('trick screen')
-  var colorsTheme = getColors()
+  const colorsTheme = getColors()
   return (
     <View style={stylesFor(colorsTheme).container}>
       <FlatList
@@ -107,11 +108,11 @@ const itemData = [
     ),
   },
   {
-    label: 'Tool6',
-    screen: 'Map',
+    label: 'Notes',
+    screen: 'NotesScreen',
     icon: (
-      <Ionicons
-        name="settings-outline"
+      <Entypo
+        name="add-to-list"
         size={45}
         color={colorsTheme.trickScreenIcon}
       />
@@ -211,10 +212,8 @@ const stylesFor = (colorsTheme) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      flexDirection: 'column',
       paddingTop: 20,
       alignItems: 'center',
-      // justifyContent: 'stretch',
       backgroundColor: colorsTheme.trickScreenBackground,
       width: '100%',
       borderTopColor: '#333',

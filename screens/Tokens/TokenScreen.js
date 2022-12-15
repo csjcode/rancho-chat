@@ -7,20 +7,23 @@ import getColors from '../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const TokenScreen = () => {
+  const colorsTheme = getColors()
   return (
     <PageContainer>
-      <View style={styles.container}>
+      <View style={stylesFor(colorsTheme).container}>
         <TokenPriceList />
       </View>
     </PageContainer>
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 20,
-  },
-})
+const stylesFor = (colorsTheme) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      marginTop: 20,
+      backgroundColor: colorsTheme.backgroundColorSpecial,
+    },
+  })
 
 export default TokenScreen

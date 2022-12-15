@@ -9,12 +9,11 @@ import NewChatScreen from '../screens/Messaging/NewChat/NewChatScreen'
 import TestingScreen from '../screens/Testing/TestingScreen'
 
 import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
-import { logger } from '../utils/logging/console'
 import Mapview from '../screens/Map/Mapview'
 import TokenScreen from '../screens/Tokens/TokenScreen'
+import NotesScreen from '../screens/Notes/NotesScreen'
 import StepsCounterPermissions from '../components/StepsCounterPermissions'
 import getColors from '../constants/colors/getColors'
-import { setStoredMenu } from '../store/menuSlice'
 const colorsTheme = getColors()
 
 const Stack = createNativeStackNavigator()
@@ -75,8 +74,10 @@ export const MainNavigatorStack = () => {
           component={Mapview}
           options={{
             title: 'Maps',
-            headerTintColor: 'white',
-            headerStyle: { backgroundColor: 'black' },
+            headerTintColor: colorsTheme.mainTabHeaderTitle,
+            headerStyle: {
+              backgroundColor: colorsTheme.tabNavHeader,
+            },
             headerTitle: 'Local Map',
             headerBackTitle: 'Back',
           }}
@@ -87,7 +88,10 @@ export const MainNavigatorStack = () => {
           options={{
             headerTitle: 'Token Screen',
             headerBackTitle: 'Back',
-            headerStyle: { borderColor: 'red', borderWidth: 2 },
+            headerTintColor: colorsTheme.mainTabHeaderTitle,
+            headerStyle: {
+              backgroundColor: colorsTheme.tabNavHeader,
+            },
           }}
         />
         <Stack.Screen
@@ -103,6 +107,19 @@ export const MainNavigatorStack = () => {
           component={TestingScreen}
           options={{
             headerTitle: 'Testing Screen',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="NotesScreen"
+          component={NotesScreen}
+          options={{
+            title: 'Notes',
+            headerTitle: 'Notes',
+            headerTintColor: colorsTheme.mainTabHeaderTitle,
+            headerStyle: {
+              backgroundColor: colorsTheme.tabNavHeader,
+            },
             headerBackTitle: 'Back',
           }}
         />
