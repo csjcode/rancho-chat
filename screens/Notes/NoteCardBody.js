@@ -2,37 +2,43 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import { FontAwesome } from '@expo/vector-icons'
-import NoteCardBody from './NoteCardBody'
 import NoteCardHeader from './NoteCardHeader'
 import getColors from '../../constants/colors/getColors'
 
 const colorsTheme = getColors()
 
-const NoteCard = (props) => {
+const NoteCardBody = (props) => {
   const { id, title, message, dateTime, geoLatLong } = props.item
-  const listKey = `${id}${title.slice(0, 10)}`
-
-  const [messageCardVisible, messageCardVisibleSet] = useState(false)
+  // const listKey = `${id}${title.slice(0, 10)}`
 
   return (
-    <View
-      style={{
-        borderColor: '#0e4429',
-        borderWidth: 1,
-        marginBottom: 2,
-        marginTop: 5,
-        padding: 10,
-        width: '95%',
-      }}
-      key={listKey}
-    >
-      <NoteCardHeader
-        {...props}
-        messageCardVisible={messageCardVisible}
-        messageCardVisibleSet={messageCardVisibleSet}
-      />
-      {messageCardVisible && <NoteCardBody {...props} />}
-    </View>
+    <>
+      <View>
+        <Text style={{ color: '#e5e5e5', fontSize: 14 }}>{message}</Text>
+      </View>
+      <View style={{ marginTop: 7 }}>
+        <View>
+          <Text
+            style={{
+              color: 'silver',
+              fontSize: 11,
+            }}
+          >
+            Time: {dateTime}
+          </Text>
+        </View>
+        <View>
+          <Text
+            style={{
+              color: 'silver',
+              fontSize: 11,
+            }}
+          >
+            Location: {geoLatLong}
+          </Text>
+        </View>
+      </View>
+    </>
   )
 }
 const stylesFor = (colorsTheme) =>
@@ -58,4 +64,4 @@ const stylesFor = (colorsTheme) =>
     },
   })
 
-export default NoteCard
+export default NoteCardBody
