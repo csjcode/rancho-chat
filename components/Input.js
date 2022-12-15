@@ -10,17 +10,22 @@ const Input = (props) => {
   const [value, setValue] = useState(props.initialValue)
 
   const onChangeText = (text) => {
+    console.log(text)
     setValue(text)
     props.onInputChanged(props.id, text)
   }
 
-  // const styles = stylesSetup
+  const styleMerge = (className) => {
+    return {
+      ...stylesFor(colorsTheme)[className],
+      ...props?.addStyles?.[className],
+    }
+  }
 
   return (
-    <View style={stylesFor(colorsTheme).container}>
-      <Text style={stylesFor(colorsTheme).label}>{props.label}</Text>
-
-      <View style={stylesFor(colorsTheme).inputContainer}>
+    <View style={styleMerge('container')}>
+      <Text style={styleMerge('label')}>{props.label}</Text>
+      <View style={styleMerge('inputContainer')}>
         {props.icon && (
           <props.iconPack
             name={props.icon}
@@ -30,7 +35,7 @@ const Input = (props) => {
         )}
         <TextInput
           {...props}
-          style={stylesFor(colorsTheme).inputText}
+          style={styleMerge('inputText')}
           onChangeText={onChangeText}
           value={value}
         />
@@ -51,6 +56,7 @@ const stylesFor = (colorsTheme) =>
   StyleSheet.create({
     container: {
       width: '100%',
+      // marginBottom: 30,
     },
     label: {
       marginVertical: 8,
@@ -82,6 +88,7 @@ const stylesFor = (colorsTheme) =>
       paddingLeft: 10,
       paddingRight: 10,
       width: '100%',
+      color: colorsTheme.formInputTextColor,
     },
     errorContainer: {
       marginVertical: 5,

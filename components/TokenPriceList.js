@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import {
   Text,
+  TextInput,
   View,
   StyleSheet,
   Button,
@@ -12,7 +13,9 @@ import { getSolEcoPrices } from './apiTokenPrices'
 import getColors from '../constants/colors/getColors'
 import { useDispatch, useSelector } from 'react-redux'
 // const colorsTheme = getColors()
-import { removeStoredCoin } from '../store/coinsSlice'
+import { removeStoredCoin, addStoredTokenList } from '../store/coinsSlice'
+import Input from '../components/Input'
+import SubmitButton from './SubmitButton'
 
 export default function TokenPrice() {
   const colorsTheme = getColors()
@@ -24,6 +27,8 @@ export default function TokenPrice() {
   const [loading, loadingSet] = useState(0)
   const [visibleRemoveButtons, visibleRemoveButtonsSet] = useState(false)
   const [removeCoin, removeCoinSet] = useState('')
+  const [addToken, addTokenSet] = useState(false)
+  const [addTokenList, addTokenListSet] = useState('')
   const [updatePrices, updatePricesSet] = useState(true)
   // dispatch(removeStoredCoin({ ...storedCoins, tokenName }))
 
@@ -37,6 +42,30 @@ export default function TokenPrice() {
       removeCoinSet('')
     }
   }, [removeCoin, storedCoins])
+
+  const saveHandlerAddToken = async () => {
+    // const saveHandlerAddToken = useCallback(async () => {
+    try {
+      // setIsLoading(true)
+      // await updateSignedInUserData(userData.userId, updatedValues)
+      const addTokenListStored = addTokenList.split(',')
+      console.log(`addTokenListArr ${addTokenListStored}`)
+      dispatch(addStoredTokenList({ ...storedCoins, addTokenListStored }))
+      addTokenSet(!addToken)
+      updatePricesSet(true)
+      visibleRemoveButtonsSet(false)
+      // setShowSuccessMessage(true)
+
+      setTimeout(() => {
+        // setShowSuccessMessage(false)
+      }, 3000)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      // setIsLoading(false)
+    }
+  }
+  // , [dispatch])
 
   const confirmAlertTokenRemove = (type, title, message, tokenName) => {
     return Alert.alert(title, message, [
@@ -57,7 +86,7 @@ export default function TokenPrice() {
   }
 
   const RowTable = () => {
-    console.log(Object.keys(priceList))
+    // console.log(Object.keys(priceList))
 
     const modPriceList = Object.keys(priceList).sort(
       (a, b) => coinList.indexOf(a) - coinList.indexOf(b),
@@ -133,6 +162,12 @@ export default function TokenPrice() {
     })
   }, [removeCoin, updatePrices])
 
+  const inputChangedHandler = (id, text) => {
+    console.log(`inputChangedHandler`)
+    console.log(id, text)
+    addTokenListSet(text)
+  }
+
   return (
     <View style={stylesFor(colorsTheme).tableContainer}>
       <View style={stylesFor(colorsTheme).buttonContainer}>
@@ -141,6 +176,49 @@ export default function TokenPrice() {
           title={'Update Prices'}
           onPress={() => updatePricesSet(true)}
         ></Button>
+      </View>
+      <View>
+        <TouchableOpacity>
+          <Text
+            onPress={() => addTokenSet(!addToken)}
+            style={{ fontSize: 12, color: 'silver', marginBottom: 10 }}
+          >
+            {addToken && (
+              <FontAwesome name="arrow-circle-left" size={14} color="silver" />
+            )}
+            {addToken && ' Exit '}
+            Add Tokens
+          </Text>
+        </TouchableOpacity>
+        {addToken && (
+          <>
+            {/* <Text style={{ fontSize: 12, color: 'silver', marginBottom: 10 }}>
+              Add input here
+            </Text>
+            <TouchableOpacity onPress={() => addTokenSet(!addToken)}>
+              <Text style={{ fontSize: 12, color: 'silver' }}>GO</Text>
+            </TouchableOpacity> */}
+            <Input
+              id="addTokens"
+              label="Add tokens"
+              autoCapitalize="none"
+              initialValue={''}
+              allowEmpty={true}
+              onInputChanged={inputChangedHandler}
+              addStyles={{
+                inputContainer: { paddingHorizontal: 0, paddingVertical: 0 },
+                container: { marginBottom: 20 },
+              }}
+              // errorText={formState.inputValidities['chatName']}
+            />
+            <SubmitButton
+              title="Save"
+              onPress={saveHandlerAddToken}
+              style={{ width: '100%', marginBottom: 30 }}
+              // disabled={!formState.formIsValid}
+            />
+          </>
+        )}
       </View>
 
       <View style={stylesFor(colorsTheme).rowHeader}>
@@ -163,7 +241,7 @@ export default function TokenPrice() {
         <TouchableOpacity
           onPress={() => visibleRemoveButtonsSet(!visibleRemoveButtons)}
         >
-          <Text style={{ color: 'silver', marginTop: 10 }}>
+          <Text style={{ fontSize: 12, color: 'silver', marginTop: 10 }}>
             {visibleRemoveButtons && (
               <FontAwesome name="arrow-circle-left" size={14} color="silver" />
             )}

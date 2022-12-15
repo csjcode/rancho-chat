@@ -9,7 +9,7 @@ const coinsSlice = createSlice({
   },
   reducers: {
     setStoredCoins: (state, action) => {
-      // console.log(`action ${JSON.stringify(action)}`)
+      console.log(`action ${JSON.stringify(action)}`)
       const newCoins = action.payload
       state.storedCoins = newCoins
     },
@@ -23,8 +23,20 @@ const coinsSlice = createSlice({
       // const newCoins = state.storedCoins.coins.pop(action.payload)
       state.storedCoins.coins = newCoins
     },
+    addStoredTokenList: (state, action) => {
+      console.log(`action ${JSON.stringify(action.payload)}`)
+      const newCoins = Array.from(
+        new Set([
+          ...action.payload.coins,
+          ...action.payload.addTokenListStored,
+        ]),
+      )
+      console.log(`newCoins ${newCoins}`)
+      state.storedCoins.coins = newCoins
+    },
   },
 })
 export const setStoredCoins = coinsSlice.actions.setStoredCoins
 export const removeStoredCoin = coinsSlice.actions.removeStoredCoin
+export const addStoredTokenList = coinsSlice.actions.addStoredTokenList
 export default coinsSlice.reducer
