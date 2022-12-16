@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Switch, Text, View } from 'react-native'
+import { removeStoredNote, setStoredNote } from '../../store/notesSlice'
 import { styleProps, stylesFor } from './styles/NoteEditStyles'
 
 import Input from '../../components/Input'
 import SubmitButton from '../../components/SubmitButton'
 import getColors from '../../constants/colors/getColors'
+import { useDispatch } from 'react-redux'
+import uuid from 'react-native-uuid'
 
 const colorsTheme = getColors()
 
@@ -13,10 +16,14 @@ const initialNoteData = {
   message: '',
 }
 
-const NoteEdit = () => {
+const NoteEdit = (props) => {
+  const dispatch = useDispatch()
+
   console.log(`initialNoteData ${JSON.stringify(initialNoteData)}`)
   const [addLocation, addLocationSet] = useState(true)
   const [editNoteData, editNoteDataSet] = useState(initialNoteData)
+  const [formReset, formResetSet] = useState(false)
+
   const inputChangedHandler = (id, text) => {
     console.log(
       `inside NoteEdit inputChangedHandler - id: ${id}, text: ${text}`,
@@ -26,20 +33,25 @@ const NoteEdit = () => {
     // editNoteDataSet((prevState) => (prevState.id = text))
   }
   const handleSubmitEditNote = (message, title) => {
-    const newNoteDateTime = new Date.time()
-
+    const date = new Date()
+    const newNoteDate = Date.now()
+    const newNoteDateIso = date.toISOString()
     const submitNoteData = {
-      id: '11edc52b-3915-4d71-1058-f8885e29d894',
+      id: uuid.v4(),
       type: 'todo',
-      title: title,
-      message: message,
+      title: editNoteData.title,
+      message: editNoteData.message,
       geoLatLong: '20.972382846870747, -89.62264760811169',
       geoLatLongTarget: '',
       dateTimeTarget: '',
-      date: newNoteDateTime,
-      dateTime: '2022-12-15T18:35:28.284',
+      dateTime: newNoteDate,
+      dateTimeIso: newNoteDateIso,
     }
-    // editNoteDataSet(handleSubmitEditNote)
+    console.log(submitNoteData)
+    dispatch(setStoredNote({ submitNoteData }))
+    editNoteDataSet(initialNoteData)
+    props.addNoteVisibleSet(false)
+    props.listNotesVisibleSet(true)
   }
   return (
     <View>
@@ -87,7 +99,7 @@ const NoteEdit = () => {
       <View style={{ marginTop: 40, width: '50%' }}>
         <SubmitButton
           title="Add Note"
-          onPress={() => handleSubmitEditNote}
+          onPress={() => handleSubmitEditNote()}
           style={{ marginTop: 20 }}
           disabled={false}
         />

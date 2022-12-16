@@ -60,17 +60,18 @@ const notesSlice = createSlice({
       // )
       // state.storedNotes.notes = newnotes
     },
-    addStoredNoteList: (state, action) => {
+    setStoredNote: (state, action) => {
       console.log(`action ${JSON.stringify(action.payload)}`)
-      const newnotes = Array.from(
-        new Set([...action.payload.notes, ...action.payload.addNoteListStored]),
-      )
-      console.log(`newnotes ${newnotes}`)
-      state.storedNotes.notes = newnotes
+      state.storedNotes.notes.push(action.payload.submitNoteData)
+      // const newnotes = Array.from(
+      //   new Set([...action.payload.notes, ...action.payload.addNoteListStored]),
+      // )
+      // console.log(`newnotes ${newnotes}`)
+      // state.storedNotes.notes = newnotes
     },
   },
 })
 export const setStoredNotes = notesSlice.actions.setStoredNotes
 export const removeStoredNote = notesSlice.actions.removeStoredNote
-export const addStoredTokenList = notesSlice.actions.addStoredNoteList
+export const setStoredNote = notesSlice.actions.setStoredNote
 export default notesSlice.reducer

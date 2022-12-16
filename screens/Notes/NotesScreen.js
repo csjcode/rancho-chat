@@ -26,7 +26,7 @@ export const NotesScreen = (props) => {
         </TouchableOpacity>
       </View>
 
-      {listNotesVisible && (
+      {listNotesVisible && !addNoteVisible && (
         <View>
           <NotesListContainer />
         </View>
@@ -37,6 +37,7 @@ export const NotesScreen = (props) => {
           <NoteEdit
             addNoteVisible={addNoteVisible}
             addNoteVisibleSet={addNoteVisibleSet}
+            listNotesVisibleSet={listNotesVisibleSet}
           />
         </View>
       )}
