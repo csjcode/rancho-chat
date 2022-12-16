@@ -10,7 +10,7 @@ const colorsTheme = getColors()
 const NoteCardsList = ({ dataSample }) => {
   return dataSample.map((item) => {
     const listKey = `${item.id}${item.title.slice(0, 10)}`
-    return <NoteCard listKey={listKey} item={item} />
+    return <NoteCard key={listKey} item={item} />
   })
 }
 

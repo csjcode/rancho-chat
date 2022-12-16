@@ -7,7 +7,7 @@ const colorsTheme = getColors()
 
 const NoteCardBody = (props) => {
   const { id, title, message, dateTime, geoLatLong } = props.item
-  const { listKey } = props
+  const { key } = props
 
   return (
     <>

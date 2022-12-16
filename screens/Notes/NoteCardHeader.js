@@ -9,14 +9,14 @@ const colorsTheme = getColors()
 const NoteCardHeader = (props) => {
   const { id, title } = props.item
 
-  const { messageCardVisible, messageCardVisibleSet, listKey } = props
+  const { messageCardVisible, messageCardVisibleSet, key } = props
 
   return (
     <View
       style={{
         width: '95%',
       }}
-      key={listKey}
+      key={key}
     >
       <View
         style={{
@@ -25,7 +25,7 @@ const NoteCardHeader = (props) => {
           marginBottom: 5,
           width: '100%',
         }}
-        key={listKey}
+        key={key}
       >
         <View style={{ flex: 1 }}>
           <TouchableOpacity
@@ -43,7 +43,7 @@ const NoteCardHeader = (props) => {
           <TouchableOpacity
             onPress={() => messageCardVisibleSet(!messageCardVisible)}
           >
-            <Text key={listKey} style={{ color: '#e5e5e5', fontSize: 18 }}>
+            <Text key={key} style={{ color: '#e5e5e5', fontSize: 18 }}>
               {title}
             </Text>
           </TouchableOpacity>

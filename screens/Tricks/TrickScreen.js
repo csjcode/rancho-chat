@@ -1,19 +1,20 @@
-import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
 import {
-  Ionicons,
-  FontAwesome,
-  MaterialIcons,
-  MaterialCommunityIcons,
-  FontAwesome5,
   Entypo,
+  FontAwesome,
+  FontAwesome5,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
 } from '@expo/vector-icons'
 import { FlatList, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+
+import React from 'react'
 import getColors from '../../constants/colors/getColors'
 const colorsTheme = getColors()
 
 const TrickScreen = (props) => {
-  console.log('trick screen')
+  // console.log('trick screen')
   const colorsTheme = getColors()
   return (
     <View style={stylesFor(colorsTheme).container}>
