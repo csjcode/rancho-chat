@@ -27,16 +27,13 @@ import { reducer } from '../../utils/reducers/formReducer'
 import { updateLoggedInUserData } from '../../store/authSlice'
 import { validateInput } from '../../utils/actions/formActions'
 
-let colorsTheme = getColors()
-
 const SettingsScreen = (props) => {
-  let colorsTheme = getColors()
-  // console.log(`props SettingsScreen ${JSON.stringify(props)}`)
+  let colorsTheme = stylesFor(getColors())
+
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const userData = useSelector((state) => state.auth.userData)
-  // console.log(`colorsTheme SettingsScreen ${JSON.stringify(colorsTheme)}`)
 
   const firstName = userData.firstName || ''
   const lastName = userData.lastName || ''
@@ -102,10 +99,10 @@ const SettingsScreen = (props) => {
   }
 
   return (
-    <PageContainer style={stylesFor(colorsTheme).pageContainer}>
+    <PageContainer style={colorsTheme.pageContainer}>
       {/* <PageTitle text="Settings" /> */}
 
-      <ScrollView contentContainerStyle={stylesFor(colorsTheme).formContainer}>
+      <ScrollView contentContainerStyle={colorsTheme.formContainer}>
         <ProfileImage
           size={80}
           userId={userData.userId}
