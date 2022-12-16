@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
 import { FontAwesome } from '@expo/vector-icons'
 import getColors from '../../constants/colors/getColors'
+import { stylesFor } from './styles/NoteCardHeaderStyle'
 
 const colorsTheme = getColors()
 
@@ -12,25 +13,12 @@ const NoteCardHeader = (props) => {
   const { messageCardVisible, messageCardVisibleSet, key } = props
 
   return (
-    <View
-      style={{
-        width: '95%',
-      }}
-      key={key}
-    >
-      <View
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          marginBottom: 5,
-          width: '100%',
-        }}
-        key={key}
-      >
+    <View style={stylesFor(colorsTheme).container} key={key}>
+      <View style={stylesFor(colorsTheme).bodyView} key={key}>
         <View style={{ flex: 1 }}>
           <TouchableOpacity
             onPress={() => messageCardVisibleSet(!messageCardVisible)}
-            style={{ marginRight: 0 }}
+            style={stylesFor(colorsTheme).caretRightTouchable}
           >
             <FontAwesome
               name={messageCardVisible ? 'caret-down' : 'caret-right'}
@@ -43,7 +31,7 @@ const NoteCardHeader = (props) => {
           <TouchableOpacity
             onPress={() => messageCardVisibleSet(!messageCardVisible)}
           >
-            <Text key={key} style={{ color: '#e5e5e5', fontSize: 18 }}>
+            <Text key={key} style={stylesFor(colorsTheme).titleText}>
               {title}
             </Text>
           </TouchableOpacity>
@@ -51,7 +39,7 @@ const NoteCardHeader = (props) => {
         <View style={{ flex: 1 }}>
           <TouchableOpacity
             onPress={() => alert(`remove ${id}`)}
-            style={{ marginRight: 5 }}
+            style={stylesFor(colorsTheme).removeTouchable}
           >
             <FontAwesome name="remove" size={18} color="red" />
           </TouchableOpacity>
@@ -60,27 +48,6 @@ const NoteCardHeader = (props) => {
     </View>
   )
 }
-const stylesFor = (colorsTheme) =>
-  StyleSheet.create({
-    container: {
-      // backgroundColor: colorsTheme.backgroundColorSpecial,
-      // borderTopColor: '#333',
-      // borderWidth: 1,
-      // flex: 1,
-      // paddingTop: 20,
-      // width: '100%',
-    },
-    containerListNotes: {
-      // marginBottom: 10,
-      // marginTop: 10,
-    },
-    noteListColumn: {
-      // color: colorsTheme.textColor,
-      // width: 100,
-    },
-    textStart: {
-      // color: colorsTheme.textColor, // width: '50%',
-    },
-  })
+// const stylesFor = (colorsTheme) => StyleSheet.create({})
 
 export default NoteCardHeader

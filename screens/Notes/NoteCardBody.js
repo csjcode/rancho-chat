@@ -1,37 +1,26 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Text, View } from 'react-native'
 
 import getColors from '../../constants/colors/getColors'
-
-const colorsTheme = getColors()
+import { stylesFor } from './styles/NoteCardBodyStyle'
 
 const NoteCardBody = (props) => {
+  const colorsTheme = getColors()
   const { id, title, message, dateTime, geoLatLong } = props.item
-  const { key } = props
 
   return (
     <>
       <View>
-        <Text style={{ color: '#e5e5e5', fontSize: 14 }}>{message}</Text>
+        <Text style={stylesFor(colorsTheme).messageText}>{message}</Text>
       </View>
-      <View style={{ marginTop: 7 }}>
+      <View style={stylesFor(colorsTheme).footerView}>
         <View>
-          <Text
-            style={{
-              color: 'silver',
-              fontSize: 11,
-            }}
-          >
+          <Text style={stylesFor(colorsTheme).dateTimeText}>
             Time: {dateTime}
           </Text>
         </View>
         <View>
-          <Text
-            style={{
-              color: 'silver',
-              fontSize: 11,
-            }}
-          >
+          <Text style={stylesFor(colorsTheme).geoLatLongText}>
             Location: {geoLatLong}
           </Text>
         </View>
@@ -39,27 +28,5 @@ const NoteCardBody = (props) => {
     </>
   )
 }
-const stylesFor = (colorsTheme) =>
-  StyleSheet.create({
-    container: {
-      backgroundColor: colorsTheme.backgroundColorSpecial,
-      borderTopColor: '#333',
-      borderWidth: 0,
-      flex: 1,
-      paddingTop: 20,
-      width: '100%',
-    },
-    containerListNotes: {
-      marginBottom: 10,
-      marginTop: 10,
-    },
-    noteListColumn: {
-      color: colorsTheme.textColor,
-      width: 100,
-    },
-    textStart: {
-      color: colorsTheme.textColor, // width: '50%',
-    },
-  })
 
 export default NoteCardBody
