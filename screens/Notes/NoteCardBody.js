@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-import { FontAwesome } from '@expo/vector-icons'
-import NoteCardHeader from './NoteCardHeader'
 import getColors from '../../constants/colors/getColors'
 
 const colorsTheme = getColors()
 
 const NoteCardBody = (props) => {
   const { id, title, message, dateTime, geoLatLong } = props.item
-  // const listKey = `${id}${title.slice(0, 10)}`
+  const { listKey } = props
 
   return (
     <>
@@ -46,7 +44,7 @@ const stylesFor = (colorsTheme) =>
     container: {
       backgroundColor: colorsTheme.backgroundColorSpecial,
       borderTopColor: '#333',
-      borderWidth: 1,
+      borderWidth: 0,
       flex: 1,
       paddingTop: 20,
       width: '100%',

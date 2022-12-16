@@ -1,6 +1,6 @@
 export const dataSample = [
   {
-    id: '1',
+    id: 1,
     type: 'todo',
     title: 'Get groceries',
     message: 'I need to get pasta, milk, eggs',
