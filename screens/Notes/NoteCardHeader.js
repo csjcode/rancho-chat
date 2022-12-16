@@ -1,6 +1,9 @@
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { addStoredNoteList, removeStoredNote } from '../../store/notesSlice'
+import { useDispatch, useSelector } from 'react-redux'
 
+// import ConfirmAlert from '../../components/ConfirmAlert'
 import { FontAwesome } from '@expo/vector-icons'
 import getColors from '../../constants/colors/getColors'
 import { stylesFor } from './styles/NoteCardHeaderStyle'
@@ -9,8 +12,29 @@ const colorsTheme = getColors()
 
 const NoteCardHeader = (props) => {
   const { id, title } = props.item
-
+  const dispatch = useDispatch()
+  const storedNotes = useSelector((state) => state.notes.storedNotes.notes)
   const { messageCardVisible, messageCardVisibleSet, key } = props
+
+  const handleConfirmRemoveNote = (removeNoteId) => {
+    const removedNote = storedNotes.filter((note) => note.id === removeNoteId)
+    let title = `Remove note (Permanently)`
+    let message = `Do you want to remove "${removedNote[0].title}"?`
+    return Alert.alert(title, message, [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'OK',
+        onPress: () => {
+          console.log(`OK Pressed for ${removeNoteId}`)
+          dispatch(removeStoredNote({ removeNoteId }))
+        },
+      },
+    ])
+  }
 
   return (
     <View style={stylesFor(colorsTheme).container} key={key}>
@@ -38,7 +62,7 @@ const NoteCardHeader = (props) => {
         </View>
         <View style={{ flex: 1 }}>
           <TouchableOpacity
-            onPress={() => alert(`remove ${id}`)}
+            onPress={() => handleConfirmRemoveNote(id)}
             style={stylesFor(colorsTheme).removeTouchable}
           >
             <FontAwesome name="remove" size={18} color="red" />

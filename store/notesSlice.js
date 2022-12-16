@@ -37,11 +37,28 @@ const notesSlice = createSlice({
       state.storedNotes = newnotes
     },
     removeStoredNote: (state, action) => {
-      console.log(`removeStoredNote ${JSON.stringify(action)}`)
-      const newnotes = action.payload.notes.filter(
-        (item) => item !== action.payload.removenote,
+      // console.log(`actions ${action}`)
+      // console.log(
+      //   `removeStoredNote ${JSON.stringify(action.payload.removeNoteId)}`,
+      // )
+      // console.log(
+      //   `state.storedNotes.notes ${JSON.stringify(state.storedNotes.notes)}`,
+      // )
+
+      const newNotesAfterRemovedId = state.storedNotes.notes.filter(
+        (note) => note.id !== action.payload.removeNoteId,
       )
-      state.storedNotes.notes = newnotes
+
+      // console.log(
+      //   `newNotesAfterRemovedId ${JSON.stringify(newNotesAfterRemovedId)}`,
+      // )
+
+      state.storedNotes.notes = newNotesAfterRemovedId
+
+      // const newnotes = action.payload.notes.filter(
+      //   (item) => item !== action.payload.removenote,
+      // )
+      // state.storedNotes.notes = newnotes
     },
     addStoredNoteList: (state, action) => {
       console.log(`action ${JSON.stringify(action.payload)}`)
