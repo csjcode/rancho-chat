@@ -44,8 +44,8 @@ const NoteEdit = (props) => {
       geoLatLong: '20.972382846870747, -89.62264760811169',
       geoLatLongTarget: '',
       dateTimeTarget: '',
-      dateTime: newNoteDate,
-      dateTimeIso: newNoteDateIso,
+      timestamp: newNoteDate,
+      dateTime: newNoteDateIso,
     }
     console.log(submitNoteData)
     dispatch(setStoredNote({ submitNoteData }))

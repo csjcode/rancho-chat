@@ -13,7 +13,7 @@ const notesSlice = createSlice({
           geoLatLong: '20.972382846870747, -89.62264760811169',
           geoLatLongTarget: '',
           dateTimeTarget: '',
-          date: 1671215685121,
+          timestamp: 1671215685121,
           dateTime: '2022-12-15T18:35:28.284',
         },
         {
@@ -24,7 +24,7 @@ const notesSlice = createSlice({
           geoLatLong: '20.972382846870747, -89.62264760811169',
           geoLatLongTarget: '',
           dateTimeTarget: '',
-          date: 1671215695120,
+          timestamp: 1671215695120,
           dateTime: '2022-12-16T18:35:28.284',
         },
       ],
@@ -37,37 +37,21 @@ const notesSlice = createSlice({
       state.storedNotes = newnotes
     },
     removeStoredNote: (state, action) => {
-      // console.log(`actions ${action}`)
-      // console.log(
-      //   `removeStoredNote ${JSON.stringify(action.payload.removeNoteId)}`,
-      // )
-      // console.log(
-      //   `state.storedNotes.notes ${JSON.stringify(state.storedNotes.notes)}`,
-      // )
-
       const newNotesAfterRemovedId = state.storedNotes.notes.filter(
         (note) => note.id !== action.payload.removeNoteId,
       )
 
-      // console.log(
-      //   `newNotesAfterRemovedId ${JSON.stringify(newNotesAfterRemovedId)}`,
-      // )
-
       state.storedNotes.notes = newNotesAfterRemovedId
-
-      // const newnotes = action.payload.notes.filter(
-      //   (item) => item !== action.payload.removenote,
-      // )
-      // state.storedNotes.notes = newnotes
     },
     setStoredNote: (state, action) => {
-      console.log(`action ${JSON.stringify(action.payload)}`)
-      state.storedNotes.notes.push(action.payload.submitNoteData)
-      // const newnotes = Array.from(
-      //   new Set([...action.payload.notes, ...action.payload.addNoteListStored]),
-      // )
-      // console.log(`newnotes ${newnotes}`)
-      // state.storedNotes.notes = newnotes
+      const newNotesList = [
+        ...state.storedNotes.notes,
+        action.payload.submitNoteData,
+      ]
+
+      newNotesList.sort((a, b) => b.timestamp - a.timestamp)
+
+      state.storedNotes.notes = newNotesList
     },
   },
 })
