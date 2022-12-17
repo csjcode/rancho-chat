@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { setNotesAsyncStorageObj } from '../utils/actions/noteActions'
 
 const notesSlice = createSlice({
   name: 'notes',
@@ -52,6 +53,8 @@ const notesSlice = createSlice({
       newNotesList.sort((a, b) => b.timestamp - a.timestamp)
 
       state.storedNotes.notes = newNotesList
+
+      // await setNotesAsyncStorageObj('notesList', newNotesList)
     },
   },
 })

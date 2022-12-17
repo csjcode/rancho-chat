@@ -4,7 +4,7 @@ export const stylesFor = (colorsTheme) =>
     container: {
       backgroundColor: colorsTheme.backgroundColorSpecial,
       borderTopColor: '#333',
-      borderWidth: 1,
+      borderWidth: 0,
       flex: 1,
       paddingTop: 20,
       width: '100%',

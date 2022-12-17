@@ -28,7 +28,7 @@ const stylesFor = (colorsTheme) =>
   StyleSheet.create({
     container: {
       borderColor: '#0e4429',
-      borderWidth: 2,
+      borderWidth: 1,
       marginBottom: 2,
       marginTop: 5,
       padding: 10,

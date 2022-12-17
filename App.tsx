@@ -1,16 +1,20 @@
 import "react-native-gesture-handler";
+
+import * as Font from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
 import { LogBox, StyleSheet, Text } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import * as SplashScreen from "expo-splash-screen";
+import { persistor, store } from "./store/store";
 import { useCallback, useEffect, useState } from "react";
-import * as Font from "expo-font";
+
 import AppNavigator from "./navigation/AppNavigator";
-import { Provider } from "react-redux";
-import { store } from "./store/store";
-import { MenuProvider } from "react-native-popup-menu";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { testMode } from "./utils/testMode";
+import { MenuProvider } from "react-native-popup-menu";
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
 import { logger } from "./utils/logging/console";
+import { testMode } from "./utils/testMode";
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted"]);
 testMode.clearLocalStorage && AsyncStorage.clear(); // to log out
@@ -62,11 +66,13 @@ export default function App() {
 
   return (
     <Provider store={store}>
-      <SafeAreaProvider style={styles.container} onLayout={onLayout}>
-        <MenuProvider>
-          <AppNavigator />
-        </MenuProvider>
-      </SafeAreaProvider>
+      <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
+        <SafeAreaProvider style={styles.container} onLayout={onLayout}>
+          <MenuProvider>
+            <AppNavigator />
+          </MenuProvider>
+        </SafeAreaProvider>
+      </PersistGate>
     </Provider>
   );
 }
