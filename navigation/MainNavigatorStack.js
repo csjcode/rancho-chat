@@ -1,26 +1,27 @@
-import React, { useEffect, useState, useMemo } from 'react'
-import { MainNavigatorTab } from './MainNavigatorTab'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { useSelector, useDispatch } from 'react-redux'
-import ContactScreen from '../screens/Contact/ContactScreen'
-import ChatSettingsScreen from '../screens/Messaging/ChatSettings/ChatSettingsScreen'
-import ChatScreen from '../screens/Messaging/Chat/ChatScreen'
-import NewChatScreen from '../screens/Messaging/NewChat/NewChatScreen'
-import TestingScreen from '../screens/Testing/TestingScreen'
+import React, { useEffect, useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
+import ChatScreen from '../screens/Messaging/Chat/ChatScreen'
+import ChatSettingsScreen from '../screens/Messaging/ChatSettings/ChatSettingsScreen'
+import ContactScreen from '../screens/Contact/ContactScreen'
 import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
+import { MainNavigatorTab } from './MainNavigatorTab'
 import Mapview from '../screens/Map/Mapview'
-import TokenScreen from '../screens/Tokens/TokenScreen'
+import NewChatScreen from '../screens/Messaging/NewChat/NewChatScreen'
 import NotesScreen from '../screens/Notes/NotesScreen'
 import StepsCounterPermissions from '../components/StepsCounterPermissions'
+import TestingScreen from '../screens/Testing/TestingScreen'
+import TokenScreen from '../screens/Tokens/TokenScreen'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import getColors from '../constants/colors/getColors'
+
 const colorsTheme = getColors()
 
 const Stack = createNativeStackNavigator()
 
 export const MainNavigatorStack = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ animation: 'none' }}>
       <Stack.Group
         screenOptions={{
           headerStyle: {
@@ -114,6 +115,7 @@ export const MainNavigatorStack = () => {
           name="NotesScreen"
           component={NotesScreen}
           options={{
+            animationEnabled: false,
             title: 'Notes',
             headerTitle: 'Notes',
             headerTintColor: colorsTheme.mainTabHeaderTitle,

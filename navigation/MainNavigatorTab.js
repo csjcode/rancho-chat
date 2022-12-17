@@ -1,12 +1,13 @@
+import { FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Ionicons, FontAwesome, FontAwesome5 } from '@expo/vector-icons'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import SettingsScreen from '../screens/Settings/SettingsScreen'
+
 import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
 import Mapview from '../screens/Map/Mapview'
+import SettingsScreen from '../screens/Settings/SettingsScreen'
 import TrickScreen from '../screens/Tricks/TrickScreen'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import getColors from '../constants/colors/getColors'
+import { useSelector } from 'react-redux'
 
 const Tab = createBottomTabNavigator()
 
@@ -18,6 +19,7 @@ export const MainNavigatorTab = (props) => {
     <Tab.Navigator
       screenOptions={{
         headerShadowVisible: false,
+        animationEnabled: false,
         headerStyle: {
           backgroundColor: colorsTheme.tabNavHeader,
           height: 40,
@@ -70,6 +72,7 @@ export const MainNavigatorTab = (props) => {
           children={() => <TrickScreen navigation={props.navigation} />}
           // component={TrickScreen}
           options={{
+            animationEnabled: false,
             headerStyle: {
               backgroundColor: colorsTheme.tabNavHeader,
               // height: 25,
