@@ -1,41 +1,39 @@
-import { Feather, FontAwesome } from '@expo/vector-icons'
-import React, { useCallback, useReducer, useState } from 'react'
 import {
-  View,
-  Text,
-  StyleSheet,
   ActivityIndicator,
   ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
-import Input from '../../components/Input'
-import PageContainer from '../../components/PageContainer'
-import PageTitle from '../../components/PageTitle'
-import ProfileImage from '../../components/ProfileImage'
-import SubmitButton from '../../components/SubmitButton'
-import SettingsMenuToggle from './SettingsMenuToggle'
-import SettingsStarMessages from './SettingsStarMessages'
-
-import colors from '../../constants/colors/colors'
-import { updateLoggedInUserData } from '../../store/authSlice'
+import { Feather, FontAwesome } from '@expo/vector-icons'
+import React, { useCallback, useReducer, useState } from 'react'
 import {
   updateSignedInUserData,
   userLogout,
 } from '../../utils/actions/authActions'
-import { validateInput } from '../../utils/actions/formActions'
-import { reducer } from '../../utils/reducers/formReducer'
-import getColors from '../../constants/colors/getColors'
+import { useDispatch, useSelector } from 'react-redux'
+
+import Input from '../../components/Input'
+import PageContainer from '../../components/PageContainer'
+import PageTitle from '../../components/PageTitle'
+import ProfileImage from '../../components/ProfileImage'
 import SettingsMenuTheme from './SettingsMenuTheme'
-let colorsTheme = getColors()
+import SettingsMenuToggle from './SettingsMenuToggle'
+import SettingsStarMessages from './SettingsStarMessages'
+import SubmitButton from '../../components/SubmitButton'
+import colors from '../../constants/colors/colors'
+import getColors from '../../constants/colors/getColors'
+import { reducer } from '../../utils/reducers/formReducer'
+import { updateLoggedInUserData } from '../../store/authSlice'
+import { validateInput } from '../../utils/actions/formActions'
 
 const SettingsScreen = (props) => {
-  let colorsTheme = getColors()
-  console.log(`props SettingsScreen ${JSON.stringify(props)}`)
+  let colorsTheme = stylesFor(getColors())
+
   const dispatch = useDispatch()
   const [isLoading, setIsLoading] = useState(false)
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
   const userData = useSelector((state) => state.auth.userData)
-  // console.log(`colorsTheme SettingsScreen ${JSON.stringify(colorsTheme)}`)
 
   const firstName = userData.firstName || ''
   const lastName = userData.lastName || ''
@@ -101,10 +99,10 @@ const SettingsScreen = (props) => {
   }
 
   return (
-    <PageContainer style={stylesFor(colorsTheme).pageContainer}>
+    <PageContainer style={colorsTheme.pageContainer}>
       {/* <PageTitle text="Settings" /> */}
 
-      <ScrollView contentContainerStyle={stylesFor(colorsTheme).formContainer}>
+      <ScrollView contentContainerStyle={colorsTheme.formContainer}>
         <ProfileImage
           size={80}
           userId={userData.userId}

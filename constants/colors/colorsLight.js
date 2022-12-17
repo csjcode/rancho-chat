@@ -2,6 +2,7 @@ const colorsLight = () => {
   const colorTheme = {
     themeMode: 'light',
     backgroundColor: '#FFF',
+    backgroundColorSpecial: '#FFF',
     bubbleBackgroundColor: '#eee',
     bubbleBackgroundColorReply: '#fff',
     bubbleBackgroundColorInfo: '#E2DACC',
