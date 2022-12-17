@@ -1,11 +1,13 @@
 import { StyleSheet, Text, TextInput, View } from 'react-native'
 
 import colors from '../constants/colors/colors'
-import { useState } from 'react'
 import getColors from '../constants/colors/getColors'
+import { useState } from 'react'
+
 const colorsTheme = getColors()
 
 const Input = (props) => {
+  // console.log(`Input props ${JSON.stringify(props)}`)
   var colorsTheme = getColors()
   const [value, setValue] = useState(props.initialValue)
 

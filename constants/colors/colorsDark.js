@@ -2,6 +2,7 @@ const colorsDark = () => {
   const colorTheme = {
     themeMode: 'dark',
     backgroundColor: '#121212',
+    backgroundColorSpecial: '#000114',
     bubbleBackgroundColor: '#1b4e3f',
     bubbleBackgroundColorReply: '#409088',
     bubbleBackgroundColorInfo: '#409088',

@@ -1,15 +1,16 @@
-import React from 'react'
 import {
-  NavigationContainer,
-  DefaultTheme,
   DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
 } from '@react-navigation/native'
-import { useColorScheme } from 'react-native'
-import MainNavigator from './MainNavigator'
+
 import AuthScreen from '../screens/Login/Auth/AuthScreen'
-import { useSelector } from 'react-redux'
+import MainNavigator from './MainNavigator'
+import React from 'react'
 import StartUpScreen from '../screens/Login/StartUp/StartUpScreen'
 import { logger } from '../utils/logging/console'
+import { useColorScheme } from 'react-native'
+import { useSelector } from 'react-redux'
 
 const AppNavigator = (props) => {
   logger('component', 'AppNavigator')

@@ -1,10 +1,11 @@
-import { View, StyleSheet } from 'react-native'
 import React, { useMemo } from 'react'
-import { useSelector } from 'react-redux'
+import { StyleSheet, View } from 'react-native'
+
 import DataItem from '../../components/DataItem'
+import { useSelector } from 'react-redux'
 
 const SettingsStarMessages = (props) => {
-  console.log(props)
+  // console.log(props)
   const starredMessages = useSelector(
     (state) => state.messages.starredMessages ?? {},
   )

@@ -12,7 +12,7 @@ const getColors = (themeColors) => {
   const themeColorsName = store.getState().menu.storedMenu.themeColorsName
 
   // store.dispatch({})
-  console.log(themeColorsName)
+  // console.log(themeColorsName)
 
   if (themeColorsName === 'light') {
     return colorsLight()

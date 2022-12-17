@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Feather, Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
-import { setStoredMenu } from '../../store/menuSlice'
-import { Ionicons, Feather } from '@expo/vector-icons'
+
 import getColors from '../../constants/colors/getColors'
+import { setStoredMenu } from '../../store/menuSlice'
 
 const SettingsMenuTheme = (props) => {
   const dispatch = useDispatch()
@@ -14,9 +15,6 @@ const SettingsMenuTheme = (props) => {
   const [themeColorsName, themeColorsNameSet] = useState(
     menuData.themeColorsName,
   )
-  // console.log(`themeColorsName state ${themeColorsName}`)
-  // console.log(`menuData.themeColorsName state ${menuData.themeColorsName}`)
-  // console.log(`SettingsMenuTheme menuData ${JSON.stringify(menuData)} `)
 
   const changeThemeColor = (themeColorsName) => {
     // console.log(`changeThemeColor current ${themeColorsName}`)

@@ -1,21 +1,22 @@
-import React, { useState, useEffect, useCallback } from 'react'
 import {
+  Alert,
+  Button,
+  StyleSheet,
   Text,
   TextInput,
-  View,
-  StyleSheet,
-  Button,
   TouchableOpacity,
-  Alert,
+  View,
 } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons'
-import { getSolEcoPrices } from './apiTokenPrices'
-import getColors from '../constants/colors/getColors'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useCallback, useEffect, useState } from 'react'
+import { addStoredTokenList, removeStoredCoin } from '../store/coinsSlice'
 // const colorsTheme = getColors()
-import { removeStoredCoin, addStoredTokenList } from '../store/coinsSlice'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { FontAwesome } from '@expo/vector-icons'
 import Input from '../components/Input'
 import SubmitButton from './SubmitButton'
+import getColors from '../constants/colors/getColors'
+import { getSolEcoPrices } from './apiTokenPrices'
 
 export default function TokenPrice() {
   const colorsTheme = getColors()
