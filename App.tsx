@@ -31,7 +31,7 @@ export default function App() {
     const prepare = async () => {
       try {
         await Font.loadAsync({
-          black: require("./assets/fonts//Roboto-Black.ttf"),
+          black: require("./assets/fonts/Roboto-Black.ttf"),
           blackItalic: require("./assets/fonts/Roboto-BlackItalic.ttf"),
           bold: require("./assets/fonts/Roboto-Bold.ttf"),
           boldItalic: require("./assets/fonts/Roboto-BoldItalic.ttf"),
