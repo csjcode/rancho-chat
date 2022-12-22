@@ -1,4 +1,6 @@
-import React, { useRef } from 'react'
+import * as Clipboard from 'expo-clipboard'
+
+import { Feather, FontAwesome } from '@expo/vector-icons'
 import {
   Image,
   StyleSheet,
@@ -6,20 +8,19 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native'
-import colors from '../constants/colors/colors'
 import {
   Menu,
-  MenuTrigger,
-  MenuOptions,
   MenuOption,
+  MenuOptions,
+  MenuTrigger,
 } from 'react-native-popup-menu'
-import uuid from 'react-native-uuid'
-import * as Clipboard from 'expo-clipboard'
-import { Feather, FontAwesome } from '@expo/vector-icons'
-import { starMessage } from '../utils/actions/chatActions'
-import { useSelector } from 'react-redux'
+import React, { useRef } from 'react'
+
 import { formatAmPm } from '../utils/datetimeFormat'
 import getColors from '../constants/colors/getColors'
+import { starMessage } from '../utils/actions/chatActions'
+import { useSelector } from 'react-redux'
+import uuid from 'react-native-uuid'
 const colorsTheme = getColors()
 
 const MenuItem = (props) => {
