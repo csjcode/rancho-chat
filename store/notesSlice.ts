@@ -2,15 +2,15 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface StoredNotes {
   notes: {
-    id: string;
+    id: string | number[];
     type: string;
     title: string;
     message: string;
     geoLatLong: string;
     geoLatLongTarget: string;
-    dateTimeTarget: string;
-    timestamp: number;
-    dateTime: string;
+    dateTimeTarget: Date | string;
+    timestamp: Date | string | number;
+    dateTime: Date | string | number;
   }[];
 }
 
