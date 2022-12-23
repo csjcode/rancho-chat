@@ -9,6 +9,7 @@ const CustomHeaderButton = (props: any) => {
   return (
     <HeaderButton
       {...props}
+      style={{}}
       IconComponent={Ionicons}
       iconSize={23}
       color={props.color ?? colorsTheme.blue}

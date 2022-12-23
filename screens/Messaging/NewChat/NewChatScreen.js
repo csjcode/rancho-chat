@@ -123,7 +123,7 @@ const NewChatScreen = (props) => {
   }
 
   return (
-    <PageContainer>
+    <PageContainer style={stylesFor(colorsTheme).pageContainer}>
       {isNewChat && isGroupChat && (
         <View style={stylesFor(colorsTheme).chatNameContainer}>
           <View style={stylesFor(colorsTheme).inputContainer}>
@@ -171,7 +171,7 @@ const NewChatScreen = (props) => {
         <FontAwesome name="search" size={15} color={colorsTheme.lightGrey} />
 
         <TextInput
-          placeholder="Search"
+          placeholder="Search users"
           style={stylesFor(colorsTheme).searchBox}
           onChangeText={(text) => setSearchTerm(text)}
         />
@@ -241,6 +241,7 @@ const NewChatScreen = (props) => {
 
 const stylesFor = (colorsTheme) =>
   StyleSheet.create({
+    pageContainer: { backgroundColor: colorsTheme.backgroundColor },
     searchContainer: {
       flexDirection: 'row',
       alignItems: 'center',
@@ -250,6 +251,7 @@ const stylesFor = (colorsTheme) =>
       paddingHorizontal: 8,
       paddingVertical: 5,
       borderRadius: 5,
+      marginTop: 30,
     },
     searchBox: {
       marginLeft: 8,
