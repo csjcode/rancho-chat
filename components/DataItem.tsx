@@ -1,18 +1,29 @@
-import React from 'react'
-import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
-import colors from '../constants/colors/colors'
-import ProfileImage from './ProfileImage'
-import { Ionicons, AntDesign } from '@expo/vector-icons'
-import getColors from '../constants/colors/getColors'
-const colorsTheme = getColors()
+import React from "react";
+import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import colors from "../constants/colors/colors";
+import ProfileImage from "./ProfileImage";
+import { Ionicons, AntDesign } from "@expo/vector-icons";
+import getColors from "../constants/colors/getColors";
 
-const imageSize = 40
+const colorsTheme = getColors();
 
-const DataItem = (props) => {
-  const colorsTheme = getColors()
-  const { title, subTitle, image, type, isChecked, icon } = props
+export interface DataItemProps {
+  title: string;
+  subTitle?: string;
+  image?: string;
+  type?: string;
+  isChecked?: boolean;
+  icon?: string;
+  hideImage?: boolean;
+  onPress: any | (() => void);
+}
 
-  const hideImage = props.hideImage && props.hideImage === true
+const imageSize = 40;
+
+const DataItem = (props: DataItemProps) => {
+  const { title, subTitle, image, type, isChecked, icon } = props;
+
+  const hideImage = props.hideImage && props.hideImage === true;
 
   return (
     <TouchableWithoutFeedback onPress={props.onPress}>
@@ -32,7 +43,7 @@ const DataItem = (props) => {
               ...stylesFor(colorsTheme).title,
               ...{
                 color:
-                  type === 'button' ? colorsTheme.blue : colorsTheme.textColor,
+                  type === "button" ? colorsTheme.blue : colorsTheme.textColor,
               },
             }}
           >
@@ -46,7 +57,7 @@ const DataItem = (props) => {
           )}
         </View>
 
-        {type === 'checkbox' && (
+        {type === "checkbox" && (
           <View
             style={{
               ...stylesFor(colorsTheme).iconContainer,
@@ -57,7 +68,7 @@ const DataItem = (props) => {
           </View>
         )}
 
-        {type === 'link' && (
+        {type === "link" && (
           <View>
             <Ionicons
               name="chevron-forward-outline"
@@ -68,17 +79,17 @@ const DataItem = (props) => {
         )}
       </View>
     </TouchableWithoutFeedback>
-  )
-}
+  );
+};
 
-const stylesFor = (colorsTheme) =>
+const stylesFor = (colorsTheme: any) =>
   StyleSheet.create({
     container: {
-      flexDirection: 'row',
+      flexDirection: "row",
       paddingVertical: 7,
       borderBottomColor: colorsTheme.extraLightGrey,
       borderBottomWidth: 1,
-      alignItems: 'center',
+      alignItems: "center",
       minHeight: 50,
     },
     textContainer: {
@@ -86,12 +97,12 @@ const stylesFor = (colorsTheme) =>
       flex: 1,
     },
     title: {
-      fontFamily: 'medium',
+      fontFamily: "medium",
       fontSize: 16,
       letterSpacing: 0.3,
     },
     subTitle: {
-      fontFamily: 'regular',
+      fontFamily: "regular",
       color: colorsTheme.grey,
       letterSpacing: 0.3,
     },
@@ -99,20 +110,20 @@ const stylesFor = (colorsTheme) =>
       borderWidth: 1,
       borderRadius: 50,
       borderColor: colorsTheme.lightGrey,
-      backgroundColor: 'white',
+      backgroundColor: "white",
     },
     checkedStyle: {
       backgroundColor: colorsTheme.primary,
-      borderColor: 'transparent',
+      borderColor: "transparent",
     },
     leftIconContainer: {
       backgroundColor: colorsTheme.extraLightGrey,
       borderRadius: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
       width: imageSize,
       height: imageSize,
     },
-  })
+  });
 
-export default DataItem
+export default DataItem;

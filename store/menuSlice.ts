@@ -1,9 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+import { ThemeColors } from "../constants/types/types";
+
 interface StoredMenu {
   map: boolean;
   tricks: boolean;
-  themeColorsName: string;
+  themeColorsName: ThemeColors;
 }
 
 interface MenuState {
@@ -14,7 +16,7 @@ const initialState: MenuState = {
   storedMenu: {
     map: true,
     tricks: true,
-    themeColorsName: "dark",
+    themeColorsName: ThemeColors.DARK,
   },
 };
 

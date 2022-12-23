@@ -1,19 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
-import colors from '../constants/colors/colors'
-import getColors from '../constants/colors/getColors'
-const colorsTheme = getColors()
+import { StyleSheet, Text, View } from "react-native";
+import colors from "../constants/colors/colors";
+import getColors from "../constants/colors/getColors";
+const colorsTheme = getColors();
 // console.log(colorsTheme)
 
-export default PageTitle = (props) => {
-  const colorsTheme = getColors()
+const PageTitle = (props: { text: string }) => {
+  const colorsTheme = getColors();
   return (
     <View style={stylesFor(colorsTheme).container}>
       <Text style={stylesFor(colorsTheme).text}>{props.text}</Text>
     </View>
-  )
-}
+  );
+};
 
-const stylesFor = (colorsTheme) =>
+const stylesFor = (colorsTheme: any) =>
   StyleSheet.create({
     container: {
       marginBottom: 10,
@@ -22,7 +22,9 @@ const stylesFor = (colorsTheme) =>
     text: {
       fontSize: 28,
       color: colorsTheme.textColor,
-      fontFamily: 'bold',
+      fontFamily: "bold",
       letterSpacing: 0.3,
     },
-  })
+  });
+
+export default PageTitle;

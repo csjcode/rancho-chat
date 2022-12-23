@@ -1,33 +1,42 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { StyleSheet, Text, TextInput, View } from "react-native";
+import colors from "../constants/colors/colors";
+import getColors from "../constants/colors/getColors";
+import { useState } from "react";
 
-import colors from '../constants/colors/colors'
-import getColors from '../constants/colors/getColors'
-import { useState } from 'react'
+interface InputProps {
+  initialValue: string;
+  label: string;
+  icon?: string;
+  iconPack?: any;
+  iconSize?: number;
+  addStyles?: { [key: string]: any };
+  onInputChanged: (id: any, text: string) => void;
+  errorText?: string[];
+  id: any;
+}
 
-const colorsTheme = getColors()
-
-const Input = (props) => {
+const Input: React.FC<InputProps> = (props) => {
   // console.log(`Input props ${JSON.stringify(props)}`)
-  var colorsTheme = getColors()
-  const [value, setValue] = useState(props.initialValue)
+  var colorsTheme = getColors();
+  const [value, setValue] = useState(props.initialValue);
 
-  const onChangeText = (text) => {
-    console.log(text)
-    setValue(text)
-    props.onInputChanged(props.id, text)
-  }
+  const onChangeText = (text: string) => {
+    console.log(text);
+    setValue(text);
+    props.onInputChanged(props.id, text);
+  };
 
-  const styleMerge = (className) => {
+  const styleMerge = (className: string) => {
     return {
-      ...stylesFor(colorsTheme)[className],
+      ...(stylesFor(colorsTheme) as any)[className],
       ...props?.addStyles?.[className],
-    }
-  }
+    };
+  };
 
   return (
-    <View style={styleMerge('container')}>
-      <Text style={styleMerge('label')}>{props.label}</Text>
-      <View style={styleMerge('inputContainer')}>
+    <View style={styleMerge("container")}>
+      <Text style={styleMerge("label")}>{props.label}</Text>
+      <View style={styleMerge("inputContainer")}>
         {props.icon && (
           <props.iconPack
             name={props.icon}
@@ -37,7 +46,7 @@ const Input = (props) => {
         )}
         <TextInput
           {...props}
-          style={styleMerge('inputText')}
+          style={styleMerge("inputText")}
           onChangeText={onChangeText}
           value={value}
         />
@@ -51,30 +60,30 @@ const Input = (props) => {
         </View>
       )}
     </View>
-  )
-}
+  );
+};
 
-const stylesFor = (colorsTheme) =>
+const stylesFor = (colorsTheme: any) =>
   StyleSheet.create({
     container: {
-      width: '100%',
+      width: "100%",
       // marginBottom: 30,
     },
     label: {
       marginVertical: 8,
-      fontFamily: 'bold',
+      fontFamily: "bold",
       letterSpacing: 0.3,
       color: colorsTheme.textColor,
     },
     inputContainer: {
-      width: '100%',
+      width: "100%",
       // backgroundColor: '#abd5c6',
       paddingHorizontal: 10,
       paddingVertical: 15,
       borderRadius: 2,
       backgroundColor: colorsTheme.formInputBackgroundColor,
-      flexDirection: 'row',
-      alignItems: 'center',
+      flexDirection: "row",
+      alignItems: "center",
     },
     icon: {
       marginRight: 10,
@@ -82,25 +91,25 @@ const stylesFor = (colorsTheme) =>
     },
     input: {
       color: colorsTheme.formInputTextColor,
-      fontFamily: 'regular',
+      fontFamily: "regular",
       letterSpacing: 0.3,
       paddingTop: 0,
     },
     inputText: {
       paddingLeft: 10,
       paddingRight: 10,
-      width: '100%',
+      width: "100%",
       color: colorsTheme.formInputTextColor,
     },
     errorContainer: {
       marginVertical: 5,
     },
     errorText: {
-      color: 'red',
+      color: "red",
       fontSize: 13,
-      fontFamily: 'regular',
+      fontFamily: "regular",
       letterSpacing: 0.3,
     },
-  })
+  });
 
-export default Input
+export default Input;

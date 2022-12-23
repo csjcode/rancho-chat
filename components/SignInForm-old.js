@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useReducer, useState } from 'react'
-import Input from '../components/Input'
-import SubmitButton from '../components/SubmitButton'
+import Input from './Input'
+import SubmitButton from './SubmitButton'
 import { Feather } from '@expo/vector-icons'
 
 import { validateInput } from '../utils/actions/formActions'
@@ -51,13 +51,17 @@ const SignInForm = (props) => {
 
   const authHandler = useCallback(async () => {
     try {
+      console.log(`formState.formIsValid ${formState.formIsValid}`)
       setIsLoading(true)
-
+      console.log(`formState.inputValues.email,
+      formState.inputValues.password,${formState.inputValues.email},
+      ${formState.inputValues.password}`)
       const action = signIn(
         formState.inputValues.email,
         formState.inputValues.password,
       )
       setError(null)
+      console.log(`action: ${action}`)
       await dispatch(action)
     } catch (error) {
       setError(error.message)

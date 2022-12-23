@@ -12,7 +12,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import PageContainer from "../../../components/PageContainer";
-import SignInForm from "../../../components/SignInForm";
+import SignInForm from "../../../components/SignInForm-old";
 import SignUpForm from "../../../components/SignUpForm";
 import logo from "../../../assets/images/logo.png";
 import getColors from "../../../constants/colors/getColors";
