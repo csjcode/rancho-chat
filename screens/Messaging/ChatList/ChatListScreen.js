@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native'
 import { HeaderButtons, Item } from 'react-navigation-header-buttons'
+import { Ionicons, AntDesign } from '@expo/vector-icons'
 import { useSelector } from 'react-redux'
 import CustomHeaderButton from '../../../components/CustomHeaderButton'
 import DataItem from '../../../components/DataItem'
@@ -36,7 +37,10 @@ const ChatListScreen = (props) => {
     props.navigation.setOptions({
       headerRight: () => {
         return (
-          <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
+          <HeaderButtons
+            style={stylesFor(colorsTheme).headerButton}
+            HeaderButtonComponent={CustomHeaderButton}
+          >
             <Item
               title="New chat"
               iconName="create-outline"
@@ -83,16 +87,30 @@ const ChatListScreen = (props) => {
   }, [props.route?.params])
 
   return (
-    <PageContainer>
+    <PageContainer style={stylesFor(colorsTheme).pageContainer}>
       {/* <PageTitle text="Chats" /> */}
 
-      <View>
+      <View style={stylesFor(colorsTheme).rowNewButtonsContainer}>
         <TouchableOpacity
           onPress={() =>
             props.navigation.navigate('NewChat', { isGroupChat: true })
           }
         >
-          <Text style={stylesFor(colorsTheme).newGroupText}>New Group</Text>
+          <View style={stylesFor(colorsTheme).rowNewButtons}>
+            <AntDesign name="addusergroup" size={24} color="blue" />
+            <Text style={stylesFor(colorsTheme).newGroupText}>New Group</Text>
+          </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() =>
+            props.navigation.navigate('NewChat', { isGroupChat: false })
+          }
+        >
+          <View style={stylesFor(colorsTheme).rowNewButtons}>
+            <Ionicons name="create-outline" size={24} color="blue" />
+            <Text style={stylesFor(colorsTheme).newGroupText}>New Chat</Text>
+          </View>
         </TouchableOpacity>
       </View>
 
@@ -123,14 +141,16 @@ const ChatListScreen = (props) => {
           }
 
           return (
-            <DataItem
-              title={title}
-              subTitle={subTitle}
-              image={image}
-              onPress={() =>
-                props.navigation.navigate('ChatScreen', { chatId })
-              }
-            />
+            <View style={stylesFor(colorsTheme).dataItemView}>
+              <DataItem
+                title={title}
+                subTitle={subTitle}
+                image={image}
+                onPress={() =>
+                  props.navigation.navigate('ChatScreen', { chatId })
+                }
+              />
+            </View>
           )
         }}
       />
@@ -146,11 +166,19 @@ const stylesFor = (colorsTheme) =>
       alignItems: 'center',
       backgroundColor: colorsTheme.backgroundColor,
     },
+    headerButton: { zIndex: 9999 },
     newGroupText: {
       color: colorsTheme.blue,
       fontSize: 17,
-      marginBottom: 5,
+      marginBottom: 8,
+      marginLeft: 3,
+      marginRight: 15,
     },
+    pageContainer: { backgroundColor: colorsTheme.backgroundColor },
+    rowNewButtons: { flexDirection: 'row' },
+    rowNewButtonsContainer: { flexDirection: 'row' },
+    newButton: {},
+    dataItemView: { marginBottom: 7 },
   })
 
 export default ChatListScreen

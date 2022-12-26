@@ -16,7 +16,7 @@ import { FontAwesome } from '@expo/vector-icons'
 import Input from '../components/Input'
 import SubmitButton from './SubmitButton'
 import getColors from '../constants/colors/getColors'
-import { getSolEcoPrices } from './apiTokenPrices'
+import { getSolEcoPrices } from '../apis/apiTokenPrices'
 
 export default function TokenPrice() {
   const colorsTheme = getColors()

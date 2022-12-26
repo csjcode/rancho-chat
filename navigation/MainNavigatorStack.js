@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import ChatScreen from '../screens/Messaging/Chat/ChatScreen'
+import ChatListScreen from '../screens/Messaging/ChatList/ChatListScreen'
 import ChatSettingsScreen from '../screens/Messaging/ChatSettings/ChatSettingsScreen'
 import ContactScreen from '../screens/Contact/ContactScreen'
 import DataListScreen from '../screens/Messaging/DataList/DataListScreen'
@@ -40,6 +41,14 @@ export const MainNavigatorStack = () => {
         <Stack.Screen
           name="ChatScreen"
           component={ChatScreen}
+          options={{
+            headerTitle: '',
+            headerBackTitle: 'Back',
+          }}
+        />
+        <Stack.Screen
+          name="ChatList"
+          component={ChatListScreen}
           options={{
             headerTitle: '',
             headerBackTitle: 'Back',

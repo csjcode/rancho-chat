@@ -13,7 +13,6 @@ import PageContainer from '../../../components/PageContainer'
 import PageTitle from '../../../components/PageTitle'
 import ProfileImage from '../../../components/ProfileImage'
 import SubmitButton from '../../../components/SubmitButton'
-import colors from '../../../constants/colors/colors'
 import {
   addUsersToChat,
   removeUserFromChat,
