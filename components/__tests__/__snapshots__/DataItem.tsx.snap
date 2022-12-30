@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataItem component matches snapshot 1`] = `
+<View
+  accessible={true}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "borderBottomColor": "#ededed",
+      "borderBottomWidth": 1,
+      "flexDirection": "row",
+      "minHeight": 50,
+      "paddingVertical": 7,
+    }
+  }
+>
+  <View
+    onPress={[Function]}
+  >
+    <Image
+      source={1}
+      style={
+        Object {
+          "borderColor": "#7f8c8d",
+          "borderRadius": 50,
+          "borderWidth": 1,
+          "height": 40,
+          "width": 40,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginLeft": 14,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#32d48e",
+          "fontFamily": "medium",
+          "fontSize": 16,
+          "letterSpacing": 0.3,
+        }
+      }
+    />
+  </View>
+</View>
+`;
