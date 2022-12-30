@@ -3,8 +3,19 @@ import React from "react";
 import { render, fireEvent, cleanup } from "@testing-library/react-native";
 import renderer from "react-test-renderer";
 import { persistor, store } from "../../store/store";
-import DataItem from "../DataItem";
 import { Provider } from "react-redux";
+import DataItem from "../DataItem";
+
+jest.mock("redux-persist", () => {
+  const real = jest.requireActual("redux-persist");
+  return {
+    ...real,
+    persistReducer: jest
+      .fn()
+      .mockImplementation((config, reducers) => reducers),
+  };
+});
+
 const image = "https://example.com/image.jpg";
 const title = "Example Title";
 const subTitle = "Example Subtitle";

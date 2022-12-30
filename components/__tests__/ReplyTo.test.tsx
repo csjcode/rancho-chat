@@ -1,5 +1,7 @@
 import ReactTestRenderer from "react-test-renderer";
 import ReplyTo from "../ReplyTo";
+import { persistor, store } from "../../store/store";
+import { Provider } from "react-redux";
 
 it("renders correctly", () => {
   const mockProps = {
@@ -10,6 +12,10 @@ it("renders correctly", () => {
     },
     onCancel: jest.fn(),
   };
-  const tree = ReactTestRenderer.create(<ReplyTo {...mockProps} />).toJSON();
+  const tree = ReactTestRenderer.create(
+    <Provider store={store}>
+      <ReplyTo {...mockProps} />
+    </Provider>
+  ).toJSON();
   expect(tree).toMatchSnapshot();
 });
