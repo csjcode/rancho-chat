@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input component renders correctly 1`] = `
+exports[`Input component Input component renders correctly 1`] = `
 <View
   style={
     Object {
