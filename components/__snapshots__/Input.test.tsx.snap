@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#32d48e",
+        "fontFamily": "bold",
+        "letterSpacing": 0.3,
+        "marginVertical": 8,
+      }
+    }
+  >
+    Test label
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#abd5c6",
+        "borderRadius": 2,
+        "flexDirection": "row",
+        "paddingHorizontal": 10,
+        "paddingVertical": 15,
+        "width": "100%",
+      }
+    }
+  >
+    <testIconPack
+      name="testIcon"
+      size={15}
+      style={
+        Object {
+          "color": "#000",
+          "fontFamily": "regular",
+          "letterSpacing": 0.3,
+          "paddingTop": 0,
+        }
+      }
+    />
+    <TextInput
+      addStyles={
+        Object {
+          "testStyle": "testValue",
+        }
+      }
+      errorText={
+        Array [
+          "Test error",
+        ]
+      }
+      icon="testIcon"
+      iconPack="testIconPack"
+      iconSize={15}
+      id={1}
+      initialValue="Test value"
+      label="Test label"
+      onChangeText={[Function]}
+      onInputChanged={[Function]}
+      style={
+        Object {
+          "color": "#000",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "width": "100%",
+        }
+      }
+      value="Test value"
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "marginVertical": 5,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "red",
+          "fontFamily": "regular",
+          "fontSize": 13,
+          "letterSpacing": 0.3,
+        }
+      }
+    >
+      Test error
+    </Text>
+  </View>
+</View>
+`;

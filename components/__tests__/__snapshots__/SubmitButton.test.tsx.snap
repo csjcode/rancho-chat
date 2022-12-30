@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing SubmitButton component renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#00ffbd",
+      "borderRadius": 30,
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingHorizontal": 30,
+      "paddingVertical": 10,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#1b4e3f",
+      }
+    }
+  >
+    Submit
+  </Text>
+</View>
+`;
+
+exports[`Testing SubmitButton component renders correctly with disabled flag 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#bdc3c7",
+      "borderRadius": 30,
+      "justifyContent": "center",
+      "opacity": 1,
+      "paddingHorizontal": 30,
+      "paddingVertical": 10,
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#7f8c8d",
+      }
+    }
+  >
+    Submit
+  </Text>
+</View>
+`;

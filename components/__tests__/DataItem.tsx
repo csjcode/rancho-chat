@@ -18,11 +18,11 @@ describe("DataItem component", () => {
     const tree = renderer
       .create(
         <Provider store={store}>
-          <DataItem title={""} onPress={undefined} />
+          <DataItem title={"Title"} onPress={() => alert("ok")} />
         </Provider>
       )
       .toJSON();
-    console.log(tree);
+    // console.log(tree);
     expect(tree).toMatchSnapshot();
   });
   // Render test

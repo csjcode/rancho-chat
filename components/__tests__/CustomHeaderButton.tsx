@@ -1,8 +1,11 @@
 // Unit Tests
 import React from "react";
 import { render, fireEvent } from "@testing-library/react-native";
+import renderer from "react-test-renderer";
 import CustomHeaderButton from "../CustomHeaderButton";
 import colors from "../../constants/colors/colors";
+import { Provider } from "react-redux";
+import { store } from "../../store/store";
 
 describe("CustomHeaderButton component", () => {
   xit("Renders CustomHeaderButton component properly", () => {
@@ -10,15 +13,22 @@ describe("CustomHeaderButton component", () => {
     const component = getByTestId("CustomHeaderButton");
     expect(component).toBeTruthy();
   });
-  // it("Matches the snapshot", () => {
-  //   // const { asJSON } = render(<CustomHeaderButton />);
-  //   // expect(asJSON()).toMatchSnapshot();
-  // });
-  // it('Renders an <Ionicons /> component', () => {
-  //   const { getByTestId } = render(<CustomHeaderButton />);
-  //   const component = getByTestId('Ionicons');
-  //   expect(component).toBeTruthy();
-  // });
+  xit("matches snapshot", () => {
+    const tree = renderer
+      .create(
+        <Provider store={store}>
+          <CustomHeaderButton title={""} onPress={undefined} />
+        </Provider>
+      )
+      .toJSON();
+    // console.log(JSON.stringify(tree));
+    expect(tree).toMatchSnapshot();
+  });
+  xit("Renders an <Ionicons /> component", () => {
+    const { getByTestId } = render(<CustomHeaderButton />);
+    const component = getByTestId("Ionicons");
+    expect(component).toBeTruthy();
+  });
   // it('Passes in the correct props to the <Ionicons /> component', () => {
   //   const { getByTestId } = render(<CustomHeaderButton color={colors.blue} />);
   //   const component = getByTestId('Ionicons');

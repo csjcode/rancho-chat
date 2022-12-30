@@ -3,7 +3,7 @@
 exports[`DataItem component matches snapshot 1`] = `
 <View
   accessible={true}
-  focusable={false}
+  focusable={true}
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -56,7 +56,9 @@ exports[`DataItem component matches snapshot 1`] = `
           "letterSpacing": 0.3,
         }
       }
-    />
+    >
+      Title
+    </Text>
   </View>
 </View>
 `;
