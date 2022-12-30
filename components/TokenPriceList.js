@@ -45,25 +45,18 @@ export default function TokenPrice() {
   }, [removeCoin, storedCoins])
 
   const saveHandlerAddToken = async () => {
-    // const saveHandlerAddToken = useCallback(async () => {
     try {
-      // setIsLoading(true)
-      // await updateSignedInUserData(userData.userId, updatedValues)
       const addTokenListStored = addTokenList.split(',')
       console.log(`addTokenListArr ${addTokenListStored}`)
       dispatch(addStoredTokenList({ ...storedCoins, addTokenListStored }))
       addTokenSet(!addToken)
       updatePricesSet(true)
       visibleRemoveButtonsSet(false)
-      // setShowSuccessMessage(true)
 
-      setTimeout(() => {
-        // setShowSuccessMessage(false)
-      }, 3000)
+      setTimeout(() => {}, 3000)
     } catch (error) {
       console.log(error)
     } finally {
-      // setIsLoading(false)
     }
   }
   // , [dispatch])

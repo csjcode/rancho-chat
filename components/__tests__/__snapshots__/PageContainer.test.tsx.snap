@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PageContainer /> PageContainer renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#121212",
+      "flex": 1,
+      "paddingHorizontal": 20,
+    }
+  }
+/>
+`;
