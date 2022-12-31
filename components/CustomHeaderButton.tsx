@@ -9,6 +9,7 @@ const CustomHeaderButton = (props: any) => {
   return (
     <HeaderButton
       {...props}
+      data-testid="CustomHeaderButton"
       style={{}}
       IconComponent={Ionicons}
       iconSize={23}
