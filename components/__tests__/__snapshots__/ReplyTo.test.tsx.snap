@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#ededed",
+      "borderLeftColor": "#3498db",
+      "borderLeftWidth": 4,
+      "flexDirection": "row",
+      "padding": 8,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginRight": 5,
+      }
+    }
+  >
+    <Text
+      numberOfLines={1}
+      style={
+        Object {
+          "color": "#3498db",
+          "fontFamily": "medium",
+          "letterSpacing": 0.3,
+        }
+      }
+    >
+      John Doe
+    </Text>
+    <Text
+      numberOfLines={1}
+    >
+      This is a test message
+    </Text>
+  </View>
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text />
+  </View>
+</View>
+`;

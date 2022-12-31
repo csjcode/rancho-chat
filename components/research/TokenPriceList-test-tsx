@@ -1,0 +1,12 @@
+import ReactTestRenderer from "react-test-renderer";
+import TokenPriceList from "../TokenPriceList";
+import axios from "axios";
+
+jest.mock("axios");
+
+describe("TokenPriceList", () => {
+  xit("TokenPriceList renders correctly", () => {
+    const tree = ReactTestRenderer.create(<TokenPriceList />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});

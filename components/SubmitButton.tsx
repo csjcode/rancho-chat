@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
-import colors from "../constants/colors/colors";
 import getColors from "../constants/colors/getColors";
 const colorsTheme = getColors();
 

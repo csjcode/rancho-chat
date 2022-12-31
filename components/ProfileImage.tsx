@@ -30,7 +30,7 @@ const ProfileImage: React.FC<{
   chatId?: string;
   onPress?: () => void;
   style?: any;
-  height: any;
+  height?: any;
 }> = (props) => {
   const colorsTheme = getColors();
   const dispatch = useDispatch();
