@@ -9,6 +9,13 @@ This is an early-stage ongoing app -- representing less than 2 months work -- bu
 * Feel free to contact me through email, Twitter or LinkedIn
 * I do plan to pick this up again, just right now my plate is full!
 
+### Purpose
+
+* This was created as a GENERIC chat mobile app, with the idea of using it as a "skeleton" STARTER for a variety of startup ideas.
+* In other words - if you are creating X type of app and want to incorporate WhatsApp-style functionality as part of the app.
+* Therefore, there is very little branding and only basic styling. Many decisions are left open to the builder. 
+* It does not use tailwind (usually NativeWind in React Native), although it can easily be added, and you can refactor the existing styles to tailwind quickly with chatgpt.
+
 ### Required to fork/use with Expo
 
 It's a working app. You can use the code and install/start up with Expo. 
