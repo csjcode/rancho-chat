@@ -32,6 +32,11 @@ It's uses React Native and Expo and includes Redux RTK for state management, Typ
 
 I started with some Whatsapp-style Chat functionality, but then did a lot of additional refactoring and added a "Tricks" page to experiment with React Native sensors and functionality.
 
+* Login, Authenticatin/Authorization
+* Person to Person Chat, realtime db-based, not socket
+* Group Chat, multiple people chat
+* Archived chats
+* Image upload/share
 * There is a Mapping component with customized pins by location. 
 * There is a very basic crypto api call to get some crypto prices. I've done more complex crypto dashboards before but just wanted to get something in there, while I explored various ideas, so what is there for that part is extremely limited so far.
 * There is Light/Dark theme switching
