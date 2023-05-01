@@ -6,7 +6,7 @@ React Native Chat App with Crypto, Mapping
 This is an early-stage ongoing app -- representing less than 2 months work -- but I prioritized another app now, so have made this public for anybody to look at, use and contribute.
 
 * You are welcome to add revisions, PRs or additional feedback including ideas for me or anybody to work on.
-* Feel free to contact me through email, Twitter or LinkedIn
+* Feel free to contact me through email, Twitter or LinkedIn, or make a Zoom appt.
 * I do plan to pick this up again, just right now my plate is full!
 
 ### Purpose
@@ -32,7 +32,7 @@ It's uses React Native and Expo and includes Redux RTK for state management, Typ
 
 I started with some Whatsapp-style Chat functionality, but then did a lot of additional refactoring and added a "Tricks" page to experiment with React Native sensors and functionality.
 
-* Login, Authenticatin/Authorization
+* Login, Authentication/Authorization
 * User profile
 * Person to Person Chat, realtime db-based, not socket
 * Group Chat, multiple people chat
